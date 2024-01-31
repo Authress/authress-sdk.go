@@ -21,7 +21,7 @@ This is the Authress SDK used to integrate with the authorization as a service p
 ### Install
 
 ```sh
-cargo add authress
+go install github.com/authress/authress-sdk.go
 ```
 
 ### Reference Guide

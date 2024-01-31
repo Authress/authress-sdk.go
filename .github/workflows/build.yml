@@ -11,9 +11,6 @@ on:
     - main
     - 'release/**'
 
-env: 
-  CARGO_TERM_COLOR: always
-
 jobs:
   rust:
     name: Build
