@@ -1,0 +1,54 @@
+# Displays in the badge in Readme.md
+name: Latest SDK Build
+
+on:
+  push:
+    branches:
+    - main
+    - 'release/**'
+  pull_request:
+    branches:
+    - main
+    - 'release/**'
+
+env: 
+  CARGO_TERM_COLOR: always
+
+jobs:
+  rust:
+    name: Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: 1.18
+      
+      - name: Build
+        run: |
+          export VERSION=`echo $GITHUB_REF | sed -e "s/refs\/heads\///g" -e "s/release\///g"`
+          sed -i "s/0.0.0/${VERSION}/g" src/version.go
+          make install
+          make test
+
+      - name: Create Github Release and Tag
+        if: github.repository_owner == 'Authress' && github.ref != 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          branchId="${GITHUB_REF/refs\/heads\/release\//}"
+          export VERSION="v${branchId}.${GITHUB_RUN_NUMBER}"
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+          echo Building version: ${{ env.VERSION }}
+          
+          # We need to commit the changes in the version to the version.go or else the published version won't contain this change.
+          git commit -m"Creating version ${VERSION}"
+          git tag $VERSION
+          git push origin $VERSION
+
+          # Force the GOPROXY to update the cache
+          GOPROXY=proxy.golang.org go list -m authress/authress-sdk.go@${VERSION}
+      
+      # - name: Publish SDK
+      #   if: github.repository_owner == 'Authress' && github.ref != 'refs/heads/main' && github.event_name == 'push'
+      #   run: 
