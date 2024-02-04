@@ -1,14 +1,12 @@
-#Groups
-
-All URIs are relative to *http://localhost*
+# Groups API
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroup**](Groups.md#CreateGroup) | **Post** /v1/groups | Create group
-[**DeleteGroup**](Groups.md#DeleteGroup) | **Delete** /v1/groups/{groupId} | Deletes group
-[**GetGroup**](Groups.md#GetGroup) | **Get** /v1/groups/{groupId} | Retrieve group
-[**GetGroups**](Groups.md#GetGroups) | **Get** /v1/groups | List groups
-[**UpdateGroup**](Groups.md#UpdateGroup) | **Put** /v1/groups/{groupId} | Update a group
+[**CreateGroup**](#CreateGroup) | **Post** /v1/groups | Create group
+[**DeleteGroup**](#DeleteGroup) | **Delete** /v1/groups/{groupId} | Deletes group
+[**GetGroup**](#GetGroup) | **Get** /v1/groups/{groupId} | Retrieve group
+[**GetGroups**](#GetGroups) | **Get** /v1/groups | List groups
+[**UpdateGroup**](#UpdateGroup) | **Put** /v1/groups/{groupId} | Update a group
 
 
 
@@ -29,14 +27,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
-	group := *openapiclient.NewGroup("Name_example", []openapiclient.User{*openapiclient.NewUser("oauth|userId")}, []openapiclient.User{*openapiclient.NewUser("oauth|userId")}) // Group | 
+	group := *authress.NewGroup("Name_example", []authress.User{*authress.NewUser("oauth|userId")}, []authress.User{*authress.NewUser("oauth|userId")}) // Group | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Groups.CreateGroup(context.Background()).Group(group).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.CreateGroup``: %v\n", err)
@@ -64,18 +61,14 @@ Name | Type | Description  | Notes
 
 [**Group**](Group.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## DeleteGroup
@@ -95,14 +88,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	groupId := TODO // GroupId | The identifier of the group.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	r, err := apiClient.Groups.DeleteGroup(context.Background(), groupId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.DeleteGroup``: %v\n", err)
@@ -132,18 +124,14 @@ Name | Type | Description  | Notes
 
  (empty response body)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetGroup
@@ -163,14 +151,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	groupId := TODO // GroupId | The identifier of the group.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Groups.GetGroup(context.Background(), groupId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.GetGroup``: %v\n", err)
@@ -202,18 +189,14 @@ Name | Type | Description  | Notes
 
 [**Group**](Group.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetGroups
@@ -233,7 +216,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
@@ -241,8 +224,7 @@ func main() {
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 	filter := "filter_example" // string | Filter to search groups by. This is a case insensitive search through every text field. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Groups.GetGroups(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.GetGroups``: %v\n", err)
@@ -272,18 +254,14 @@ Name | Type | Description  | Notes
 
 [**GroupCollection**](GroupCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## UpdateGroup
@@ -304,16 +282,15 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	groupId := TODO // GroupId | The identifier of the group.
-	group := *openapiclient.NewGroup("Name_example", []openapiclient.User{*openapiclient.NewUser("oauth|userId")}, []openapiclient.User{*openapiclient.NewUser("oauth|userId")}) // Group | 
+	group := *authress.NewGroup("Name_example", []authress.User{*authress.NewUser("oauth|userId")}, []authress.User{*authress.NewUser("oauth|userId")}) // Group | 
 	ifUnmodifiedSince := time.Now() // time.Time | The expected last time the group was modified. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Groups.UpdateGroup(context.Background(), groupId).Group(group).IfUnmodifiedSince(ifUnmodifiedSince).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.UpdateGroup``: %v\n", err)
@@ -347,16 +324,12 @@ Name | Type | Description  | Notes
 
 [**Group**](Group.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 

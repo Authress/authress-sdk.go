@@ -1,20 +1,18 @@
-#AccessRecords
-
-All URIs are relative to *http://localhost*
+# AccessRecords API
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateClaim**](AccessRecords.md#CreateClaim) | **Post** /v1/claims | Create resource Claim
-[**CreateRecord**](AccessRecords.md#CreateRecord) | **Post** /v1/records | Create access record
-[**CreateRequest**](AccessRecords.md#CreateRequest) | **Post** /v1/requests | Create access request
-[**DeleteRecord**](AccessRecords.md#DeleteRecord) | **Delete** /v1/records/{recordId} | Deletes access record
-[**DeleteRequest**](AccessRecords.md#DeleteRequest) | **Delete** /v1/requests/{requestId} | Deletes access request
-[**GetRecord**](AccessRecords.md#GetRecord) | **Get** /v1/records/{recordId} | Retrieve access record
-[**GetRecords**](AccessRecords.md#GetRecords) | **Get** /v1/records | List access records
-[**GetRequest**](AccessRecords.md#GetRequest) | **Get** /v1/requests/{requestId} | Retrieve access request
-[**GetRequests**](AccessRecords.md#GetRequests) | **Get** /v1/requests | List access requests
-[**RespondToAccessRequest**](AccessRecords.md#RespondToAccessRequest) | **Patch** /v1/requests/{requestId} | Approve or deny access request
-[**UpdateRecord**](AccessRecords.md#UpdateRecord) | **Put** /v1/records/{recordId} | Update access record
+[**CreateClaim**](#CreateClaim) | **Post** /v1/claims | Create resource Claim
+[**CreateRecord**](#CreateRecord) | **Post** /v1/records | Create access record
+[**CreateRequest**](#CreateRequest) | **Post** /v1/requests | Create access request
+[**DeleteRecord**](#DeleteRecord) | **Delete** /v1/records/{recordId} | Deletes access record
+[**DeleteRequest**](#DeleteRequest) | **Delete** /v1/requests/{requestId} | Deletes access request
+[**GetRecord**](#GetRecord) | **Get** /v1/records/{recordId} | Retrieve access record
+[**GetRecords**](#GetRecords) | **Get** /v1/records | List access records
+[**GetRequest**](#GetRequest) | **Get** /v1/requests/{requestId} | Retrieve access request
+[**GetRequests**](#GetRequests) | **Get** /v1/requests | List access requests
+[**RespondToAccessRequest**](#RespondToAccessRequest) | **Patch** /v1/requests/{requestId} | Approve or deny access request
+[**UpdateRecord**](#UpdateRecord) | **Put** /v1/records/{recordId} | Update access record
 
 
 
@@ -35,14 +33,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
-	claimRequest := *openapiclient.NewClaimRequest("CollectionResource_example", "ResourceId_example") // ClaimRequest | 
+	claimRequest := *authress.NewClaimRequest("CollectionResource_example", "ResourceId_example") // ClaimRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.AccessRecords.CreateClaim(context.Background()).ClaimRequest(claimRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.CreateClaim``: %v\n", err)
@@ -70,18 +67,14 @@ Name | Type | Description  | Notes
 
 **map[string]interface{}**
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## CreateRecord
@@ -101,14 +94,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
-	accessRecord := *openapiclient.NewAccessRecord("Name_example", []openapiclient.Statement{*openapiclient.NewStatement([]string{"Roles_example"}, []openapiclient.Resource{*openapiclient.NewResource("/organizations/org_a/documents/doc_1")})}) // AccessRecord | 
+	accessRecord := *authress.NewAccessRecord("Name_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // AccessRecord | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.AccessRecords.CreateRecord(context.Background()).AccessRecord(accessRecord).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.CreateRecord``: %v\n", err)
@@ -136,18 +128,14 @@ Name | Type | Description  | Notes
 
 [**AccessRecord**](AccessRecord.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## CreateRequest
@@ -167,14 +155,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
-	accessRequest := *openapiclient.NewAccessRequest("RequestId_example", *openapiclient.NewAccessTemplate([]openapiclient.User{*openapiclient.NewUser("oauth|userId")}, []openapiclient.Statement{*openapiclient.NewStatement([]string{"Roles_example"}, []openapiclient.Resource{*openapiclient.NewResource("/organizations/org_a/documents/doc_1")})})) // AccessRequest | 
+	accessRequest := *authress.NewAccessRequest("RequestId_example", *authress.NewAccessTemplate([]authress.User{*authress.NewUser("oauth|userId")}, []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})})) // AccessRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.AccessRecords.CreateRequest(context.Background()).AccessRequest(accessRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.CreateRequest``: %v\n", err)
@@ -202,18 +189,14 @@ Name | Type | Description  | Notes
 
 [**AccessRequest**](AccessRequest.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## DeleteRecord
@@ -233,14 +216,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	recordId := "recordId_example" // string | The identifier of the access record.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	r, err := apiClient.AccessRecords.DeleteRecord(context.Background(), recordId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.DeleteRecord``: %v\n", err)
@@ -270,18 +252,14 @@ Name | Type | Description  | Notes
 
  (empty response body)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## DeleteRequest
@@ -301,14 +279,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	requestId := "requestId_example" // string | The identifier of the access request.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	r, err := apiClient.AccessRecords.DeleteRequest(context.Background(), requestId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.DeleteRequest``: %v\n", err)
@@ -338,18 +315,14 @@ Name | Type | Description  | Notes
 
  (empty response body)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetRecord
@@ -369,14 +342,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	recordId := "recordId_example" // string | The identifier of the access record.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.AccessRecords.GetRecord(context.Background(), recordId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRecord``: %v\n", err)
@@ -408,18 +380,14 @@ Name | Type | Description  | Notes
 
 [**AccessRecord**](AccessRecord.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetRecords
@@ -439,7 +407,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
@@ -448,8 +416,7 @@ func main() {
 	filter := "filter_example" // string | Filter to search records by. This is a case insensitive search through every text field. (optional)
 	status := "status_example" // string | Filter records by their current status. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.AccessRecords.GetRecords(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Status(status).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRecords``: %v\n", err)
@@ -480,18 +447,14 @@ Name | Type | Description  | Notes
 
 [**AccessRecordCollection**](AccessRecordCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetRequest
@@ -511,14 +474,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	requestId := "requestId_example" // string | The identifier of the access request.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.AccessRecords.GetRequest(context.Background(), requestId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRequest``: %v\n", err)
@@ -550,18 +512,14 @@ Name | Type | Description  | Notes
 
 [**AccessRequest**](AccessRequest.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetRequests
@@ -581,7 +539,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
@@ -589,8 +547,7 @@ func main() {
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 	status := "status_example" // string | Filter requests by their current status. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.AccessRecords.GetRequests(context.Background()).Limit(limit).Cursor(cursor).Status(status).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRequests``: %v\n", err)
@@ -620,18 +577,14 @@ Name | Type | Description  | Notes
 
 [**AccessRequestCollection**](AccessRequestCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## RespondToAccessRequest
@@ -651,15 +604,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	requestId := "requestId_example" // string | The identifier of the access request.
-	accessRequestResponse := *openapiclient.NewAccessRequestResponse("Status_example") // AccessRequestResponse | 
+	accessRequestResponse := *authress.NewAccessRequestResponse("Status_example") // AccessRequestResponse | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.AccessRecords.RespondToAccessRequest(context.Background(), requestId).AccessRequestResponse(accessRequestResponse).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.RespondToAccessRequest``: %v\n", err)
@@ -692,18 +644,14 @@ Name | Type | Description  | Notes
 
 [**AccessRequest**](AccessRequest.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## UpdateRecord
@@ -724,16 +672,15 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	recordId := "recordId_example" // string | The identifier of the access record.
-	accessRecord := *openapiclient.NewAccessRecord("Name_example", []openapiclient.Statement{*openapiclient.NewStatement([]string{"Roles_example"}, []openapiclient.Resource{*openapiclient.NewResource("/organizations/org_a/documents/doc_1")})}) // AccessRecord | 
+	accessRecord := *authress.NewAccessRecord("Name_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // AccessRecord | 
 	ifUnmodifiedSince := time.Now() // time.Time | The expected last time the record was modified. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	r, err := apiClient.AccessRecords.UpdateRecord(context.Background(), recordId).AccessRecord(accessRecord).IfUnmodifiedSince(ifUnmodifiedSince).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.UpdateRecord``: %v\n", err)
@@ -765,16 +712,12 @@ Name | Type | Description  | Notes
 
  (empty response body)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 

@@ -10,9 +10,10 @@ Testing RolesApi
 package authress
 
 import (
-	openapiclient "//"
 	"context"
 	"testing"
+
+	authress "github.com/authress/authress-sdk.go"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -20,8 +21,7 @@ import (
 
 func Test_authress_RolesApi(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(AuthressSettings{})
 
 	t.Run("Test RolesApi CreateRole", func(t *testing.T) {
 

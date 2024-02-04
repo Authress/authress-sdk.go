@@ -1,15 +1,13 @@
-#Connections
-
-All URIs are relative to *http://localhost*
+# Connections API
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateConnection**](Connections.md#CreateConnection) | **Post** /v1/connections | Create SSO connection
-[**DeleteConnection**](Connections.md#DeleteConnection) | **Delete** /v1/connections/{connectionId} | Delete SSO connection
-[**GetConnection**](Connections.md#GetConnection) | **Get** /v1/connections/{connectionId} | Retrieve SSO connection
-[**GetConnectionCredentials**](Connections.md#GetConnectionCredentials) | **Get** /v1/connections/{connectionId}/users/{userId}/credentials | Retrieve user connection credentials
-[**GetConnections**](Connections.md#GetConnections) | **Get** /v1/connections | List SSO connections
-[**UpdateConnection**](Connections.md#UpdateConnection) | **Put** /v1/connections/{connectionId} | Update SSO connection
+[**CreateConnection**](#CreateConnection) | **Post** /v1/connections | Create SSO connection
+[**DeleteConnection**](#DeleteConnection) | **Delete** /v1/connections/{connectionId} | Delete SSO connection
+[**GetConnection**](#GetConnection) | **Get** /v1/connections/{connectionId} | Retrieve SSO connection
+[**GetConnectionCredentials**](#GetConnectionCredentials) | **Get** /v1/connections/{connectionId}/users/{userId}/credentials | Retrieve user connection credentials
+[**GetConnections**](#GetConnections) | **Get** /v1/connections | List SSO connections
+[**UpdateConnection**](#UpdateConnection) | **Put** /v1/connections/{connectionId} | Update SSO connection
 
 
 
@@ -30,14 +28,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
-	connection := *openapiclient.NewConnection() // Connection | 
+	connection := *authress.NewConnection() // Connection | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Connections.CreateConnection(context.Background()).Connection(connection).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.CreateConnection``: %v\n", err)
@@ -65,18 +62,14 @@ Name | Type | Description  | Notes
 
 [**Connection**](Connection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## DeleteConnection
@@ -96,14 +89,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	connectionId := "connectionId_example" // string | The connection identifier.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	r, err := apiClient.Connections.DeleteConnection(context.Background(), connectionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.DeleteConnection``: %v\n", err)
@@ -133,18 +125,14 @@ Name | Type | Description  | Notes
 
  (empty response body)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetConnection
@@ -164,14 +152,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	connectionId := "connectionId_example" // string | The connection identifier.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Connections.GetConnection(context.Background(), connectionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.GetConnection``: %v\n", err)
@@ -203,18 +190,14 @@ Name | Type | Description  | Notes
 
 [**Connection**](Connection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetConnectionCredentials
@@ -234,15 +217,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	connectionId := "connectionId_example" // string | The connection identifier.
 	userId := TODO // UserId | The connection user.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Connections.GetConnectionCredentials(context.Background(), connectionId, userId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.GetConnectionCredentials``: %v\n", err)
@@ -276,18 +258,14 @@ Name | Type | Description  | Notes
 
 [**UserConnectionCredentials**](UserConnectionCredentials.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetConnections
@@ -307,13 +285,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Connections.GetConnections(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.GetConnections``: %v\n", err)
@@ -337,18 +314,14 @@ Other parameters are passed through a pointer to a apiGetConnectionsRequest stru
 
 [**ConnectionCollection**](ConnectionCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## UpdateConnection
@@ -368,15 +341,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	connectionId := "connectionId_example" // string | The connection identifier.
-	connection := *openapiclient.NewConnection() // Connection | 
+	connection := *authress.NewConnection() // Connection | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Connections.UpdateConnection(context.Background(), connectionId).Connection(connection).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.UpdateConnection``: %v\n", err)
@@ -409,16 +381,12 @@ Name | Type | Description  | Notes
 
 [**Connection**](Connection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 

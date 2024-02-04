@@ -1,13 +1,11 @@
-#Invites
-
-All URIs are relative to *http://localhost*
+# Invites API
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateInvite**](Invites.md#CreateInvite) | **Post** /v1/invites | Create user invite
-[**DeleteInvite**](Invites.md#DeleteInvite) | **Delete** /v1/invites/{inviteId} | Delete invite
-[**GetInvite**](Invites.md#GetInvite) | **Get** /v1/invites/{inviteId} | Retrieve invite
-[**RespondToInvite**](Invites.md#RespondToInvite) | **Patch** /v1/invites/{inviteId} | Accept invite
+[**CreateInvite**](#CreateInvite) | **Post** /v1/invites | Create user invite
+[**DeleteInvite**](#DeleteInvite) | **Delete** /v1/invites/{inviteId} | Delete invite
+[**GetInvite**](#GetInvite) | **Get** /v1/invites/{inviteId} | Retrieve invite
+[**RespondToInvite**](#RespondToInvite) | **Patch** /v1/invites/{inviteId} | Accept invite
 
 
 
@@ -28,14 +26,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
-	invite := *openapiclient.NewInvite("InviteId_example", []openapiclient.Statement{*openapiclient.NewStatement([]string{"Roles_example"}, []openapiclient.Resource{*openapiclient.NewResource("/organizations/org_a/documents/doc_1")})}) // Invite | 
+	invite := *authress.NewInvite("InviteId_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // Invite | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Invites.CreateInvite(context.Background()).Invite(invite).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Invites.CreateInvite``: %v\n", err)
@@ -63,18 +60,14 @@ Name | Type | Description  | Notes
 
 [**Invite**](Invite.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## DeleteInvite
@@ -94,14 +87,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	inviteId := "inviteId_example" // string | The identifier of the invite.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	r, err := apiClient.Invites.DeleteInvite(context.Background(), inviteId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Invites.DeleteInvite``: %v\n", err)
@@ -131,18 +123,14 @@ Name | Type | Description  | Notes
 
  (empty response body)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetInvite
@@ -162,14 +150,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	inviteId := "inviteId_example" // string | The identifier of the invite.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Invites.GetInvite(context.Background(), inviteId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Invites.GetInvite``: %v\n", err)
@@ -201,18 +188,14 @@ Name | Type | Description  | Notes
 
 [**Invite**](Invite.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## RespondToInvite
@@ -232,14 +215,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	inviteId := "inviteId_example" // string | The identifier of the invite.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Invites.RespondToInvite(context.Background(), inviteId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Invites.RespondToInvite``: %v\n", err)
@@ -271,16 +253,12 @@ Name | Type | Description  | Notes
 
 [**Account**](Account.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 

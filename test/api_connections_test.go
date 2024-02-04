@@ -10,9 +10,10 @@ Testing ConnectionsApi
 package authress
 
 import (
-	openapiclient "//"
 	"context"
 	"testing"
+
+	authress "github.com/authress/authress-sdk.go"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -20,8 +21,7 @@ import (
 
 func Test_authress_ConnectionsApi(t *testing.T) {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(AuthressSettings{})
 
 	t.Run("Test ConnectionsApi CreateConnection", func(t *testing.T) {
 

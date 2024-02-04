@@ -1,14 +1,12 @@
-#Roles
-
-All URIs are relative to *http://localhost*
+# Roles API
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRole**](Roles.md#CreateRole) | **Post** /v1/roles | Create role
-[**DeleteRole**](Roles.md#DeleteRole) | **Delete** /v1/roles/{roleId} | Deletes role
-[**GetRole**](Roles.md#GetRole) | **Get** /v1/roles/{roleId} | Retrieve role
-[**GetRoles**](Roles.md#GetRoles) | **Get** /v1/roles | List roles
-[**UpdateRole**](Roles.md#UpdateRole) | **Put** /v1/roles/{roleId} | Update role
+[**CreateRole**](#CreateRole) | **Post** /v1/roles | Create role
+[**DeleteRole**](#DeleteRole) | **Delete** /v1/roles/{roleId} | Deletes role
+[**GetRole**](#GetRole) | **Get** /v1/roles/{roleId} | Retrieve role
+[**GetRoles**](#GetRoles) | **Get** /v1/roles | List roles
+[**UpdateRole**](#UpdateRole) | **Put** /v1/roles/{roleId} | Update role
 
 
 
@@ -29,14 +27,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
-	role := *openapiclient.NewRole("Name_example", []openapiclient.PermissionObject{*openapiclient.NewPermissionObject("documents:read", false, false, false)}) // Role | 
+	role := *authress.NewRole("Name_example", []authress.PermissionObject{*authress.NewPermissionObject("documents:read", false, false, false)}) // Role | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Roles.CreateRole(context.Background()).Role(role).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Roles.CreateRole``: %v\n", err)
@@ -64,18 +61,14 @@ Name | Type | Description  | Notes
 
 [**Role**](Role.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## DeleteRole
@@ -95,14 +88,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	roleId := "roleId_example" // string | The identifier of the role.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	r, err := apiClient.Roles.DeleteRole(context.Background(), roleId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Roles.DeleteRole``: %v\n", err)
@@ -132,18 +124,14 @@ Name | Type | Description  | Notes
 
  (empty response body)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetRole
@@ -163,14 +151,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	roleId := "roleId_example" // string | The identifier of the role.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Roles.GetRole(context.Background(), roleId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Roles.GetRole``: %v\n", err)
@@ -202,18 +189,14 @@ Name | Type | Description  | Notes
 
 [**Role**](Role.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetRoles
@@ -233,7 +216,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
@@ -241,8 +224,7 @@ func main() {
 	cursor := "cursor_example" // string | Continuation cursor for paging. (optional)
 	filter := "filter_example" // string | Filter to search roles by. This is a case insensitive search. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Roles.GetRoles(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Roles.GetRoles``: %v\n", err)
@@ -272,18 +254,14 @@ Name | Type | Description  | Notes
 
 [**RoleCollection**](RoleCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## UpdateRole
@@ -303,15 +281,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	roleId := "roleId_example" // string | The identifier of the role.
-	role := *openapiclient.NewRole("Name_example", []openapiclient.PermissionObject{*openapiclient.NewPermissionObject("documents:read", false, false, false)}) // Role | 
+	role := *authress.NewRole("Name_example", []authress.PermissionObject{*authress.NewPermissionObject("documents:read", false, false, false)}) // Role | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Roles.UpdateRole(context.Background(), roleId).Role(role).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Roles.UpdateRole``: %v\n", err)
@@ -344,16 +321,12 @@ Name | Type | Description  | Notes
 
 [**Role**](Role.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 

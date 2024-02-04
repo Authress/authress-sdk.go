@@ -1,16 +1,14 @@
-#ServiceClients
-
-All URIs are relative to *http://localhost*
+# ServiceClients API
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateClient**](ServiceClients.md#CreateClient) | **Post** /v1/clients | Create service client
-[**DeleteAccessKey**](ServiceClients.md#DeleteAccessKey) | **Delete** /v1/clients/{clientId}/access-keys/{keyId} | Delete service client access key
-[**DeleteClient**](ServiceClients.md#DeleteClient) | **Delete** /v1/clients/{clientId} | Delete service client
-[**GetClient**](ServiceClients.md#GetClient) | **Get** /v1/clients/{clientId} | Retrieve service client
-[**GetClients**](ServiceClients.md#GetClients) | **Get** /v1/clients | List service clients
-[**RequestAccessKey**](ServiceClients.md#RequestAccessKey) | **Post** /v1/clients/{clientId}/access-keys | Generate service client access key
-[**UpdateClient**](ServiceClients.md#UpdateClient) | **Put** /v1/clients/{clientId} | Update service client
+[**CreateClient**](#CreateClient) | **Post** /v1/clients | Create service client
+[**DeleteAccessKey**](#DeleteAccessKey) | **Delete** /v1/clients/{clientId}/access-keys/{keyId} | Delete service client access key
+[**DeleteClient**](#DeleteClient) | **Delete** /v1/clients/{clientId} | Delete service client
+[**GetClient**](#GetClient) | **Get** /v1/clients/{clientId} | Retrieve service client
+[**GetClients**](#GetClients) | **Get** /v1/clients | List service clients
+[**RequestAccessKey**](#RequestAccessKey) | **Post** /v1/clients/{clientId}/access-keys | Generate service client access key
+[**UpdateClient**](#UpdateClient) | **Put** /v1/clients/{clientId} | Update service client
 
 
 
@@ -32,14 +30,13 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
-	client := *openapiclient.NewClient("ClientId_example", time.Now()) // Client | 
+	client := *authress.NewClient("ClientId_example", time.Now()) // Client | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.ServiceClients.CreateClient(context.Background()).Client(client).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.CreateClient``: %v\n", err)
@@ -67,18 +64,14 @@ Name | Type | Description  | Notes
 
 [**Client**](Client.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## DeleteAccessKey
@@ -98,15 +91,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	clientId := "clientId_example" // string | The unique identifier of the client.
 	keyId := "keyId_example" // string | The ID of the access key to remove from the client.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	r, err := apiClient.ServiceClients.DeleteAccessKey(context.Background(), clientId, keyId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.DeleteAccessKey``: %v\n", err)
@@ -138,18 +130,14 @@ Name | Type | Description  | Notes
 
  (empty response body)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## DeleteClient
@@ -169,14 +157,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	clientId := "clientId_example" // string | The unique identifier for the client.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	r, err := apiClient.ServiceClients.DeleteClient(context.Background(), clientId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.DeleteClient``: %v\n", err)
@@ -206,18 +193,14 @@ Name | Type | Description  | Notes
 
  (empty response body)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetClient
@@ -237,14 +220,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	clientId := "clientId_example" // string | The unique identifier for the client.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.ServiceClients.GetClient(context.Background(), clientId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.GetClient``: %v\n", err)
@@ -276,18 +258,14 @@ Name | Type | Description  | Notes
 
 [**Client**](Client.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetClients
@@ -307,15 +285,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	limit := int32(56) // int32 | Max number of results to return (optional) (default to 20)
 	cursor := "cursor_example" // string | Continuation cursor for paging. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.ServiceClients.GetClients(context.Background()).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.GetClients``: %v\n", err)
@@ -344,18 +321,14 @@ Name | Type | Description  | Notes
 
 [**ClientCollection**](ClientCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## RequestAccessKey
@@ -375,14 +348,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	clientId := "clientId_example" // string | The unique identifier of the client.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.ServiceClients.RequestAccessKey(context.Background(), clientId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.RequestAccessKey``: %v\n", err)
@@ -414,18 +386,14 @@ Name | Type | Description  | Notes
 
 [**ClientAccessKey**](ClientAccessKey.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## UpdateClient
@@ -446,15 +414,14 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	clientId := "clientId_example" // string | The unique identifier for the client.
-	client := *openapiclient.NewClient("ClientId_example", time.Now()) // Client | 
+	client := *authress.NewClient("ClientId_example", time.Now()) // Client | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.ServiceClients.UpdateClient(context.Background(), clientId).Client(client).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.UpdateClient``: %v\n", err)
@@ -487,16 +454,12 @@ Name | Type | Description  | Notes
 
 [**Client**](Client.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 

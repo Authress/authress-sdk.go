@@ -1,13 +1,11 @@
-#UserPermissions
-
-All URIs are relative to *http://localhost*
+# UserPermissions API
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthorizeUser**](UserPermissions.md#AuthorizeUser) | **Get** /v1/users/{userId}/resources/{resourceUri}/permissions/{permission} | Verify user authorization
-[**GetUserPermissionsForResource**](UserPermissions.md#GetUserPermissionsForResource) | **Get** /v1/users/{userId}/resources/{resourceUri}/permissions | Get user permissions for resource
-[**GetUserResources**](UserPermissions.md#GetUserResources) | **Get** /v1/users/{userId}/resources | List user resources
-[**GetUserRolesForResource**](UserPermissions.md#GetUserRolesForResource) | **Get** /v1/users/{userId}/resources/{resourceUri}/roles | Get user roles for resource
+[**AuthorizeUser**](#AuthorizeUser) | **Get** /v1/users/{userId}/resources/{resourceUri}/permissions/{permission} | Verify user authorization
+[**GetUserPermissionsForResource**](#GetUserPermissionsForResource) | **Get** /v1/users/{userId}/resources/{resourceUri}/permissions | Get user permissions for resource
+[**GetUserResources**](#GetUserResources) | **Get** /v1/users/{userId}/resources | List user resources
+[**GetUserRolesForResource**](#GetUserRolesForResource) | **Get** /v1/users/{userId}/resources/{resourceUri}/roles | Get user roles for resource
 
 
 
@@ -28,7 +26,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
@@ -36,8 +34,7 @@ func main() {
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to validate, must be URL encoded, uri segments are allowed, the resource must be a full path.
 	permission := TODO // Action | Permission to check, '*' and scoped permissions can also be checked here.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	r, err := apiClient.UserPermissions.AuthorizeUser(context.Background(), userId, resourceUri, permission).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.AuthorizeUser``: %v\n", err)
@@ -71,18 +68,14 @@ Name | Type | Description  | Notes
 
  (empty response body)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetUserPermissionsForResource
@@ -102,15 +95,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	userId := TODO // UserId | The user identifier for the user to check permissions.
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to validate, must be URL encoded, uri segments are allowed.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.UserPermissions.GetUserPermissionsForResource(context.Background(), userId, resourceUri).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.GetUserPermissionsForResource``: %v\n", err)
@@ -144,18 +136,14 @@ Name | Type | Description  | Notes
 
 [**PermissionCollection**](PermissionCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetUserResources
@@ -175,7 +163,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
@@ -186,8 +174,7 @@ func main() {
 	limit := int32(56) // int32 | Max number of results to return (optional) (default to 20)
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.UserPermissions.GetUserResources(context.Background(), userId).ResourceUri(resourceUri).CollectionConfiguration(collectionConfiguration).Permissions(permissions).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.GetUserResources``: %v\n", err)
@@ -224,18 +211,14 @@ Name | Type | Description  | Notes
 
 [**UserResourcesCollection**](UserResourcesCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetUserRolesForResource
@@ -255,15 +238,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	userId := TODO // UserId | The user to get roles for.
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to get roles for, must be URL encoded. Checks for explicit resource roles, roles attached to parent resources are not returned.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.UserPermissions.GetUserRolesForResource(context.Background(), userId, resourceUri).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.GetUserRolesForResource``: %v\n", err)
@@ -297,16 +279,12 @@ Name | Type | Description  | Notes
 
 [**UserRoleCollection**](UserRoleCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 

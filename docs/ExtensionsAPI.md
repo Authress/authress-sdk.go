@@ -1,16 +1,14 @@
-#Extensions
-
-All URIs are relative to *http://localhost*
+# Extensions API
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateExtension**](Extensions.md#CreateExtension) | **Post** /v1/extensions | Create extension
-[**DeleteExtension**](Extensions.md#DeleteExtension) | **Delete** /v1/extensions/{extensionId} | Delete extension
-[**GetExtension**](Extensions.md#GetExtension) | **Get** /v1/extensions/{extensionId} | Retrieve extension
-[**GetExtensions**](Extensions.md#GetExtensions) | **Get** /v1/extensions | List extensions
-[**Login**](Extensions.md#Login) | **Get** / | OAuth Authorize
-[**RequestToken**](Extensions.md#RequestToken) | **Post** /api/authentication/oauth/tokens | OAuth Token
-[**UpdateExtension**](Extensions.md#UpdateExtension) | **Put** /v1/extensions/{extensionId} | Update extension
+[**CreateExtension**](#CreateExtension) | **Post** /v1/extensions | Create extension
+[**DeleteExtension**](#DeleteExtension) | **Delete** /v1/extensions/{extensionId} | Delete extension
+[**GetExtension**](#GetExtension) | **Get** /v1/extensions/{extensionId} | Retrieve extension
+[**GetExtensions**](#GetExtensions) | **Get** /v1/extensions | List extensions
+[**Login**](#Login) | **Get** / | OAuth Authorize
+[**RequestToken**](#RequestToken) | **Post** /api/authentication/oauth/tokens | OAuth Token
+[**UpdateExtension**](#UpdateExtension) | **Put** /v1/extensions/{extensionId} | Update extension
 
 
 
@@ -32,14 +30,13 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
-	extension := *openapiclient.NewExtension("ExtensionId_example", time.Now(), *openapiclient.NewExtensionClient("ClientId_example")) // Extension | 
+	extension := *authress.NewExtension("ExtensionId_example", time.Now(), *authress.NewExtensionClient("ClientId_example")) // Extension | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Extensions.CreateExtension(context.Background()).Extension(extension).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.CreateExtension``: %v\n", err)
@@ -67,18 +64,14 @@ Name | Type | Description  | Notes
 
 [**Extension**](Extension.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## DeleteExtension
@@ -98,14 +91,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	extensionId := "extensionId_example" // string | The extension identifier.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	r, err := apiClient.Extensions.DeleteExtension(context.Background(), extensionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.DeleteExtension``: %v\n", err)
@@ -135,18 +127,14 @@ Name | Type | Description  | Notes
 
  (empty response body)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetExtension
@@ -166,14 +154,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	extensionId := "extensionId_example" // string | The extension identifier.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Extensions.GetExtension(context.Background(), extensionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.GetExtension``: %v\n", err)
@@ -205,18 +192,14 @@ Name | Type | Description  | Notes
 
 [**Extension**](Extension.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetExtensions
@@ -236,15 +219,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	limit := int32(56) // int32 | Max number of results to return (optional) (default to 20)
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Extensions.GetExtensions(context.Background()).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.GetExtensions``: %v\n", err)
@@ -273,18 +255,14 @@ Name | Type | Description  | Notes
 
 [**ExtensionCollection**](ExtensionCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## Login
@@ -304,7 +282,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
@@ -313,8 +291,7 @@ func main() {
 	redirectUri := "https://extension.application.com/login-redirect" // string | The location to redirect the user back to after login. This redirect_uri must be a URL that matches one of the preconfigured urls in the Authress Application.
 	codeChallengeMethod := "codeChallengeMethod_example" // string | The method used to generate the code_challenge from the code_verifier. `code_challenge_method(code_verifier) = code_challenge` (optional) (default to "S256")
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Extensions.Login(context.Background()).ClientId(clientId).CodeChallenge(codeChallenge).RedirectUri(redirectUri).CodeChallengeMethod(codeChallengeMethod).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.Login``: %v\n", err)
@@ -354,9 +331,9 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## RequestToken
@@ -376,14 +353,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
-	oAuthTokenRequest := *openapiclient.NewOAuthTokenRequest("ClientId_example") // OAuthTokenRequest | The contents of an OAuth token request.
+	oAuthTokenRequest := *authress.NewOAuthTokenRequest("ClientId_example") // OAuthTokenRequest | The contents of an OAuth token request.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Extensions.RequestToken(context.Background()).OAuthTokenRequest(oAuthTokenRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.RequestToken``: %v\n", err)
@@ -420,9 +396,9 @@ No authorization required
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## UpdateExtension
@@ -443,15 +419,14 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	extensionId := "extensionId_example" // string | The extension identifier.
-	extension := *openapiclient.NewExtension("ExtensionId_example", time.Now(), *openapiclient.NewExtensionClient("ClientId_example")) // Extension | 
+	extension := *authress.NewExtension("ExtensionId_example", time.Now(), *authress.NewExtensionClient("ClientId_example")) // Extension | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Extensions.UpdateExtension(context.Background(), extensionId).Extension(extension).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.UpdateExtension``: %v\n", err)
@@ -484,16 +459,12 @@ Name | Type | Description  | Notes
 
 [**Extension**](Extension.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 

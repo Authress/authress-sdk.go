@@ -1,13 +1,11 @@
-#ResourcePermissions
-
-All URIs are relative to *http://localhost*
+# ResourcePermissions API
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPermissionedResource**](ResourcePermissions.md#GetPermissionedResource) | **Get** /v1/resources/{resourceUri} | Retrieve resource configuration
-[**GetPermissionedResources**](ResourcePermissions.md#GetPermissionedResources) | **Get** /v1/resources | List all resource configurations
-[**GetResourceUsers**](ResourcePermissions.md#GetResourceUsers) | **Get** /v1/resources/{resourceUri}/users | List users with resource access
-[**UpdatePermissionedResource**](ResourcePermissions.md#UpdatePermissionedResource) | **Put** /v1/resources/{resourceUri} | Update resource configuration
+[**GetPermissionedResource**](#GetPermissionedResource) | **Get** /v1/resources/{resourceUri} | Retrieve resource configuration
+[**GetPermissionedResources**](#GetPermissionedResources) | **Get** /v1/resources | List all resource configurations
+[**GetResourceUsers**](#GetResourceUsers) | **Get** /v1/resources/{resourceUri}/users | List users with resource access
+[**UpdatePermissionedResource**](#UpdatePermissionedResource) | **Put** /v1/resources/{resourceUri} | Update resource configuration
 
 
 
@@ -28,14 +26,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to validate, must be URL encoded, uri segments are allowed.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.ResourcePermissions.GetPermissionedResource(context.Background(), resourceUri).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.GetPermissionedResource``: %v\n", err)
@@ -67,18 +64,14 @@ Name | Type | Description  | Notes
 
 [**PermissionedResource**](PermissionedResource.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetPermissionedResources
@@ -98,13 +91,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.ResourcePermissions.GetPermissionedResources(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.GetPermissionedResources``: %v\n", err)
@@ -128,18 +120,14 @@ Other parameters are passed through a pointer to a apiGetPermissionedResourcesRe
 
 [**PermissionedResourceCollection**](PermissionedResourceCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetResourceUsers
@@ -159,7 +147,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
@@ -167,8 +155,7 @@ func main() {
 	limit := int32(56) // int32 | Max number of results to return (optional) (default to 20)
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.ResourcePermissions.GetResourceUsers(context.Background(), resourceUri).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.GetResourceUsers``: %v\n", err)
@@ -202,18 +189,14 @@ Name | Type | Description  | Notes
 
 [**ResourceUsersCollection**](ResourceUsersCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## UpdatePermissionedResource
@@ -233,15 +216,14 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to validate, must be URL encoded, uri segments are allowed.
-	permissionedResource := *openapiclient.NewPermissionedResource([]openapiclient.ResourcePermission{*openapiclient.NewResourcePermission("Action_example", false)}) // PermissionedResource | The contents of the permission to set on the resource. Overwrites existing data.
+	permissionedResource := *authress.NewPermissionedResource([]authress.ResourcePermission{*authress.NewResourcePermission("Action_example", false)}) // PermissionedResource | The contents of the permission to set on the resource. Overwrites existing data.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	r, err := apiClient.ResourcePermissions.UpdatePermissionedResource(context.Background(), resourceUri).PermissionedResource(permissionedResource).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.UpdatePermissionedResource``: %v\n", err)
@@ -272,16 +254,12 @@ Name | Type | Description  | Notes
 
  (empty response body)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 

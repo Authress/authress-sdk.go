@@ -61,6 +61,6 @@ HasScope returns a boolean if a field has been set.
 
 UnsetScope ensures that no value is present for Scope, not even an explicit nil
 
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+[[Back to Model list]](./README.md#documentation-for-models) [[Back to API list]](./README.md#documentation-for-api-endpoints) [[Back to README]](./README.md)
 
 

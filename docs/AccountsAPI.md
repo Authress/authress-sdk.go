@@ -1,13 +1,11 @@
-#Accounts
-
-All URIs are relative to *http://localhost*
+# Accounts API
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DelegateAuthentication**](Accounts.md#DelegateAuthentication) | **Post** /v1/identities | Link external provider
-[**GetAccount**](Accounts.md#GetAccount) | **Get** /v1/accounts/{accountId} | Retrieve account information
-[**GetAccountIdentities**](Accounts.md#GetAccountIdentities) | **Get** /v1/identities | List linked external providers
-[**GetAccounts**](Accounts.md#GetAccounts) | **Get** /v1/accounts | List user Authress accounts
+[**DelegateAuthentication**](#DelegateAuthentication) | **Post** /v1/identities | Link external provider
+[**GetAccount**](#GetAccount) | **Get** /v1/accounts/{accountId} | Retrieve account information
+[**GetAccountIdentities**](#GetAccountIdentities) | **Get** /v1/identities | List linked external providers
+[**GetAccounts**](#GetAccounts) | **Get** /v1/accounts | List user Authress accounts
 
 
 
@@ -28,14 +26,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
-	identityRequest := *openapiclient.NewIdentityRequest() // IdentityRequest | 
+	identityRequest := *authress.NewIdentityRequest() // IdentityRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	r, err := apiClient.Accounts.DelegateAuthentication(context.Background()).IdentityRequest(identityRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.DelegateAuthentication``: %v\n", err)
@@ -61,18 +58,14 @@ Name | Type | Description  | Notes
 
  (empty response body)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: application/json
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetAccount
@@ -92,14 +85,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	accountId := "accountId_example" // string | The unique identifier for the account
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Accounts.GetAccount(context.Background(), accountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.GetAccount``: %v\n", err)
@@ -131,18 +123,14 @@ Name | Type | Description  | Notes
 
 [**Account**](Account.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetAccountIdentities
@@ -162,13 +150,12 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Accounts.GetAccountIdentities(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.GetAccountIdentities``: %v\n", err)
@@ -192,18 +179,14 @@ Other parameters are passed through a pointer to a apiGetAccountIdentitiesReques
 
 [**IdentityCollection**](IdentityCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetAccounts
@@ -224,14 +207,13 @@ import (
 	"fmt"
 	"os"
     "time"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	earliestCacheTime := time.Now() // time.Time | Ensure the accounts list is not cached before this time. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Accounts.GetAccounts(context.Background()).EarliestCacheTime(earliestCacheTime).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.GetAccounts``: %v\n", err)
@@ -259,16 +241,12 @@ Name | Type | Description  | Notes
 
 [**AccountCollection**](AccountCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 

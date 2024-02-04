@@ -1,12 +1,10 @@
-#Users
-
-All URIs are relative to *http://localhost*
+# Users API
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteUser**](Users.md#DeleteUser) | **Delete** /v1/users/{userId} | Delete a user
-[**GetUser**](Users.md#GetUser) | **Get** /v1/users/{userId} | Retrieve a user
-[**GetUsers**](Users.md#GetUsers) | **Get** /v1/users | List users
+[**DeleteUser**](#DeleteUser) | **Delete** /v1/users/{userId} | Delete a user
+[**GetUser**](#GetUser) | **Get** /v1/users/{userId} | Retrieve a user
+[**GetUsers**](#GetUsers) | **Get** /v1/users | List users
 
 
 
@@ -27,14 +25,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	userId := TODO // UserId | The user identifier.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	r, err := apiClient.Users.DeleteUser(context.Background(), userId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Users.DeleteUser``: %v\n", err)
@@ -64,18 +61,14 @@ Name | Type | Description  | Notes
 
  (empty response body)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetUser
@@ -95,14 +88,13 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
 	userId := TODO // UserId | The user identifier.
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Users.GetUser(context.Background(), userId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Users.GetUser``: %v\n", err)
@@ -134,18 +126,14 @@ Name | Type | Description  | Notes
 
 [**UserIdentity**](UserIdentity.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
 
 ## GetUsers
@@ -165,7 +153,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "//"
+	authress "github.com/authress/authress-sdk.go"
 )
 
 func main() {
@@ -174,8 +162,7 @@ func main() {
 	filter := "filter_example" // string | Filter to search users by. This is a case insensitive search through every text field. (optional)
 	tenantId := TODO // TenantId | Return only users that are part of the specified tenant. Users can only be part of one tenant, using this parameter will limit returned users that have logged into this tenant. (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
+	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
 	resp, r, err := apiClient.Users.GetUsers(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).TenantId(tenantId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Users.GetUsers``: %v\n", err)
@@ -206,16 +193,12 @@ Name | Type | Description  | Notes
 
 [**UserIdentityCollection**](UserIdentityCollection.md)
 
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
 ### HTTP request headers
 
 - **Content-Type**: Not defined
 - **Accept**: application/links+json
 
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
+[[Back to top]](#) [[Back to API list]](./README.md#documentation-for-api-endpoints)
+[[Back to Model list]](./README.md#documentation-for-models)
+[[Back to README]](./README.md)
 
