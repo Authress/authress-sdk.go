@@ -34,7 +34,10 @@ func main() {
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to validate, must be URL encoded, uri segments are allowed, the resource must be a full path.
 	permission := TODO // Action | Permission to check, '*' and scoped permissions can also be checked here.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.UserPermissions.AuthorizeUser(context.Background(), userId, resourceUri, permission).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.AuthorizeUser``: %v\n", err)
@@ -102,7 +105,10 @@ func main() {
 	userId := TODO // UserId | The user identifier for the user to check permissions.
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to validate, must be URL encoded, uri segments are allowed.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.UserPermissions.GetUserPermissionsForResource(context.Background(), userId, resourceUri).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.GetUserPermissionsForResource``: %v\n", err)
@@ -174,7 +180,10 @@ func main() {
 	limit := int32(56) // int32 | Max number of results to return (optional) (default to 20)
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.UserPermissions.GetUserResources(context.Background(), userId).ResourceUri(resourceUri).CollectionConfiguration(collectionConfiguration).Permissions(permissions).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.GetUserResources``: %v\n", err)
@@ -245,7 +254,10 @@ func main() {
 	userId := TODO // UserId | The user to get roles for.
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to get roles for, must be URL encoded. Checks for explicit resource roles, roles attached to parent resources are not returned.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.UserPermissions.GetUserRolesForResource(context.Background(), userId, resourceUri).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.GetUserRolesForResource``: %v\n", err)

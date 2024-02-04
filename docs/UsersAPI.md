@@ -31,7 +31,10 @@ import (
 func main() {
 	userId := TODO // UserId | The user identifier.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.Users.DeleteUser(context.Background(), userId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Users.DeleteUser``: %v\n", err)
@@ -94,7 +97,10 @@ import (
 func main() {
 	userId := TODO // UserId | The user identifier.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Users.GetUser(context.Background(), userId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Users.GetUser``: %v\n", err)
@@ -162,7 +168,10 @@ func main() {
 	filter := "filter_example" // string | Filter to search users by. This is a case insensitive search through every text field. (optional)
 	tenantId := TODO // TenantId | Return only users that are part of the specified tenant. Users can only be part of one tenant, using this parameter will limit returned users that have logged into this tenant. (optional)
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Users.GetUsers(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).TenantId(tenantId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Users.GetUsers``: %v\n", err)

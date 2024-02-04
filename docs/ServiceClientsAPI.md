@@ -36,7 +36,10 @@ import (
 func main() {
 	client := *authress.NewClient("ClientId_example", time.Now()) // Client | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.ServiceClients.CreateClient(context.Background()).Client(client).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.CreateClient``: %v\n", err)
@@ -98,7 +101,10 @@ func main() {
 	clientId := "clientId_example" // string | The unique identifier of the client.
 	keyId := "keyId_example" // string | The ID of the access key to remove from the client.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.ServiceClients.DeleteAccessKey(context.Background(), clientId, keyId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.DeleteAccessKey``: %v\n", err)
@@ -163,7 +169,10 @@ import (
 func main() {
 	clientId := "clientId_example" // string | The unique identifier for the client.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.ServiceClients.DeleteClient(context.Background(), clientId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.DeleteClient``: %v\n", err)
@@ -226,7 +235,10 @@ import (
 func main() {
 	clientId := "clientId_example" // string | The unique identifier for the client.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.ServiceClients.GetClient(context.Background(), clientId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.GetClient``: %v\n", err)
@@ -292,7 +304,10 @@ func main() {
 	limit := int32(56) // int32 | Max number of results to return (optional) (default to 20)
 	cursor := "cursor_example" // string | Continuation cursor for paging. (optional)
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.ServiceClients.GetClients(context.Background()).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.GetClients``: %v\n", err)
@@ -354,7 +369,10 @@ import (
 func main() {
 	clientId := "clientId_example" // string | The unique identifier of the client.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.ServiceClients.RequestAccessKey(context.Background(), clientId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.RequestAccessKey``: %v\n", err)
@@ -421,7 +439,10 @@ func main() {
 	clientId := "clientId_example" // string | The unique identifier for the client.
 	client := *authress.NewClient("ClientId_example", time.Now()) // Client | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.ServiceClients.UpdateClient(context.Background(), clientId).Client(client).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.UpdateClient``: %v\n", err)

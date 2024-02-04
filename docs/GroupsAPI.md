@@ -33,7 +33,10 @@ import (
 func main() {
 	group := *authress.NewGroup("Name_example", []authress.User{*authress.NewUser("oauth|userId")}, []authress.User{*authress.NewUser("oauth|userId")}) // Group | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Groups.CreateGroup(context.Background()).Group(group).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.CreateGroup``: %v\n", err)
@@ -94,7 +97,10 @@ import (
 func main() {
 	groupId := TODO // GroupId | The identifier of the group.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.Groups.DeleteGroup(context.Background(), groupId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.DeleteGroup``: %v\n", err)
@@ -157,7 +163,10 @@ import (
 func main() {
 	groupId := TODO // GroupId | The identifier of the group.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Groups.GetGroup(context.Background(), groupId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.GetGroup``: %v\n", err)
@@ -224,7 +233,10 @@ func main() {
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 	filter := "filter_example" // string | Filter to search groups by. This is a case insensitive search through every text field. (optional)
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Groups.GetGroups(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.GetGroups``: %v\n", err)
@@ -290,7 +302,10 @@ func main() {
 	group := *authress.NewGroup("Name_example", []authress.User{*authress.NewUser("oauth|userId")}, []authress.User{*authress.NewUser("oauth|userId")}) // Group | 
 	ifUnmodifiedSince := time.Now() // time.Time | The expected last time the group was modified. (optional)
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Groups.UpdateGroup(context.Background(), groupId).Group(group).IfUnmodifiedSince(ifUnmodifiedSince).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.UpdateGroup``: %v\n", err)

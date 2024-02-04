@@ -1,6 +1,11 @@
 package authress
 
+import (
+	"net/url"
+)
+
 type AuthressSettings struct {
-	AuthressApiUrl            string
-	service_client_access_key string
+	AuthressApiUrl         *url.URL
+	ServiceClientAccessKey string
+	UserAgent              string
 }

@@ -33,7 +33,10 @@ import (
 func main() {
 	role := *authress.NewRole("Name_example", []authress.PermissionObject{*authress.NewPermissionObject("documents:read", false, false, false)}) // Role | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Roles.CreateRole(context.Background()).Role(role).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Roles.CreateRole``: %v\n", err)
@@ -94,7 +97,10 @@ import (
 func main() {
 	roleId := "roleId_example" // string | The identifier of the role.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.Roles.DeleteRole(context.Background(), roleId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Roles.DeleteRole``: %v\n", err)
@@ -157,7 +163,10 @@ import (
 func main() {
 	roleId := "roleId_example" // string | The identifier of the role.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Roles.GetRole(context.Background(), roleId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Roles.GetRole``: %v\n", err)
@@ -224,7 +233,10 @@ func main() {
 	cursor := "cursor_example" // string | Continuation cursor for paging. (optional)
 	filter := "filter_example" // string | Filter to search roles by. This is a case insensitive search. (optional)
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Roles.GetRoles(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Roles.GetRoles``: %v\n", err)
@@ -288,7 +300,10 @@ func main() {
 	roleId := "roleId_example" // string | The identifier of the role.
 	role := *authress.NewRole("Name_example", []authress.PermissionObject{*authress.NewPermissionObject("documents:read", false, false, false)}) // Role | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Roles.UpdateRole(context.Background(), roleId).Role(role).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Roles.UpdateRole``: %v\n", err)

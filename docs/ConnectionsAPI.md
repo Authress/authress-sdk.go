@@ -34,7 +34,10 @@ import (
 func main() {
 	connection := *authress.NewConnection() // Connection | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Connections.CreateConnection(context.Background()).Connection(connection).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.CreateConnection``: %v\n", err)
@@ -95,7 +98,10 @@ import (
 func main() {
 	connectionId := "connectionId_example" // string | The connection identifier.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.Connections.DeleteConnection(context.Background(), connectionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.DeleteConnection``: %v\n", err)
@@ -158,7 +164,10 @@ import (
 func main() {
 	connectionId := "connectionId_example" // string | The connection identifier.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Connections.GetConnection(context.Background(), connectionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.GetConnection``: %v\n", err)
@@ -224,7 +233,10 @@ func main() {
 	connectionId := "connectionId_example" // string | The connection identifier.
 	userId := TODO // UserId | The connection user.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Connections.GetConnectionCredentials(context.Background(), connectionId, userId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.GetConnectionCredentials``: %v\n", err)
@@ -290,7 +302,10 @@ import (
 
 func main() {
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Connections.GetConnections(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.GetConnections``: %v\n", err)
@@ -348,7 +363,10 @@ func main() {
 	connectionId := "connectionId_example" // string | The connection identifier.
 	connection := *authress.NewConnection() // Connection | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Connections.UpdateConnection(context.Background(), connectionId).Connection(connection).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.UpdateConnection``: %v\n", err)

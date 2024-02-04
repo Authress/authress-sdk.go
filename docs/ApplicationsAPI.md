@@ -30,7 +30,10 @@ func main() {
 	applicationId := "applicationId_example" // string | The application to have the user log into.
 	userId := TODO // UserId | The user.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Applications.DelegateUserLogin(context.Background(), applicationId, userId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Applications.DelegateUserLogin``: %v\n", err)

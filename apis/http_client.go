@@ -25,17 +25,17 @@ import (
 	. "github.com/authress/authress-sdk.go/utilities"
 )
 
+type HttpClient struct {
+	ClientConfiguration *Configuration
+	InternalClient      *http.Client
+}
+
 var (
 	JsonCheck       = regexp.MustCompile(`(?i:(?:application|text)/(?:[^;]+\+)?json)`)
 	XmlCheck        = regexp.MustCompile(`(?i:(?:application|text)/(?:[^;]+\+)?xml)`)
 	queryParamSplit = regexp.MustCompile(`(^|&)([^&]+)`)
 	queryDescape    = strings.NewReplacer("%5B", "[", "%5D", "]")
 )
-
-type HttpClient struct {
-	ClientConfiguration *Configuration
-	InternalClient      *http.Client
-}
 
 func atoi(in string) (int, error) {
 	return strconv.Atoi(in)
@@ -354,7 +354,9 @@ func (c *HttpClient) prepareRequest(
 	}
 
 	// Add the user agent to the request.
-	localVarRequest.Header.Add("User-Agent", c.ClientConfiguration.UserAgent)
+	version := c.ClientConfiguration.Version
+	serviceName := c.ClientConfiguration.UserAgent
+	localVarRequest.Header.Add("User-Agent", fmt.Sprintf("Authress SDK; Go; %s; %s", version, serviceName))
 
 	if ctx != nil {
 		// add context to the request
@@ -662,35 +664,14 @@ type ServerConfigurations []ServerConfiguration
 
 // Configuration stores the configuration of the API client
 type Configuration struct {
+	Version          string            `json:"version,omitempty"`
 	Host             string            `json:"host,omitempty"`
 	Scheme           string            `json:"scheme,omitempty"`
 	DefaultHeader    map[string]string `json:"defaultHeader,omitempty"`
-	UserAgent        string            `json:"userAgent,omitempty"`
 	Debug            bool              `json:"debug,omitempty"`
+	UserAgent        string            `json:"userAgent,omitempty"`
 	Servers          ServerConfigurations
 	OperationServers map[string]ServerConfigurations
-}
-
-// NewConfiguration returns a new Configuration object
-func NewConfiguration() *Configuration {
-	ClientConfiguration := &Configuration{
-		DefaultHeader: make(map[string]string),
-		UserAgent:     "OpenAPI-Generator/99.99.99/go",
-		Debug:         false,
-		Servers: ServerConfigurations{
-			{
-				URL:         "",
-				Description: "No description provided",
-			},
-		},
-		OperationServers: map[string]ServerConfigurations{},
-	}
-	return ClientConfiguration
-}
-
-// AddDefaultHeader adds a new HTTP header to the default header in the request
-func (c *Configuration) AddDefaultHeader(key string, value string) {
-	c.DefaultHeader[key] = value
 }
 
 // URL formats template on a index using given variables
@@ -719,11 +700,6 @@ func (sc ServerConfigurations) URL(index int, variables map[string]string) (stri
 		}
 	}
 	return url, nil
-}
-
-// ServerURL returns URL based on server settings
-func (c *Configuration) ServerURL(index int, variables map[string]string) (string, error) {
-	return c.Servers.URL(index, variables)
 }
 
 func getServerIndex(ctx context.Context) (int, error) {

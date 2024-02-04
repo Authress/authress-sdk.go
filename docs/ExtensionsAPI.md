@@ -36,7 +36,10 @@ import (
 func main() {
 	extension := *authress.NewExtension("ExtensionId_example", time.Now(), *authress.NewExtensionClient("ClientId_example")) // Extension | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Extensions.CreateExtension(context.Background()).Extension(extension).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.CreateExtension``: %v\n", err)
@@ -97,7 +100,10 @@ import (
 func main() {
 	extensionId := "extensionId_example" // string | The extension identifier.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.Extensions.DeleteExtension(context.Background(), extensionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.DeleteExtension``: %v\n", err)
@@ -160,7 +166,10 @@ import (
 func main() {
 	extensionId := "extensionId_example" // string | The extension identifier.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Extensions.GetExtension(context.Background(), extensionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.GetExtension``: %v\n", err)
@@ -226,7 +235,10 @@ func main() {
 	limit := int32(56) // int32 | Max number of results to return (optional) (default to 20)
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Extensions.GetExtensions(context.Background()).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.GetExtensions``: %v\n", err)
@@ -291,7 +303,10 @@ func main() {
 	redirectUri := "https://extension.application.com/login-redirect" // string | The location to redirect the user back to after login. This redirect_uri must be a URL that matches one of the preconfigured urls in the Authress Application.
 	codeChallengeMethod := "codeChallengeMethod_example" // string | The method used to generate the code_challenge from the code_verifier. `code_challenge_method(code_verifier) = code_challenge` (optional) (default to "S256")
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Extensions.Login(context.Background()).ClientId(clientId).CodeChallenge(codeChallenge).RedirectUri(redirectUri).CodeChallengeMethod(codeChallengeMethod).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.Login``: %v\n", err)
@@ -359,7 +374,10 @@ import (
 func main() {
 	oAuthTokenRequest := *authress.NewOAuthTokenRequest("ClientId_example") // OAuthTokenRequest | The contents of an OAuth token request.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Extensions.RequestToken(context.Background()).OAuthTokenRequest(oAuthTokenRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.RequestToken``: %v\n", err)
@@ -426,7 +444,10 @@ func main() {
 	extensionId := "extensionId_example" // string | The extension identifier.
 	extension := *authress.NewExtension("ExtensionId_example", time.Now(), *authress.NewExtensionClient("ClientId_example")) // Extension | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Extensions.UpdateExtension(context.Background(), extensionId).Extension(extension).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.UpdateExtension``: %v\n", err)

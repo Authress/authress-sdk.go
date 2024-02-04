@@ -32,7 +32,10 @@ import (
 func main() {
 	invite := *authress.NewInvite("InviteId_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // Invite | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Invites.CreateInvite(context.Background()).Invite(invite).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Invites.CreateInvite``: %v\n", err)
@@ -93,7 +96,10 @@ import (
 func main() {
 	inviteId := "inviteId_example" // string | The identifier of the invite.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.Invites.DeleteInvite(context.Background(), inviteId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Invites.DeleteInvite``: %v\n", err)
@@ -156,7 +162,10 @@ import (
 func main() {
 	inviteId := "inviteId_example" // string | The identifier of the invite.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Invites.GetInvite(context.Background(), inviteId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Invites.GetInvite``: %v\n", err)
@@ -221,7 +230,10 @@ import (
 func main() {
 	inviteId := "inviteId_example" // string | The identifier of the invite.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Invites.RespondToInvite(context.Background(), inviteId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Invites.RespondToInvite``: %v\n", err)

@@ -32,7 +32,10 @@ import (
 func main() {
 	identityRequest := *authress.NewIdentityRequest() // IdentityRequest | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.Accounts.DelegateAuthentication(context.Background()).IdentityRequest(identityRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.DelegateAuthentication``: %v\n", err)
@@ -91,7 +94,10 @@ import (
 func main() {
 	accountId := "accountId_example" // string | The unique identifier for the account
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Accounts.GetAccount(context.Background(), accountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.GetAccount``: %v\n", err)
@@ -155,7 +161,10 @@ import (
 
 func main() {
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Accounts.GetAccountIdentities(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.GetAccountIdentities``: %v\n", err)
@@ -213,7 +222,10 @@ import (
 func main() {
 	earliestCacheTime := time.Now() // time.Time | Ensure the accounts list is not cached before this time. (optional)
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Accounts.GetAccounts(context.Background()).EarliestCacheTime(earliestCacheTime).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.GetAccounts``: %v\n", err)

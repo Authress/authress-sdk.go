@@ -60,3 +60,5 @@ podman stop $CID && podman rm $CID
 * [ ] Tests
 * [ ] If-unmodified-since should called `expectedLastModifiedTime`, accept string or dateTime and convert this to an ISO String
 * [ ] Update OAuth2 openapi authentication references in the documentation
+* [x] Find all incorrect references to version 99.99.99
+* [x] Inject in the User-Agent 

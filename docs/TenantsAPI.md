@@ -33,7 +33,10 @@ import (
 func main() {
 	tenant := *authress.NewTenant() // Tenant | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Tenants.CreateTenant(context.Background()).Tenant(tenant).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.CreateTenant``: %v\n", err)
@@ -94,7 +97,10 @@ import (
 func main() {
 	tenantId := TODO // TenantId | The tenantId.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.Tenants.DeleteTenant(context.Background(), tenantId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.DeleteTenant``: %v\n", err)
@@ -157,7 +163,10 @@ import (
 func main() {
 	tenantId := TODO // TenantId | The tenantId.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Tenants.GetTenant(context.Background(), tenantId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.GetTenant``: %v\n", err)
@@ -221,7 +230,10 @@ import (
 
 func main() {
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Tenants.GetTenants(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.GetTenants``: %v\n", err)
@@ -279,7 +291,10 @@ func main() {
 	tenantId := TODO // TenantId | The tenantId.
 	tenant := *authress.NewTenant() // Tenant | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.Tenants.UpdateTenant(context.Background(), tenantId).Tenant(tenant).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.UpdateTenant``: %v\n", err)

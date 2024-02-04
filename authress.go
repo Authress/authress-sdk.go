@@ -28,9 +28,15 @@ type AuthressClient struct {
 }
 
 // New creates a new Authress API client.
-func New(authressSettings *AuthressSettings) *AuthressClient {
+func NewAuthressClient(authressSettings AuthressSettings) *AuthressClient {
 	httpClient := HttpClient{
 		InternalClient: http.DefaultClient,
+		ClientConfiguration: &Configuration{
+			Version:   GetBuildInfo().Version,
+			UserAgent: authressSettings.UserAgent,
+			Scheme:    authressSettings.AuthressApiUrl.Scheme,
+			Host:      authressSettings.AuthressApiUrl.Host,
+		},
 	}
 
 	authressClient := AuthressClient{

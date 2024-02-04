@@ -32,7 +32,10 @@ import (
 func main() {
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to validate, must be URL encoded, uri segments are allowed.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.ResourcePermissions.GetPermissionedResource(context.Background(), resourceUri).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.GetPermissionedResource``: %v\n", err)
@@ -96,7 +99,10 @@ import (
 
 func main() {
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.ResourcePermissions.GetPermissionedResources(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.GetPermissionedResources``: %v\n", err)
@@ -155,7 +161,10 @@ func main() {
 	limit := int32(56) // int32 | Max number of results to return (optional) (default to 20)
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.ResourcePermissions.GetResourceUsers(context.Background(), resourceUri).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.GetResourceUsers``: %v\n", err)
@@ -223,7 +232,10 @@ func main() {
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to validate, must be URL encoded, uri segments are allowed.
 	permissionedResource := *authress.NewPermissionedResource([]authress.ResourcePermission{*authress.NewResourcePermission("Action_example", false)}) // PermissionedResource | The contents of the permission to set on the resource. Overwrites existing data.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.ResourcePermissions.UpdatePermissionedResource(context.Background(), resourceUri).PermissionedResource(permissionedResource).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.UpdatePermissionedResource``: %v\n", err)

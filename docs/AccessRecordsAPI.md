@@ -39,7 +39,10 @@ import (
 func main() {
 	claimRequest := *authress.NewClaimRequest("CollectionResource_example", "ResourceId_example") // ClaimRequest | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.AccessRecords.CreateClaim(context.Background()).ClaimRequest(claimRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.CreateClaim``: %v\n", err)
@@ -100,7 +103,10 @@ import (
 func main() {
 	accessRecord := *authress.NewAccessRecord("Name_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // AccessRecord | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.AccessRecords.CreateRecord(context.Background()).AccessRecord(accessRecord).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.CreateRecord``: %v\n", err)
@@ -161,7 +167,10 @@ import (
 func main() {
 	accessRequest := *authress.NewAccessRequest("RequestId_example", *authress.NewAccessTemplate([]authress.User{*authress.NewUser("oauth|userId")}, []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})})) // AccessRequest | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.AccessRecords.CreateRequest(context.Background()).AccessRequest(accessRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.CreateRequest``: %v\n", err)
@@ -222,7 +231,10 @@ import (
 func main() {
 	recordId := "recordId_example" // string | The identifier of the access record.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.AccessRecords.DeleteRecord(context.Background(), recordId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.DeleteRecord``: %v\n", err)
@@ -285,7 +297,10 @@ import (
 func main() {
 	requestId := "requestId_example" // string | The identifier of the access request.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.AccessRecords.DeleteRequest(context.Background(), requestId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.DeleteRequest``: %v\n", err)
@@ -348,7 +363,10 @@ import (
 func main() {
 	recordId := "recordId_example" // string | The identifier of the access record.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.AccessRecords.GetRecord(context.Background(), recordId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRecord``: %v\n", err)
@@ -416,7 +434,10 @@ func main() {
 	filter := "filter_example" // string | Filter to search records by. This is a case insensitive search through every text field. (optional)
 	status := "status_example" // string | Filter records by their current status. (optional)
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.AccessRecords.GetRecords(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Status(status).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRecords``: %v\n", err)
@@ -480,7 +501,10 @@ import (
 func main() {
 	requestId := "requestId_example" // string | The identifier of the access request.
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.AccessRecords.GetRequest(context.Background(), requestId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRequest``: %v\n", err)
@@ -547,7 +571,10 @@ func main() {
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 	status := "status_example" // string | Filter requests by their current status. (optional)
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.AccessRecords.GetRequests(context.Background()).Limit(limit).Cursor(cursor).Status(status).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRequests``: %v\n", err)
@@ -611,7 +638,10 @@ func main() {
 	requestId := "requestId_example" // string | The identifier of the access request.
 	accessRequestResponse := *authress.NewAccessRequestResponse("Status_example") // AccessRequestResponse | 
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	resp, r, err := apiClient.AccessRecords.RespondToAccessRequest(context.Background(), requestId).AccessRequestResponse(accessRequestResponse).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.RespondToAccessRequest``: %v\n", err)
@@ -680,7 +710,10 @@ func main() {
 	accessRecord := *authress.NewAccessRecord("Name_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // AccessRecord | 
 	ifUnmodifiedSince := time.Now() // time.Time | The expected last time the record was modified. (optional)
 
-	authressClient := authress.AuthressClient.New(authress.AuthressSettings {})
+	url, _ := url.Parse("https://authress.company.com")
+	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
+		AuthressApiUrl: url,
+	})
 	r, err := apiClient.AccessRecords.UpdateRecord(context.Background(), recordId).AccessRecord(accessRecord).IfUnmodifiedSince(ifUnmodifiedSince).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.UpdateRecord``: %v\n", err)
