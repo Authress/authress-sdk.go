@@ -1,14 +1,14 @@
-# \TenantsAPI
+#Tenants
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateTenant**](TenantsAPI.md#CreateTenant) | **Post** /v1/tenants | Create tenant
-[**DeleteTenant**](TenantsAPI.md#DeleteTenant) | **Delete** /v1/tenants/{tenantId} | Delete tenant
-[**GetTenant**](TenantsAPI.md#GetTenant) | **Get** /v1/tenants/{tenantId} | Retrieve tenant
-[**GetTenants**](TenantsAPI.md#GetTenants) | **Get** /v1/tenants | List tenants
-[**UpdateTenant**](TenantsAPI.md#UpdateTenant) | **Put** /v1/tenants/{tenantId} | Update tenant
+[**CreateTenant**](Tenants.md#CreateTenant) | **Post** /v1/tenants | Create tenant
+[**DeleteTenant**](Tenants.md#DeleteTenant) | **Delete** /v1/tenants/{tenantId} | Delete tenant
+[**GetTenant**](Tenants.md#GetTenant) | **Get** /v1/tenants/{tenantId} | Retrieve tenant
+[**GetTenants**](Tenants.md#GetTenants) | **Get** /v1/tenants | List tenants
+[**UpdateTenant**](Tenants.md#UpdateTenant) | **Put** /v1/tenants/{tenantId} | Update tenant
 
 
 
@@ -37,13 +37,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TenantsAPI.CreateTenant(context.Background()).Tenant(tenant).Execute()
+	resp, r, err := apiClient.Tenants.CreateTenant(context.Background()).Tenant(tenant).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.CreateTenant``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.CreateTenant``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `CreateTenant`: Tenant
-	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.CreateTenant`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Tenants.CreateTenant`: %v\n", resp)
 }
 ```
 
@@ -103,9 +103,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TenantsAPI.DeleteTenant(context.Background(), tenantId).Execute()
+	r, err := apiClient.Tenants.DeleteTenant(context.Background(), tenantId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.DeleteTenant``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.DeleteTenant``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -171,13 +171,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TenantsAPI.GetTenant(context.Background(), tenantId).Execute()
+	resp, r, err := apiClient.Tenants.GetTenant(context.Background(), tenantId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.GetTenant``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.GetTenant``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetTenant`: Tenant
-	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.GetTenant`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Tenants.GetTenant`: %v\n", resp)
 }
 ```
 
@@ -240,13 +240,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TenantsAPI.GetTenants(context.Background()).Execute()
+	resp, r, err := apiClient.Tenants.GetTenants(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.GetTenants``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.GetTenants``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetTenants`: TenantCollection
-	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.GetTenants`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Tenants.GetTenants`: %v\n", resp)
 }
 ```
 
@@ -303,13 +303,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TenantsAPI.UpdateTenant(context.Background(), tenantId).Tenant(tenant).Execute()
+	resp, r, err := apiClient.Tenants.UpdateTenant(context.Background(), tenantId).Tenant(tenant).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TenantsAPI.UpdateTenant``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.UpdateTenant``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `UpdateTenant`: Tenant
-	fmt.Fprintf(os.Stdout, "Response from `TenantsAPI.UpdateTenant`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Tenants.UpdateTenant`: %v\n", resp)
 }
 ```
 

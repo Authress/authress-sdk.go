@@ -1,7 +1,7 @@
 /*
 Authress
 
-Testing UsersAPIService
+Testing UsersApi
 
 */
 
@@ -10,38 +10,39 @@ Testing UsersAPIService
 package authress
 
 import (
+	openapiclient "//"
 	"context"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "//"
 )
 
-func Test_authress_UsersAPIService(t *testing.T) {
+func Test_authress_UsersApi(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test UsersAPIService DeleteUser", func(t *testing.T) {
+	t.Run("Test UsersApi DeleteUser", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var userId UserId
 
-		httpRes, err := apiClient.UsersAPI.DeleteUser(context.Background(), userId).Execute()
+		httpRes, err := apiClient.Users.DeleteUser(context.Background(), userId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test UsersAPIService GetUser", func(t *testing.T) {
+	t.Run("Test UsersApi GetUser", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var userId UserId
 
-		resp, httpRes, err := apiClient.UsersAPI.GetUser(context.Background(), userId).Execute()
+		resp, httpRes, err := apiClient.Users.GetUser(context.Background(), userId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -49,11 +50,11 @@ func Test_authress_UsersAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test UsersAPIService GetUsers", func(t *testing.T) {
+	t.Run("Test UsersApi GetUsers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.UsersAPI.GetUsers(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Users.GetUsers(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

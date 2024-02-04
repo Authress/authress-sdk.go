@@ -1,13 +1,13 @@
-# \ResourcePermissionsAPI
+#ResourcePermissions
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetPermissionedResource**](ResourcePermissionsAPI.md#GetPermissionedResource) | **Get** /v1/resources/{resourceUri} | Retrieve resource configuration
-[**GetPermissionedResources**](ResourcePermissionsAPI.md#GetPermissionedResources) | **Get** /v1/resources | List all resource configurations
-[**GetResourceUsers**](ResourcePermissionsAPI.md#GetResourceUsers) | **Get** /v1/resources/{resourceUri}/users | List users with resource access
-[**UpdatePermissionedResource**](ResourcePermissionsAPI.md#UpdatePermissionedResource) | **Put** /v1/resources/{resourceUri} | Update resource configuration
+[**GetPermissionedResource**](ResourcePermissions.md#GetPermissionedResource) | **Get** /v1/resources/{resourceUri} | Retrieve resource configuration
+[**GetPermissionedResources**](ResourcePermissions.md#GetPermissionedResources) | **Get** /v1/resources | List all resource configurations
+[**GetResourceUsers**](ResourcePermissions.md#GetResourceUsers) | **Get** /v1/resources/{resourceUri}/users | List users with resource access
+[**UpdatePermissionedResource**](ResourcePermissions.md#UpdatePermissionedResource) | **Put** /v1/resources/{resourceUri} | Update resource configuration
 
 
 
@@ -36,13 +36,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ResourcePermissionsAPI.GetPermissionedResource(context.Background(), resourceUri).Execute()
+	resp, r, err := apiClient.ResourcePermissions.GetPermissionedResource(context.Background(), resourceUri).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissionsAPI.GetPermissionedResource``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.GetPermissionedResource``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetPermissionedResource`: PermissionedResource
-	fmt.Fprintf(os.Stdout, "Response from `ResourcePermissionsAPI.GetPermissionedResource`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ResourcePermissions.GetPermissionedResource`: %v\n", resp)
 }
 ```
 
@@ -105,13 +105,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ResourcePermissionsAPI.GetPermissionedResources(context.Background()).Execute()
+	resp, r, err := apiClient.ResourcePermissions.GetPermissionedResources(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissionsAPI.GetPermissionedResources``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.GetPermissionedResources``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetPermissionedResources`: PermissionedResourceCollection
-	fmt.Fprintf(os.Stdout, "Response from `ResourcePermissionsAPI.GetPermissionedResources`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ResourcePermissions.GetPermissionedResources`: %v\n", resp)
 }
 ```
 
@@ -169,13 +169,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ResourcePermissionsAPI.GetResourceUsers(context.Background(), resourceUri).Limit(limit).Cursor(cursor).Execute()
+	resp, r, err := apiClient.ResourcePermissions.GetResourceUsers(context.Background(), resourceUri).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissionsAPI.GetResourceUsers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.GetResourceUsers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetResourceUsers`: ResourceUsersCollection
-	fmt.Fprintf(os.Stdout, "Response from `ResourcePermissionsAPI.GetResourceUsers`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ResourcePermissions.GetResourceUsers`: %v\n", resp)
 }
 ```
 
@@ -242,9 +242,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ResourcePermissionsAPI.UpdatePermissionedResource(context.Background(), resourceUri).PermissionedResource(permissionedResource).Execute()
+	r, err := apiClient.ResourcePermissions.UpdatePermissionedResource(context.Background(), resourceUri).PermissionedResource(permissionedResource).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissionsAPI.UpdatePermissionedResource``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.UpdatePermissionedResource``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }

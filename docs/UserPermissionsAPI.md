@@ -1,13 +1,13 @@
-# \UserPermissionsAPI
+#UserPermissions
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AuthorizeUser**](UserPermissionsAPI.md#AuthorizeUser) | **Get** /v1/users/{userId}/resources/{resourceUri}/permissions/{permission} | Verify user authorization
-[**GetUserPermissionsForResource**](UserPermissionsAPI.md#GetUserPermissionsForResource) | **Get** /v1/users/{userId}/resources/{resourceUri}/permissions | Get user permissions for resource
-[**GetUserResources**](UserPermissionsAPI.md#GetUserResources) | **Get** /v1/users/{userId}/resources | List user resources
-[**GetUserRolesForResource**](UserPermissionsAPI.md#GetUserRolesForResource) | **Get** /v1/users/{userId}/resources/{resourceUri}/roles | Get user roles for resource
+[**AuthorizeUser**](UserPermissions.md#AuthorizeUser) | **Get** /v1/users/{userId}/resources/{resourceUri}/permissions/{permission} | Verify user authorization
+[**GetUserPermissionsForResource**](UserPermissions.md#GetUserPermissionsForResource) | **Get** /v1/users/{userId}/resources/{resourceUri}/permissions | Get user permissions for resource
+[**GetUserResources**](UserPermissions.md#GetUserResources) | **Get** /v1/users/{userId}/resources | List user resources
+[**GetUserRolesForResource**](UserPermissions.md#GetUserRolesForResource) | **Get** /v1/users/{userId}/resources/{resourceUri}/roles | Get user roles for resource
 
 
 
@@ -38,9 +38,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.UserPermissionsAPI.AuthorizeUser(context.Background(), userId, resourceUri, permission).Execute()
+	r, err := apiClient.UserPermissions.AuthorizeUser(context.Background(), userId, resourceUri, permission).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissionsAPI.AuthorizeUser``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.AuthorizeUser``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -111,13 +111,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UserPermissionsAPI.GetUserPermissionsForResource(context.Background(), userId, resourceUri).Execute()
+	resp, r, err := apiClient.UserPermissions.GetUserPermissionsForResource(context.Background(), userId, resourceUri).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissionsAPI.GetUserPermissionsForResource``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.GetUserPermissionsForResource``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetUserPermissionsForResource`: PermissionCollection
-	fmt.Fprintf(os.Stdout, "Response from `UserPermissionsAPI.GetUserPermissionsForResource`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `UserPermissions.GetUserPermissionsForResource`: %v\n", resp)
 }
 ```
 
@@ -188,13 +188,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UserPermissionsAPI.GetUserResources(context.Background(), userId).ResourceUri(resourceUri).CollectionConfiguration(collectionConfiguration).Permissions(permissions).Limit(limit).Cursor(cursor).Execute()
+	resp, r, err := apiClient.UserPermissions.GetUserResources(context.Background(), userId).ResourceUri(resourceUri).CollectionConfiguration(collectionConfiguration).Permissions(permissions).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissionsAPI.GetUserResources``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.GetUserResources``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetUserResources`: UserResourcesCollection
-	fmt.Fprintf(os.Stdout, "Response from `UserPermissionsAPI.GetUserResources`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `UserPermissions.GetUserResources`: %v\n", resp)
 }
 ```
 
@@ -264,13 +264,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UserPermissionsAPI.GetUserRolesForResource(context.Background(), userId, resourceUri).Execute()
+	resp, r, err := apiClient.UserPermissions.GetUserRolesForResource(context.Background(), userId, resourceUri).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissionsAPI.GetUserRolesForResource``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.GetUserRolesForResource``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetUserRolesForResource`: UserRoleCollection
-	fmt.Fprintf(os.Stdout, "Response from `UserPermissionsAPI.GetUserRolesForResource`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `UserPermissions.GetUserRolesForResource`: %v\n", resp)
 }
 ```
 

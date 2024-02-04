@@ -1,7 +1,7 @@
 /*
 Authress
 
-Testing InvitesAPIService
+Testing InvitesApi
 
 */
 
@@ -10,50 +10,24 @@ Testing InvitesAPIService
 package authress
 
 import (
+	openapiclient "//"
 	"context"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "//"
 )
 
-func Test_authress_InvitesAPIService(t *testing.T) {
+func Test_authress_InvitesApi(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test InvitesAPIService CreateInvite", func(t *testing.T) {
+	t.Run("Test InvitesApi CreateInvite", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.InvitesAPI.CreateInvite(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test InvitesAPIService DeleteInvite", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var inviteId string
-
-		httpRes, err := apiClient.InvitesAPI.DeleteInvite(context.Background(), inviteId).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test InvitesAPIService GetInvite", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var inviteId string
-
-		resp, httpRes, err := apiClient.InvitesAPI.GetInvite(context.Background(), inviteId).Execute()
+		resp, httpRes, err := apiClient.Invites.CreateInvite(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -61,13 +35,40 @@ func Test_authress_InvitesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test InvitesAPIService RespondToInvite", func(t *testing.T) {
+	t.Run("Test InvitesApi DeleteInvite", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var inviteId string
 
-		resp, httpRes, err := apiClient.InvitesAPI.RespondToInvite(context.Background(), inviteId).Execute()
+		httpRes, err := apiClient.Invites.DeleteInvite(context.Background(), inviteId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test InvitesApi GetInvite", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var inviteId string
+
+		resp, httpRes, err := apiClient.Invites.GetInvite(context.Background(), inviteId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test InvitesApi RespondToInvite", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var inviteId string
+
+		resp, httpRes, err := apiClient.Invites.RespondToInvite(context.Background(), inviteId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

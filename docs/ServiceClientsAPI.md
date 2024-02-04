@@ -1,16 +1,16 @@
-# \ServiceClientsAPI
+#ServiceClients
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateClient**](ServiceClientsAPI.md#CreateClient) | **Post** /v1/clients | Create service client
-[**DeleteAccessKey**](ServiceClientsAPI.md#DeleteAccessKey) | **Delete** /v1/clients/{clientId}/access-keys/{keyId} | Delete service client access key
-[**DeleteClient**](ServiceClientsAPI.md#DeleteClient) | **Delete** /v1/clients/{clientId} | Delete service client
-[**GetClient**](ServiceClientsAPI.md#GetClient) | **Get** /v1/clients/{clientId} | Retrieve service client
-[**GetClients**](ServiceClientsAPI.md#GetClients) | **Get** /v1/clients | List service clients
-[**RequestAccessKey**](ServiceClientsAPI.md#RequestAccessKey) | **Post** /v1/clients/{clientId}/access-keys | Generate service client access key
-[**UpdateClient**](ServiceClientsAPI.md#UpdateClient) | **Put** /v1/clients/{clientId} | Update service client
+[**CreateClient**](ServiceClients.md#CreateClient) | **Post** /v1/clients | Create service client
+[**DeleteAccessKey**](ServiceClients.md#DeleteAccessKey) | **Delete** /v1/clients/{clientId}/access-keys/{keyId} | Delete service client access key
+[**DeleteClient**](ServiceClients.md#DeleteClient) | **Delete** /v1/clients/{clientId} | Delete service client
+[**GetClient**](ServiceClients.md#GetClient) | **Get** /v1/clients/{clientId} | Retrieve service client
+[**GetClients**](ServiceClients.md#GetClients) | **Get** /v1/clients | List service clients
+[**RequestAccessKey**](ServiceClients.md#RequestAccessKey) | **Post** /v1/clients/{clientId}/access-keys | Generate service client access key
+[**UpdateClient**](ServiceClients.md#UpdateClient) | **Put** /v1/clients/{clientId} | Update service client
 
 
 
@@ -40,13 +40,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServiceClientsAPI.CreateClient(context.Background()).Client(client).Execute()
+	resp, r, err := apiClient.ServiceClients.CreateClient(context.Background()).Client(client).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClientsAPI.CreateClient``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.CreateClient``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `CreateClient`: Client
-	fmt.Fprintf(os.Stdout, "Response from `ServiceClientsAPI.CreateClient`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ServiceClients.CreateClient`: %v\n", resp)
 }
 ```
 
@@ -107,9 +107,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ServiceClientsAPI.DeleteAccessKey(context.Background(), clientId, keyId).Execute()
+	r, err := apiClient.ServiceClients.DeleteAccessKey(context.Background(), clientId, keyId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClientsAPI.DeleteAccessKey``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.DeleteAccessKey``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -177,9 +177,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ServiceClientsAPI.DeleteClient(context.Background(), clientId).Execute()
+	r, err := apiClient.ServiceClients.DeleteClient(context.Background(), clientId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClientsAPI.DeleteClient``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.DeleteClient``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -245,13 +245,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServiceClientsAPI.GetClient(context.Background(), clientId).Execute()
+	resp, r, err := apiClient.ServiceClients.GetClient(context.Background(), clientId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClientsAPI.GetClient``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.GetClient``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetClient`: Client
-	fmt.Fprintf(os.Stdout, "Response from `ServiceClientsAPI.GetClient`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ServiceClients.GetClient`: %v\n", resp)
 }
 ```
 
@@ -316,13 +316,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServiceClientsAPI.GetClients(context.Background()).Limit(limit).Cursor(cursor).Execute()
+	resp, r, err := apiClient.ServiceClients.GetClients(context.Background()).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClientsAPI.GetClients``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.GetClients``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetClients`: ClientCollection
-	fmt.Fprintf(os.Stdout, "Response from `ServiceClientsAPI.GetClients`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ServiceClients.GetClients`: %v\n", resp)
 }
 ```
 
@@ -383,13 +383,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServiceClientsAPI.RequestAccessKey(context.Background(), clientId).Execute()
+	resp, r, err := apiClient.ServiceClients.RequestAccessKey(context.Background(), clientId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClientsAPI.RequestAccessKey``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.RequestAccessKey``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `RequestAccessKey`: ClientAccessKey
-	fmt.Fprintf(os.Stdout, "Response from `ServiceClientsAPI.RequestAccessKey`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ServiceClients.RequestAccessKey`: %v\n", resp)
 }
 ```
 
@@ -455,13 +455,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ServiceClientsAPI.UpdateClient(context.Background(), clientId).Client(client).Execute()
+	resp, r, err := apiClient.ServiceClients.UpdateClient(context.Background(), clientId).Client(client).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClientsAPI.UpdateClient``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.UpdateClient``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `UpdateClient`: Client
-	fmt.Fprintf(os.Stdout, "Response from `ServiceClientsAPI.UpdateClient`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `ServiceClients.UpdateClient`: %v\n", resp)
 }
 ```
 

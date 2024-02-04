@@ -1,14 +1,14 @@
-# \RolesAPI
+#Roles
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateRole**](RolesAPI.md#CreateRole) | **Post** /v1/roles | Create role
-[**DeleteRole**](RolesAPI.md#DeleteRole) | **Delete** /v1/roles/{roleId} | Deletes role
-[**GetRole**](RolesAPI.md#GetRole) | **Get** /v1/roles/{roleId} | Retrieve role
-[**GetRoles**](RolesAPI.md#GetRoles) | **Get** /v1/roles | List roles
-[**UpdateRole**](RolesAPI.md#UpdateRole) | **Put** /v1/roles/{roleId} | Update role
+[**CreateRole**](Roles.md#CreateRole) | **Post** /v1/roles | Create role
+[**DeleteRole**](Roles.md#DeleteRole) | **Delete** /v1/roles/{roleId} | Deletes role
+[**GetRole**](Roles.md#GetRole) | **Get** /v1/roles/{roleId} | Retrieve role
+[**GetRoles**](Roles.md#GetRoles) | **Get** /v1/roles | List roles
+[**UpdateRole**](Roles.md#UpdateRole) | **Put** /v1/roles/{roleId} | Update role
 
 
 
@@ -37,13 +37,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RolesAPI.CreateRole(context.Background()).Role(role).Execute()
+	resp, r, err := apiClient.Roles.CreateRole(context.Background()).Role(role).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.CreateRole``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Roles.CreateRole``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `CreateRole`: Role
-	fmt.Fprintf(os.Stdout, "Response from `RolesAPI.CreateRole`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Roles.CreateRole`: %v\n", resp)
 }
 ```
 
@@ -103,9 +103,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.RolesAPI.DeleteRole(context.Background(), roleId).Execute()
+	r, err := apiClient.Roles.DeleteRole(context.Background(), roleId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.DeleteRole``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Roles.DeleteRole``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -171,13 +171,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RolesAPI.GetRole(context.Background(), roleId).Execute()
+	resp, r, err := apiClient.Roles.GetRole(context.Background(), roleId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRole``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Roles.GetRole``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetRole`: Role
-	fmt.Fprintf(os.Stdout, "Response from `RolesAPI.GetRole`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Roles.GetRole`: %v\n", resp)
 }
 ```
 
@@ -243,13 +243,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RolesAPI.GetRoles(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Execute()
+	resp, r, err := apiClient.Roles.GetRoles(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.GetRoles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Roles.GetRoles``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetRoles`: RoleCollection
-	fmt.Fprintf(os.Stdout, "Response from `RolesAPI.GetRoles`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Roles.GetRoles`: %v\n", resp)
 }
 ```
 
@@ -312,13 +312,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.RolesAPI.UpdateRole(context.Background(), roleId).Role(role).Execute()
+	resp, r, err := apiClient.Roles.UpdateRole(context.Background(), roleId).Role(role).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesAPI.UpdateRole``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Roles.UpdateRole``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `UpdateRole`: Role
-	fmt.Fprintf(os.Stdout, "Response from `RolesAPI.UpdateRole`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Roles.UpdateRole`: %v\n", resp)
 }
 ```
 

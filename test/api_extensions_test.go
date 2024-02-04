@@ -1,7 +1,7 @@
 /*
 Authress
 
-Testing ExtensionsAPIService
+Testing ExtensionsApi
 
 */
 
@@ -10,23 +10,24 @@ Testing ExtensionsAPIService
 package authress
 
 import (
+	openapiclient "//"
 	"context"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "//"
 )
 
-func Test_authress_ExtensionsAPIService(t *testing.T) {
+func Test_authress_ExtensionsApi(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ExtensionsAPIService CreateExtension", func(t *testing.T) {
+	t.Run("Test ExtensionsApi CreateExtension", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ExtensionsAPI.CreateExtension(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Extensions.CreateExtension(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,26 +35,26 @@ func Test_authress_ExtensionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ExtensionsAPIService DeleteExtension", func(t *testing.T) {
+	t.Run("Test ExtensionsApi DeleteExtension", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var extensionId string
 
-		httpRes, err := apiClient.ExtensionsAPI.DeleteExtension(context.Background(), extensionId).Execute()
+		httpRes, err := apiClient.Extensions.DeleteExtension(context.Background(), extensionId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test ExtensionsAPIService GetExtension", func(t *testing.T) {
+	t.Run("Test ExtensionsApi GetExtension", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var extensionId string
 
-		resp, httpRes, err := apiClient.ExtensionsAPI.GetExtension(context.Background(), extensionId).Execute()
+		resp, httpRes, err := apiClient.Extensions.GetExtension(context.Background(), extensionId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -61,23 +62,11 @@ func Test_authress_ExtensionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ExtensionsAPIService GetExtensions", func(t *testing.T) {
+	t.Run("Test ExtensionsApi GetExtensions", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ExtensionsAPI.GetExtensions(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ExtensionsAPIService Login", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		resp, httpRes, err := apiClient.ExtensionsAPI.Login(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Extensions.GetExtensions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -85,11 +74,11 @@ func Test_authress_ExtensionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ExtensionsAPIService RequestToken", func(t *testing.T) {
+	t.Run("Test ExtensionsApi Login", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ExtensionsAPI.RequestToken(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Extensions.Login(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -97,13 +86,25 @@ func Test_authress_ExtensionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ExtensionsAPIService UpdateExtension", func(t *testing.T) {
+	t.Run("Test ExtensionsApi RequestToken", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.Extensions.RequestToken(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ExtensionsApi UpdateExtension", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
 
 		var extensionId string
 
-		resp, httpRes, err := apiClient.ExtensionsAPI.UpdateExtension(context.Background(), extensionId).Execute()
+		resp, httpRes, err := apiClient.Extensions.UpdateExtension(context.Background(), extensionId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -1,13 +1,13 @@
-# \AccountsAPI
+#Accounts
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DelegateAuthentication**](AccountsAPI.md#DelegateAuthentication) | **Post** /v1/identities | Link external provider
-[**GetAccount**](AccountsAPI.md#GetAccount) | **Get** /v1/accounts/{accountId} | Retrieve account information
-[**GetAccountIdentities**](AccountsAPI.md#GetAccountIdentities) | **Get** /v1/identities | List linked external providers
-[**GetAccounts**](AccountsAPI.md#GetAccounts) | **Get** /v1/accounts | List user Authress accounts
+[**DelegateAuthentication**](Accounts.md#DelegateAuthentication) | **Post** /v1/identities | Link external provider
+[**GetAccount**](Accounts.md#GetAccount) | **Get** /v1/accounts/{accountId} | Retrieve account information
+[**GetAccountIdentities**](Accounts.md#GetAccountIdentities) | **Get** /v1/identities | List linked external providers
+[**GetAccounts**](Accounts.md#GetAccounts) | **Get** /v1/accounts | List user Authress accounts
 
 
 
@@ -36,9 +36,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AccountsAPI.DelegateAuthentication(context.Background()).IdentityRequest(identityRequest).Execute()
+	r, err := apiClient.Accounts.DelegateAuthentication(context.Background()).IdentityRequest(identityRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.DelegateAuthentication``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.DelegateAuthentication``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -100,13 +100,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccountsAPI.GetAccount(context.Background(), accountId).Execute()
+	resp, r, err := apiClient.Accounts.GetAccount(context.Background(), accountId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.GetAccount``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.GetAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetAccount`: Account
-	fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.GetAccount`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Accounts.GetAccount`: %v\n", resp)
 }
 ```
 
@@ -169,13 +169,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccountsAPI.GetAccountIdentities(context.Background()).Execute()
+	resp, r, err := apiClient.Accounts.GetAccountIdentities(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.GetAccountIdentities``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.GetAccountIdentities``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetAccountIdentities`: IdentityCollection
-	fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.GetAccountIdentities`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Accounts.GetAccountIdentities`: %v\n", resp)
 }
 ```
 
@@ -232,13 +232,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccountsAPI.GetAccounts(context.Background()).EarliestCacheTime(earliestCacheTime).Execute()
+	resp, r, err := apiClient.Accounts.GetAccounts(context.Background()).EarliestCacheTime(earliestCacheTime).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccountsAPI.GetAccounts``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.GetAccounts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetAccounts`: AccountCollection
-	fmt.Fprintf(os.Stdout, "Response from `AccountsAPI.GetAccounts`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Accounts.GetAccounts`: %v\n", resp)
 }
 ```
 

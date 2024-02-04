@@ -1,16 +1,16 @@
-# \ExtensionsAPI
+#Extensions
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateExtension**](ExtensionsAPI.md#CreateExtension) | **Post** /v1/extensions | Create extension
-[**DeleteExtension**](ExtensionsAPI.md#DeleteExtension) | **Delete** /v1/extensions/{extensionId} | Delete extension
-[**GetExtension**](ExtensionsAPI.md#GetExtension) | **Get** /v1/extensions/{extensionId} | Retrieve extension
-[**GetExtensions**](ExtensionsAPI.md#GetExtensions) | **Get** /v1/extensions | List extensions
-[**Login**](ExtensionsAPI.md#Login) | **Get** / | OAuth Authorize
-[**RequestToken**](ExtensionsAPI.md#RequestToken) | **Post** /api/authentication/oauth/tokens | OAuth Token
-[**UpdateExtension**](ExtensionsAPI.md#UpdateExtension) | **Put** /v1/extensions/{extensionId} | Update extension
+[**CreateExtension**](Extensions.md#CreateExtension) | **Post** /v1/extensions | Create extension
+[**DeleteExtension**](Extensions.md#DeleteExtension) | **Delete** /v1/extensions/{extensionId} | Delete extension
+[**GetExtension**](Extensions.md#GetExtension) | **Get** /v1/extensions/{extensionId} | Retrieve extension
+[**GetExtensions**](Extensions.md#GetExtensions) | **Get** /v1/extensions | List extensions
+[**Login**](Extensions.md#Login) | **Get** / | OAuth Authorize
+[**RequestToken**](Extensions.md#RequestToken) | **Post** /api/authentication/oauth/tokens | OAuth Token
+[**UpdateExtension**](Extensions.md#UpdateExtension) | **Put** /v1/extensions/{extensionId} | Update extension
 
 
 
@@ -40,13 +40,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ExtensionsAPI.CreateExtension(context.Background()).Extension(extension).Execute()
+	resp, r, err := apiClient.Extensions.CreateExtension(context.Background()).Extension(extension).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ExtensionsAPI.CreateExtension``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.CreateExtension``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `CreateExtension`: Extension
-	fmt.Fprintf(os.Stdout, "Response from `ExtensionsAPI.CreateExtension`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Extensions.CreateExtension`: %v\n", resp)
 }
 ```
 
@@ -106,9 +106,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ExtensionsAPI.DeleteExtension(context.Background(), extensionId).Execute()
+	r, err := apiClient.Extensions.DeleteExtension(context.Background(), extensionId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ExtensionsAPI.DeleteExtension``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.DeleteExtension``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -174,13 +174,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ExtensionsAPI.GetExtension(context.Background(), extensionId).Execute()
+	resp, r, err := apiClient.Extensions.GetExtension(context.Background(), extensionId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ExtensionsAPI.GetExtension``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.GetExtension``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetExtension`: Extension
-	fmt.Fprintf(os.Stdout, "Response from `ExtensionsAPI.GetExtension`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Extensions.GetExtension`: %v\n", resp)
 }
 ```
 
@@ -245,13 +245,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ExtensionsAPI.GetExtensions(context.Background()).Limit(limit).Cursor(cursor).Execute()
+	resp, r, err := apiClient.Extensions.GetExtensions(context.Background()).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ExtensionsAPI.GetExtensions``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.GetExtensions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetExtensions`: ExtensionCollection
-	fmt.Fprintf(os.Stdout, "Response from `ExtensionsAPI.GetExtensions`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Extensions.GetExtensions`: %v\n", resp)
 }
 ```
 
@@ -315,13 +315,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ExtensionsAPI.Login(context.Background()).ClientId(clientId).CodeChallenge(codeChallenge).RedirectUri(redirectUri).CodeChallengeMethod(codeChallengeMethod).Execute()
+	resp, r, err := apiClient.Extensions.Login(context.Background()).ClientId(clientId).CodeChallenge(codeChallenge).RedirectUri(redirectUri).CodeChallengeMethod(codeChallengeMethod).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ExtensionsAPI.Login``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.Login``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `Login`: OAuthAuthorizeResponse
-	fmt.Fprintf(os.Stdout, "Response from `ExtensionsAPI.Login`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Extensions.Login`: %v\n", resp)
 }
 ```
 
@@ -384,13 +384,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ExtensionsAPI.RequestToken(context.Background()).OAuthTokenRequest(oAuthTokenRequest).Execute()
+	resp, r, err := apiClient.Extensions.RequestToken(context.Background()).OAuthTokenRequest(oAuthTokenRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ExtensionsAPI.RequestToken``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.RequestToken``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `RequestToken`: OAuthTokenResponse
-	fmt.Fprintf(os.Stdout, "Response from `ExtensionsAPI.RequestToken`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Extensions.RequestToken`: %v\n", resp)
 }
 ```
 
@@ -452,13 +452,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ExtensionsAPI.UpdateExtension(context.Background(), extensionId).Extension(extension).Execute()
+	resp, r, err := apiClient.Extensions.UpdateExtension(context.Background(), extensionId).Extension(extension).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ExtensionsAPI.UpdateExtension``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.UpdateExtension``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `UpdateExtension`: Extension
-	fmt.Fprintf(os.Stdout, "Response from `ExtensionsAPI.UpdateExtension`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Extensions.UpdateExtension`: %v\n", resp)
 }
 ```
 

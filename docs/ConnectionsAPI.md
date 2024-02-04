@@ -1,15 +1,15 @@
-# \ConnectionsAPI
+#Connections
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateConnection**](ConnectionsAPI.md#CreateConnection) | **Post** /v1/connections | Create SSO connection
-[**DeleteConnection**](ConnectionsAPI.md#DeleteConnection) | **Delete** /v1/connections/{connectionId} | Delete SSO connection
-[**GetConnection**](ConnectionsAPI.md#GetConnection) | **Get** /v1/connections/{connectionId} | Retrieve SSO connection
-[**GetConnectionCredentials**](ConnectionsAPI.md#GetConnectionCredentials) | **Get** /v1/connections/{connectionId}/users/{userId}/credentials | Retrieve user connection credentials
-[**GetConnections**](ConnectionsAPI.md#GetConnections) | **Get** /v1/connections | List SSO connections
-[**UpdateConnection**](ConnectionsAPI.md#UpdateConnection) | **Put** /v1/connections/{connectionId} | Update SSO connection
+[**CreateConnection**](Connections.md#CreateConnection) | **Post** /v1/connections | Create SSO connection
+[**DeleteConnection**](Connections.md#DeleteConnection) | **Delete** /v1/connections/{connectionId} | Delete SSO connection
+[**GetConnection**](Connections.md#GetConnection) | **Get** /v1/connections/{connectionId} | Retrieve SSO connection
+[**GetConnectionCredentials**](Connections.md#GetConnectionCredentials) | **Get** /v1/connections/{connectionId}/users/{userId}/credentials | Retrieve user connection credentials
+[**GetConnections**](Connections.md#GetConnections) | **Get** /v1/connections | List SSO connections
+[**UpdateConnection**](Connections.md#UpdateConnection) | **Put** /v1/connections/{connectionId} | Update SSO connection
 
 
 
@@ -38,13 +38,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectionsAPI.CreateConnection(context.Background()).Connection(connection).Execute()
+	resp, r, err := apiClient.Connections.CreateConnection(context.Background()).Connection(connection).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.CreateConnection``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Connections.CreateConnection``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `CreateConnection`: Connection
-	fmt.Fprintf(os.Stdout, "Response from `ConnectionsAPI.CreateConnection`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Connections.CreateConnection`: %v\n", resp)
 }
 ```
 
@@ -104,9 +104,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ConnectionsAPI.DeleteConnection(context.Background(), connectionId).Execute()
+	r, err := apiClient.Connections.DeleteConnection(context.Background(), connectionId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.DeleteConnection``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Connections.DeleteConnection``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -172,13 +172,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectionsAPI.GetConnection(context.Background(), connectionId).Execute()
+	resp, r, err := apiClient.Connections.GetConnection(context.Background(), connectionId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.GetConnection``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Connections.GetConnection``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetConnection`: Connection
-	fmt.Fprintf(os.Stdout, "Response from `ConnectionsAPI.GetConnection`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Connections.GetConnection`: %v\n", resp)
 }
 ```
 
@@ -243,13 +243,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectionsAPI.GetConnectionCredentials(context.Background(), connectionId, userId).Execute()
+	resp, r, err := apiClient.Connections.GetConnectionCredentials(context.Background(), connectionId, userId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.GetConnectionCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Connections.GetConnectionCredentials``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetConnectionCredentials`: UserConnectionCredentials
-	fmt.Fprintf(os.Stdout, "Response from `ConnectionsAPI.GetConnectionCredentials`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Connections.GetConnectionCredentials`: %v\n", resp)
 }
 ```
 
@@ -314,13 +314,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectionsAPI.GetConnections(context.Background()).Execute()
+	resp, r, err := apiClient.Connections.GetConnections(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.GetConnections``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Connections.GetConnections``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetConnections`: ConnectionCollection
-	fmt.Fprintf(os.Stdout, "Response from `ConnectionsAPI.GetConnections`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Connections.GetConnections`: %v\n", resp)
 }
 ```
 
@@ -377,13 +377,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ConnectionsAPI.UpdateConnection(context.Background(), connectionId).Connection(connection).Execute()
+	resp, r, err := apiClient.Connections.UpdateConnection(context.Background(), connectionId).Connection(connection).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ConnectionsAPI.UpdateConnection``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Connections.UpdateConnection``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `UpdateConnection`: Connection
-	fmt.Fprintf(os.Stdout, "Response from `ConnectionsAPI.UpdateConnection`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Connections.UpdateConnection`: %v\n", resp)
 }
 ```
 

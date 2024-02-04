@@ -1,7 +1,7 @@
 /*
 Authress
 
-Testing ConnectionsAPIService
+Testing ConnectionsApi
 
 */
 
@@ -10,50 +10,24 @@ Testing ConnectionsAPIService
 package authress
 
 import (
+	openapiclient "//"
 	"context"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "//"
 )
 
-func Test_authress_ConnectionsAPIService(t *testing.T) {
+func Test_authress_ConnectionsApi(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ConnectionsAPIService CreateConnection", func(t *testing.T) {
+	t.Run("Test ConnectionsApi CreateConnection", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ConnectionsAPI.CreateConnection(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ConnectionsAPIService DeleteConnection", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var connectionId string
-
-		httpRes, err := apiClient.ConnectionsAPI.DeleteConnection(context.Background(), connectionId).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ConnectionsAPIService GetConnection", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var connectionId string
-
-		resp, httpRes, err := apiClient.ConnectionsAPI.GetConnection(context.Background(), connectionId).Execute()
+		resp, httpRes, err := apiClient.Connections.CreateConnection(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -61,14 +35,41 @@ func Test_authress_ConnectionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConnectionsAPIService GetConnectionCredentials", func(t *testing.T) {
+	t.Run("Test ConnectionsApi DeleteConnection", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
+
+		var connectionId string
+
+		httpRes, err := apiClient.Connections.DeleteConnection(context.Background(), connectionId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ConnectionsApi GetConnection", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var connectionId string
+
+		resp, httpRes, err := apiClient.Connections.GetConnection(context.Background(), connectionId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ConnectionsApi GetConnectionCredentials", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
 
 		var connectionId string
 		var userId UserId
 
-		resp, httpRes, err := apiClient.ConnectionsAPI.GetConnectionCredentials(context.Background(), connectionId, userId).Execute()
+		resp, httpRes, err := apiClient.Connections.GetConnectionCredentials(context.Background(), connectionId, userId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -76,11 +77,11 @@ func Test_authress_ConnectionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConnectionsAPIService GetConnections", func(t *testing.T) {
+	t.Run("Test ConnectionsApi GetConnections", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ConnectionsAPI.GetConnections(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Connections.GetConnections(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -88,13 +89,13 @@ func Test_authress_ConnectionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ConnectionsAPIService UpdateConnection", func(t *testing.T) {
+	t.Run("Test ConnectionsApi UpdateConnection", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var connectionId string
 
-		resp, httpRes, err := apiClient.ConnectionsAPI.UpdateConnection(context.Background(), connectionId).Execute()
+		resp, httpRes, err := apiClient.Connections.UpdateConnection(context.Background(), connectionId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

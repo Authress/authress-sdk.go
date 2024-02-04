@@ -1,20 +1,20 @@
-# \AccessRecordsAPI
+#AccessRecords
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateClaim**](AccessRecordsAPI.md#CreateClaim) | **Post** /v1/claims | Create resource Claim
-[**CreateRecord**](AccessRecordsAPI.md#CreateRecord) | **Post** /v1/records | Create access record
-[**CreateRequest**](AccessRecordsAPI.md#CreateRequest) | **Post** /v1/requests | Create access request
-[**DeleteRecord**](AccessRecordsAPI.md#DeleteRecord) | **Delete** /v1/records/{recordId} | Deletes access record
-[**DeleteRequest**](AccessRecordsAPI.md#DeleteRequest) | **Delete** /v1/requests/{requestId} | Deletes access request
-[**GetRecord**](AccessRecordsAPI.md#GetRecord) | **Get** /v1/records/{recordId} | Retrieve access record
-[**GetRecords**](AccessRecordsAPI.md#GetRecords) | **Get** /v1/records | List access records
-[**GetRequest**](AccessRecordsAPI.md#GetRequest) | **Get** /v1/requests/{requestId} | Retrieve access request
-[**GetRequests**](AccessRecordsAPI.md#GetRequests) | **Get** /v1/requests | List access requests
-[**RespondToAccessRequest**](AccessRecordsAPI.md#RespondToAccessRequest) | **Patch** /v1/requests/{requestId} | Approve or deny access request
-[**UpdateRecord**](AccessRecordsAPI.md#UpdateRecord) | **Put** /v1/records/{recordId} | Update access record
+[**CreateClaim**](AccessRecords.md#CreateClaim) | **Post** /v1/claims | Create resource Claim
+[**CreateRecord**](AccessRecords.md#CreateRecord) | **Post** /v1/records | Create access record
+[**CreateRequest**](AccessRecords.md#CreateRequest) | **Post** /v1/requests | Create access request
+[**DeleteRecord**](AccessRecords.md#DeleteRecord) | **Delete** /v1/records/{recordId} | Deletes access record
+[**DeleteRequest**](AccessRecords.md#DeleteRequest) | **Delete** /v1/requests/{requestId} | Deletes access request
+[**GetRecord**](AccessRecords.md#GetRecord) | **Get** /v1/records/{recordId} | Retrieve access record
+[**GetRecords**](AccessRecords.md#GetRecords) | **Get** /v1/records | List access records
+[**GetRequest**](AccessRecords.md#GetRequest) | **Get** /v1/requests/{requestId} | Retrieve access request
+[**GetRequests**](AccessRecords.md#GetRequests) | **Get** /v1/requests | List access requests
+[**RespondToAccessRequest**](AccessRecords.md#RespondToAccessRequest) | **Patch** /v1/requests/{requestId} | Approve or deny access request
+[**UpdateRecord**](AccessRecords.md#UpdateRecord) | **Put** /v1/records/{recordId} | Update access record
 
 
 
@@ -43,13 +43,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccessRecordsAPI.CreateClaim(context.Background()).ClaimRequest(claimRequest).Execute()
+	resp, r, err := apiClient.AccessRecords.CreateClaim(context.Background()).ClaimRequest(claimRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecordsAPI.CreateClaim``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.CreateClaim``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `CreateClaim`: map[string]interface{}
-	fmt.Fprintf(os.Stdout, "Response from `AccessRecordsAPI.CreateClaim`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `AccessRecords.CreateClaim`: %v\n", resp)
 }
 ```
 
@@ -109,13 +109,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccessRecordsAPI.CreateRecord(context.Background()).AccessRecord(accessRecord).Execute()
+	resp, r, err := apiClient.AccessRecords.CreateRecord(context.Background()).AccessRecord(accessRecord).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecordsAPI.CreateRecord``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.CreateRecord``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `CreateRecord`: AccessRecord
-	fmt.Fprintf(os.Stdout, "Response from `AccessRecordsAPI.CreateRecord`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `AccessRecords.CreateRecord`: %v\n", resp)
 }
 ```
 
@@ -175,13 +175,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccessRecordsAPI.CreateRequest(context.Background()).AccessRequest(accessRequest).Execute()
+	resp, r, err := apiClient.AccessRecords.CreateRequest(context.Background()).AccessRequest(accessRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecordsAPI.CreateRequest``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.CreateRequest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `CreateRequest`: AccessRequest
-	fmt.Fprintf(os.Stdout, "Response from `AccessRecordsAPI.CreateRequest`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `AccessRecords.CreateRequest`: %v\n", resp)
 }
 ```
 
@@ -241,9 +241,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AccessRecordsAPI.DeleteRecord(context.Background(), recordId).Execute()
+	r, err := apiClient.AccessRecords.DeleteRecord(context.Background(), recordId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecordsAPI.DeleteRecord``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.DeleteRecord``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -309,9 +309,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AccessRecordsAPI.DeleteRequest(context.Background(), requestId).Execute()
+	r, err := apiClient.AccessRecords.DeleteRequest(context.Background(), requestId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecordsAPI.DeleteRequest``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.DeleteRequest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -377,13 +377,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccessRecordsAPI.GetRecord(context.Background(), recordId).Execute()
+	resp, r, err := apiClient.AccessRecords.GetRecord(context.Background(), recordId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecordsAPI.GetRecord``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRecord``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetRecord`: AccessRecord
-	fmt.Fprintf(os.Stdout, "Response from `AccessRecordsAPI.GetRecord`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `AccessRecords.GetRecord`: %v\n", resp)
 }
 ```
 
@@ -450,13 +450,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccessRecordsAPI.GetRecords(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Status(status).Execute()
+	resp, r, err := apiClient.AccessRecords.GetRecords(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Status(status).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecordsAPI.GetRecords``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRecords``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetRecords`: AccessRecordCollection
-	fmt.Fprintf(os.Stdout, "Response from `AccessRecordsAPI.GetRecords`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `AccessRecords.GetRecords`: %v\n", resp)
 }
 ```
 
@@ -519,13 +519,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccessRecordsAPI.GetRequest(context.Background(), requestId).Execute()
+	resp, r, err := apiClient.AccessRecords.GetRequest(context.Background(), requestId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecordsAPI.GetRequest``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRequest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetRequest`: AccessRequest
-	fmt.Fprintf(os.Stdout, "Response from `AccessRecordsAPI.GetRequest`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `AccessRecords.GetRequest`: %v\n", resp)
 }
 ```
 
@@ -591,13 +591,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccessRecordsAPI.GetRequests(context.Background()).Limit(limit).Cursor(cursor).Status(status).Execute()
+	resp, r, err := apiClient.AccessRecords.GetRequests(context.Background()).Limit(limit).Cursor(cursor).Status(status).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecordsAPI.GetRequests``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRequests``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetRequests`: AccessRequestCollection
-	fmt.Fprintf(os.Stdout, "Response from `AccessRecordsAPI.GetRequests`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `AccessRecords.GetRequests`: %v\n", resp)
 }
 ```
 
@@ -660,13 +660,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.AccessRecordsAPI.RespondToAccessRequest(context.Background(), requestId).AccessRequestResponse(accessRequestResponse).Execute()
+	resp, r, err := apiClient.AccessRecords.RespondToAccessRequest(context.Background(), requestId).AccessRequestResponse(accessRequestResponse).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecordsAPI.RespondToAccessRequest``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.RespondToAccessRequest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `RespondToAccessRequest`: AccessRequest
-	fmt.Fprintf(os.Stdout, "Response from `AccessRecordsAPI.RespondToAccessRequest`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `AccessRecords.RespondToAccessRequest`: %v\n", resp)
 }
 ```
 
@@ -734,9 +734,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AccessRecordsAPI.UpdateRecord(context.Background(), recordId).AccessRecord(accessRecord).IfUnmodifiedSince(ifUnmodifiedSince).Execute()
+	r, err := apiClient.AccessRecords.UpdateRecord(context.Background(), recordId).AccessRecord(accessRecord).IfUnmodifiedSince(ifUnmodifiedSince).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecordsAPI.UpdateRecord``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.UpdateRecord``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }

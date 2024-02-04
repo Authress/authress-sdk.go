@@ -1,7 +1,7 @@
 /*
 Authress
 
-Testing GroupsAPIService
+Testing GroupsApi
 
 */
 
@@ -10,50 +10,24 @@ Testing GroupsAPIService
 package authress
 
 import (
+	openapiclient "//"
 	"context"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "//"
 )
 
-func Test_authress_GroupsAPIService(t *testing.T) {
+func Test_authress_GroupsApi(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test GroupsAPIService CreateGroup", func(t *testing.T) {
+	t.Run("Test GroupsApi CreateGroup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GroupsAPI.CreateGroup(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test GroupsAPIService DeleteGroup", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var groupId GroupId
-
-		httpRes, err := apiClient.GroupsAPI.DeleteGroup(context.Background(), groupId).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test GroupsAPIService GetGroup", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var groupId GroupId
-
-		resp, httpRes, err := apiClient.GroupsAPI.GetGroup(context.Background(), groupId).Execute()
+		resp, httpRes, err := apiClient.Groups.CreateGroup(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -61,11 +35,26 @@ func Test_authress_GroupsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GroupsAPIService GetGroups", func(t *testing.T) {
+	t.Run("Test GroupsApi DeleteGroup", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GroupsAPI.GetGroups(context.Background()).Execute()
+		var groupId GroupId
+
+		httpRes, err := apiClient.Groups.DeleteGroup(context.Background(), groupId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsApi GetGroup", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var groupId GroupId
+
+		resp, httpRes, err := apiClient.Groups.GetGroup(context.Background(), groupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -73,13 +62,25 @@ func Test_authress_GroupsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test GroupsAPIService UpdateGroup", func(t *testing.T) {
+	t.Run("Test GroupsApi GetGroups", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.Groups.GetGroups(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test GroupsApi UpdateGroup", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
 
 		var groupId GroupId
 
-		resp, httpRes, err := apiClient.GroupsAPI.UpdateGroup(context.Background(), groupId).Execute()
+		resp, httpRes, err := apiClient.Groups.UpdateGroup(context.Background(), groupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

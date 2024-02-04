@@ -1,7 +1,7 @@
 /*
 Authress
 
-Testing AccountsAPIService
+Testing AccountsApi
 
 */
 
@@ -10,36 +10,37 @@ Testing AccountsAPIService
 package authress
 
 import (
+	openapiclient "//"
 	"context"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "//"
 )
 
-func Test_authress_AccountsAPIService(t *testing.T) {
+func Test_authress_AccountsApi(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test AccountsAPIService DelegateAuthentication", func(t *testing.T) {
+	t.Run("Test AccountsApi DelegateAuthentication", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		httpRes, err := apiClient.AccountsAPI.DelegateAuthentication(context.Background()).Execute()
+		httpRes, err := apiClient.Accounts.DelegateAuthentication(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
 
-	t.Run("Test AccountsAPIService GetAccount", func(t *testing.T) {
+	t.Run("Test AccountsApi GetAccount", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var accountId string
 
-		resp, httpRes, err := apiClient.AccountsAPI.GetAccount(context.Background(), accountId).Execute()
+		resp, httpRes, err := apiClient.Accounts.GetAccount(context.Background(), accountId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -47,11 +48,11 @@ func Test_authress_AccountsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsAPIService GetAccountIdentities", func(t *testing.T) {
+	t.Run("Test AccountsApi GetAccountIdentities", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AccountsAPI.GetAccountIdentities(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Accounts.GetAccountIdentities(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -59,11 +60,11 @@ func Test_authress_AccountsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AccountsAPIService GetAccounts", func(t *testing.T) {
+	t.Run("Test AccountsApi GetAccounts", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.AccountsAPI.GetAccounts(context.Background()).Execute()
+		resp, httpRes, err := apiClient.Accounts.GetAccounts(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

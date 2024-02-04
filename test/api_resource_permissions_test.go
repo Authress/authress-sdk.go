@@ -1,7 +1,7 @@
 /*
 Authress
 
-Testing ResourcePermissionsAPIService
+Testing ResourcePermissionsApi
 
 */
 
@@ -10,25 +10,26 @@ Testing ResourcePermissionsAPIService
 package authress
 
 import (
+	openapiclient "//"
 	"context"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "//"
 )
 
-func Test_authress_ResourcePermissionsAPIService(t *testing.T) {
+func Test_authress_ResourcePermissionsApi(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ResourcePermissionsAPIService GetPermissionedResource", func(t *testing.T) {
+	t.Run("Test ResourcePermissionsApi GetPermissionedResource", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var resourceUri string
 
-		resp, httpRes, err := apiClient.ResourcePermissionsAPI.GetPermissionedResource(context.Background(), resourceUri).Execute()
+		resp, httpRes, err := apiClient.ResourcePermissions.GetPermissionedResource(context.Background(), resourceUri).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,25 +37,11 @@ func Test_authress_ResourcePermissionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ResourcePermissionsAPIService GetPermissionedResources", func(t *testing.T) {
+	t.Run("Test ResourcePermissionsApi GetPermissionedResources", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ResourcePermissionsAPI.GetPermissionedResources(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ResourcePermissionsAPIService GetResourceUsers", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var resourceUri string
-
-		resp, httpRes, err := apiClient.ResourcePermissionsAPI.GetResourceUsers(context.Background(), resourceUri).Execute()
+		resp, httpRes, err := apiClient.ResourcePermissions.GetPermissionedResources(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -62,13 +49,27 @@ func Test_authress_ResourcePermissionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ResourcePermissionsAPIService UpdatePermissionedResource", func(t *testing.T) {
+	t.Run("Test ResourcePermissionsApi GetResourceUsers", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		var resourceUri string
 
-		httpRes, err := apiClient.ResourcePermissionsAPI.UpdatePermissionedResource(context.Background(), resourceUri).Execute()
+		resp, httpRes, err := apiClient.ResourcePermissions.GetResourceUsers(context.Background(), resourceUri).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ResourcePermissionsApi UpdatePermissionedResource", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var resourceUri string
+
+		httpRes, err := apiClient.ResourcePermissions.UpdatePermissionedResource(context.Background(), resourceUri).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

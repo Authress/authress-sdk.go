@@ -1,14 +1,14 @@
-# \GroupsAPI
+#Groups
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateGroup**](GroupsAPI.md#CreateGroup) | **Post** /v1/groups | Create group
-[**DeleteGroup**](GroupsAPI.md#DeleteGroup) | **Delete** /v1/groups/{groupId} | Deletes group
-[**GetGroup**](GroupsAPI.md#GetGroup) | **Get** /v1/groups/{groupId} | Retrieve group
-[**GetGroups**](GroupsAPI.md#GetGroups) | **Get** /v1/groups | List groups
-[**UpdateGroup**](GroupsAPI.md#UpdateGroup) | **Put** /v1/groups/{groupId} | Update a group
+[**CreateGroup**](Groups.md#CreateGroup) | **Post** /v1/groups | Create group
+[**DeleteGroup**](Groups.md#DeleteGroup) | **Delete** /v1/groups/{groupId} | Deletes group
+[**GetGroup**](Groups.md#GetGroup) | **Get** /v1/groups/{groupId} | Retrieve group
+[**GetGroups**](Groups.md#GetGroups) | **Get** /v1/groups | List groups
+[**UpdateGroup**](Groups.md#UpdateGroup) | **Put** /v1/groups/{groupId} | Update a group
 
 
 
@@ -37,13 +37,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GroupsAPI.CreateGroup(context.Background()).Group(group).Execute()
+	resp, r, err := apiClient.Groups.CreateGroup(context.Background()).Group(group).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.CreateGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Groups.CreateGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `CreateGroup`: Group
-	fmt.Fprintf(os.Stdout, "Response from `GroupsAPI.CreateGroup`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Groups.CreateGroup`: %v\n", resp)
 }
 ```
 
@@ -103,9 +103,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.GroupsAPI.DeleteGroup(context.Background(), groupId).Execute()
+	r, err := apiClient.Groups.DeleteGroup(context.Background(), groupId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.DeleteGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Groups.DeleteGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -171,13 +171,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GroupsAPI.GetGroup(context.Background(), groupId).Execute()
+	resp, r, err := apiClient.Groups.GetGroup(context.Background(), groupId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.GetGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Groups.GetGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetGroup`: Group
-	fmt.Fprintf(os.Stdout, "Response from `GroupsAPI.GetGroup`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Groups.GetGroup`: %v\n", resp)
 }
 ```
 
@@ -243,13 +243,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GroupsAPI.GetGroups(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Execute()
+	resp, r, err := apiClient.Groups.GetGroups(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.GetGroups``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Groups.GetGroups``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetGroups`: GroupCollection
-	fmt.Fprintf(os.Stdout, "Response from `GroupsAPI.GetGroups`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Groups.GetGroups`: %v\n", resp)
 }
 ```
 
@@ -314,13 +314,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.GroupsAPI.UpdateGroup(context.Background(), groupId).Group(group).IfUnmodifiedSince(ifUnmodifiedSince).Execute()
+	resp, r, err := apiClient.Groups.UpdateGroup(context.Background(), groupId).Group(group).IfUnmodifiedSince(ifUnmodifiedSince).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GroupsAPI.UpdateGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Groups.UpdateGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `UpdateGroup`: Group
-	fmt.Fprintf(os.Stdout, "Response from `GroupsAPI.UpdateGroup`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Groups.UpdateGroup`: %v\n", resp)
 }
 ```
 

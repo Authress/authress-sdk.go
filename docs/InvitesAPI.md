@@ -1,13 +1,13 @@
-# \InvitesAPI
+#Invites
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateInvite**](InvitesAPI.md#CreateInvite) | **Post** /v1/invites | Create user invite
-[**DeleteInvite**](InvitesAPI.md#DeleteInvite) | **Delete** /v1/invites/{inviteId} | Delete invite
-[**GetInvite**](InvitesAPI.md#GetInvite) | **Get** /v1/invites/{inviteId} | Retrieve invite
-[**RespondToInvite**](InvitesAPI.md#RespondToInvite) | **Patch** /v1/invites/{inviteId} | Accept invite
+[**CreateInvite**](Invites.md#CreateInvite) | **Post** /v1/invites | Create user invite
+[**DeleteInvite**](Invites.md#DeleteInvite) | **Delete** /v1/invites/{inviteId} | Delete invite
+[**GetInvite**](Invites.md#GetInvite) | **Get** /v1/invites/{inviteId} | Retrieve invite
+[**RespondToInvite**](Invites.md#RespondToInvite) | **Patch** /v1/invites/{inviteId} | Accept invite
 
 
 
@@ -36,13 +36,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.InvitesAPI.CreateInvite(context.Background()).Invite(invite).Execute()
+	resp, r, err := apiClient.Invites.CreateInvite(context.Background()).Invite(invite).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `InvitesAPI.CreateInvite``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Invites.CreateInvite``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `CreateInvite`: Invite
-	fmt.Fprintf(os.Stdout, "Response from `InvitesAPI.CreateInvite`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Invites.CreateInvite`: %v\n", resp)
 }
 ```
 
@@ -102,9 +102,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.InvitesAPI.DeleteInvite(context.Background(), inviteId).Execute()
+	r, err := apiClient.Invites.DeleteInvite(context.Background(), inviteId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `InvitesAPI.DeleteInvite``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Invites.DeleteInvite``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -170,13 +170,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.InvitesAPI.GetInvite(context.Background(), inviteId).Execute()
+	resp, r, err := apiClient.Invites.GetInvite(context.Background(), inviteId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `InvitesAPI.GetInvite``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Invites.GetInvite``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetInvite`: Invite
-	fmt.Fprintf(os.Stdout, "Response from `InvitesAPI.GetInvite`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Invites.GetInvite`: %v\n", resp)
 }
 ```
 
@@ -240,13 +240,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.InvitesAPI.RespondToInvite(context.Background(), inviteId).Execute()
+	resp, r, err := apiClient.Invites.RespondToInvite(context.Background(), inviteId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `InvitesAPI.RespondToInvite``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Invites.RespondToInvite``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `RespondToInvite`: Account
-	fmt.Fprintf(os.Stdout, "Response from `InvitesAPI.RespondToInvite`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Invites.RespondToInvite`: %v\n", resp)
 }
 ```
 

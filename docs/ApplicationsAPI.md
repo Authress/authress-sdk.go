@@ -1,10 +1,10 @@
-# \ApplicationsAPI
+#Applications
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DelegateUserLogin**](ApplicationsAPI.md#DelegateUserLogin) | **Post** /v1/applications/{applicationId}/users/{userId}/delegation | Log user into third-party application
+[**DelegateUserLogin**](Applications.md#DelegateUserLogin) | **Post** /v1/applications/{applicationId}/users/{userId}/delegation | Log user into third-party application
 
 
 
@@ -34,13 +34,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationsAPI.DelegateUserLogin(context.Background(), applicationId, userId).Execute()
+	resp, r, err := apiClient.Applications.DelegateUserLogin(context.Background(), applicationId, userId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsAPI.DelegateUserLogin``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Applications.DelegateUserLogin``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `DelegateUserLogin`: ApplicationDelegation
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationsAPI.DelegateUserLogin`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Applications.DelegateUserLogin`: %v\n", resp)
 }
 ```
 

@@ -1,12 +1,12 @@
-# \UsersAPI
+#Users
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**DeleteUser**](UsersAPI.md#DeleteUser) | **Delete** /v1/users/{userId} | Delete a user
-[**GetUser**](UsersAPI.md#GetUser) | **Get** /v1/users/{userId} | Retrieve a user
-[**GetUsers**](UsersAPI.md#GetUsers) | **Get** /v1/users | List users
+[**DeleteUser**](Users.md#DeleteUser) | **Delete** /v1/users/{userId} | Delete a user
+[**GetUser**](Users.md#GetUser) | **Get** /v1/users/{userId} | Retrieve a user
+[**GetUsers**](Users.md#GetUsers) | **Get** /v1/users | List users
 
 
 
@@ -35,9 +35,9 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.UsersAPI.DeleteUser(context.Background(), userId).Execute()
+	r, err := apiClient.Users.DeleteUser(context.Background(), userId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.DeleteUser``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Users.DeleteUser``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -103,13 +103,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UsersAPI.GetUser(context.Background(), userId).Execute()
+	resp, r, err := apiClient.Users.GetUser(context.Background(), userId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.GetUser``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Users.GetUser``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetUser`: UserIdentity
-	fmt.Fprintf(os.Stdout, "Response from `UsersAPI.GetUser`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Users.GetUser`: %v\n", resp)
 }
 ```
 
@@ -176,13 +176,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.UsersAPI.GetUsers(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).TenantId(tenantId).Execute()
+	resp, r, err := apiClient.Users.GetUsers(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).TenantId(tenantId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `UsersAPI.GetUsers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `Users.GetUsers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetUsers`: UserIdentityCollection
-	fmt.Fprintf(os.Stdout, "Response from `UsersAPI.GetUsers`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `Users.GetUsers`: %v\n", resp)
 }
 ```
 

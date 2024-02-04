@@ -1,7 +1,7 @@
 /*
 Authress
 
-Testing TenantsAPIService
+Testing TenantsApi
 
 */
 
@@ -10,50 +10,24 @@ Testing TenantsAPIService
 package authress
 
 import (
+	openapiclient "//"
 	"context"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "//"
 )
 
-func Test_authress_TenantsAPIService(t *testing.T) {
+func Test_authress_TenantsApi(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test TenantsAPIService CreateTenant", func(t *testing.T) {
+	t.Run("Test TenantsApi CreateTenant", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.TenantsAPI.CreateTenant(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test TenantsAPIService DeleteTenant", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var tenantId TenantId
-
-		httpRes, err := apiClient.TenantsAPI.DeleteTenant(context.Background(), tenantId).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test TenantsAPIService GetTenant", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var tenantId TenantId
-
-		resp, httpRes, err := apiClient.TenantsAPI.GetTenant(context.Background(), tenantId).Execute()
+		resp, httpRes, err := apiClient.Tenants.CreateTenant(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -61,11 +35,26 @@ func Test_authress_TenantsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TenantsAPIService GetTenants", func(t *testing.T) {
+	t.Run("Test TenantsApi DeleteTenant", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.TenantsAPI.GetTenants(context.Background()).Execute()
+		var tenantId TenantId
+
+		httpRes, err := apiClient.Tenants.DeleteTenant(context.Background(), tenantId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TenantsApi GetTenant", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var tenantId TenantId
+
+		resp, httpRes, err := apiClient.Tenants.GetTenant(context.Background(), tenantId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -73,13 +62,25 @@ func Test_authress_TenantsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TenantsAPIService UpdateTenant", func(t *testing.T) {
+	t.Run("Test TenantsApi GetTenants", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.Tenants.GetTenants(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TenantsApi UpdateTenant", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
 
 		var tenantId TenantId
 
-		resp, httpRes, err := apiClient.TenantsAPI.UpdateTenant(context.Background(), tenantId).Execute()
+		resp, httpRes, err := apiClient.Tenants.UpdateTenant(context.Background(), tenantId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

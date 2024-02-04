@@ -1,7 +1,7 @@
 /*
 Authress
 
-Testing RolesAPIService
+Testing RolesApi
 
 */
 
@@ -10,50 +10,24 @@ Testing RolesAPIService
 package authress
 
 import (
+	openapiclient "//"
 	"context"
+	"testing"
+
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "//"
 )
 
-func Test_authress_RolesAPIService(t *testing.T) {
+func Test_authress_RolesApi(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test RolesAPIService CreateRole", func(t *testing.T) {
+	t.Run("Test RolesApi CreateRole", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RolesAPI.CreateRole(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RolesAPIService DeleteRole", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var roleId string
-
-		httpRes, err := apiClient.RolesAPI.DeleteRole(context.Background(), roleId).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test RolesAPIService GetRole", func(t *testing.T) {
-
-		t.Skip("skip test")  // remove to run test
-
-		var roleId string
-
-		resp, httpRes, err := apiClient.RolesAPI.GetRole(context.Background(), roleId).Execute()
+		resp, httpRes, err := apiClient.Roles.CreateRole(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -61,11 +35,26 @@ func Test_authress_RolesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RolesAPIService GetRoles", func(t *testing.T) {
+	t.Run("Test RolesApi DeleteRole", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.RolesAPI.GetRoles(context.Background()).Execute()
+		var roleId string
+
+		httpRes, err := apiClient.Roles.DeleteRole(context.Background(), roleId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RolesApi GetRole", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var roleId string
+
+		resp, httpRes, err := apiClient.Roles.GetRole(context.Background(), roleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -73,13 +62,25 @@ func Test_authress_RolesAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test RolesAPIService UpdateRole", func(t *testing.T) {
+	t.Run("Test RolesApi GetRoles", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.Roles.GetRoles(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test RolesApi UpdateRole", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
 
 		var roleId string
 
-		resp, httpRes, err := apiClient.RolesAPI.UpdateRole(context.Background(), roleId).Execute()
+		resp, httpRes, err := apiClient.Roles.UpdateRole(context.Background(), roleId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
