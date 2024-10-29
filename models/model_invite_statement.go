@@ -32,7 +32,7 @@ type _InviteStatement InviteStatement
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatement(roles []string, resources []Resource) *InviteStatement {
+func NewInviteStatement(roles []string, resources []Resource) *InviteStatement {
 	this := InviteStatement{}
 	this.Roles = roles
 	this.Resources = resources
