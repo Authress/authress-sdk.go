@@ -17,8 +17,8 @@ type Invite struct {
 	InviteId string    `json:"inviteId"`
 	TenantId *TenantId `json:"tenantId,omitempty"`
 	// A list of statements which match roles to resources. The invited user will all statements apply to them when the invite is accepted.
-	Statements []Statement   `json:"statements"`
-	Links      *AccountLinks `json:"links,omitempty"`
+	Statements []InviteStatement `json:"statements"`
+	Links *AccountLinks `json:"links,omitempty"`
 }
 
 type _Invite Invite
@@ -27,7 +27,7 @@ type _Invite Invite
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInvite(inviteId string, statements []Statement) *Invite {
+func NewInvite(inviteId string, statements []InviteStatement) *Invite {
 	this := Invite{}
 	this.InviteId = inviteId
 	this.Statements = statements
@@ -99,9 +99,9 @@ func (o *Invite) SetTenantId(v TenantId) {
 }
 
 // GetStatements returns the Statements field value
-func (o *Invite) GetStatements() []Statement {
+func (o *Invite) GetStatements() []InviteStatement {
 	if o == nil {
-		var ret []Statement
+		var ret []InviteStatement
 		return ret
 	}
 
@@ -110,7 +110,7 @@ func (o *Invite) GetStatements() []Statement {
 
 // GetStatementsOk returns a tuple with the Statements field value
 // and a boolean to check if the value has been set.
-func (o *Invite) GetStatementsOk() ([]Statement, bool) {
+func (o *Invite) GetStatementsOk() ([]InviteStatement, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -118,7 +118,7 @@ func (o *Invite) GetStatementsOk() ([]Statement, bool) {
 }
 
 // SetStatements sets field value
-func (o *Invite) SetStatements(v []Statement) {
+func (o *Invite) SetStatements(v []InviteStatement) {
 	o.Statements = v
 }
 
