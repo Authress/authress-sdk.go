@@ -353,7 +353,7 @@ type ApiRespondToInviteRequest struct {
 	inviteId       string
 }
 
-func (r ApiRespondToInviteRequest) Execute() (*Account, *http.Response, error) {
+func (r ApiRespondToInviteRequest) Execute() (*http.Response, error) {
 	return r.ThisApiHandler.RespondToInviteExecute(r)
 }
 
@@ -375,19 +375,16 @@ func (a *InvitesApi) RespondToInvite(ctx context.Context, inviteId string) ApiRe
 }
 
 // Execute executes the request
-//
-//	@return Account
-func (a *InvitesApi) RespondToInviteExecute(r ApiRespondToInviteRequest) (*Account, *http.Response, error) {
+func (a *InvitesApi) RespondToInviteExecute(r ApiRespondToInviteRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPatch
 		localVarPostBody    interface{}
 		formFiles           []FormFile
-		localVarReturnValue *Account
 	)
 
 	localBasePath, err := a.Client.ClientConfiguration.ServerURLWithContext(r.ctx, "InvitesApi.RespondToInvite")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/v1/invites/{inviteId}"
@@ -397,10 +394,10 @@ func (a *InvitesApi) RespondToInviteExecute(r ApiRespondToInviteRequest) (*Accou
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 	if strlen(r.inviteId) < 1 {
-		return localVarReturnValue, nil, reportError("inviteId must have at least 1 elements")
+		return nil, reportError("inviteId must have at least 1 elements")
 	}
 	if strlen(r.inviteId) > 256 {
-		return localVarReturnValue, nil, reportError("inviteId must have less than 256 elements")
+		return nil, reportError("inviteId must have less than 256 elements")
 	}
 
 	// to determine the Content-Type header
@@ -422,19 +419,19 @@ func (a *InvitesApi) RespondToInviteExecute(r ApiRespondToInviteRequest) (*Accou
 	}
 	req, err := a.Client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.Client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -442,17 +439,17 @@ func (a *InvitesApi) RespondToInviteExecute(r ApiRespondToInviteRequest) (*Accou
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.Client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	err = a.Client.decode(&localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 	if err != nil {
 		newErr := &GenericOpenAPIError{
 			body:  localVarBody,
 			error: err.Error(),
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
