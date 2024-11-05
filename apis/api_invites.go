@@ -442,14 +442,5 @@ func (a *InvitesApi) RespondToInviteExecute(r ApiRespondToInviteRequest) (*http.
 		return localVarHTTPResponse, newErr
 	}
 
-	err = a.Client.decode(&localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarHTTPResponse, newErr
-	}
-
 	return localVarHTTPResponse, nil
 }
