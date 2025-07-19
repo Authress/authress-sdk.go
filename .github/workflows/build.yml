@@ -47,7 +47,7 @@ jobs:
           git push origin $VERSION
 
           # Force the GOPROXY to update the cache
-          GOPROXY=proxy.golang.org go list -m authress/authress-sdk.go@${VERSION}
+          GOPROXY=proxy.golang.org; go list -m github.com/authress/authress-sdk.go@${VERSION}
       
       # - name: Publish SDK
       #   if: github.repository_owner == 'Authress' && github.ref != 'refs/heads/main' && github.event_name == 'push'
