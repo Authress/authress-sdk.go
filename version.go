@@ -6,6 +6,6 @@ type BuildInfo struct {
 
 func GetBuildInfo() BuildInfo {
 	return BuildInfo{
-		Version: "0.0.0",
+		Version: "0.9",
 	}
 }
