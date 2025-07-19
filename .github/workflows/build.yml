@@ -41,6 +41,7 @@ jobs:
           # We need to commit the changes in the version to the version.go or else the published version won't contain this change.
           git config --global user.email "github-actions@rhosys.github.com"
           git config --global user.name "GitHub Action Runner"
+          git add version.go
           git commit -m"Creating version ${VERSION}"
           git tag $VERSION
           git push origin $VERSION
