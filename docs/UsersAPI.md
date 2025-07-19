@@ -35,7 +35,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	r, err := apiClient.Users.DeleteUser(context.Background(), userId).Execute()
+	r, err := authressClient.Users.DeleteUser(context.Background(), userId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Users.DeleteUser``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -101,7 +101,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Users.GetUser(context.Background(), userId).Execute()
+	resp, r, err := authressClient.Users.GetUser(context.Background(), userId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Users.GetUser``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -172,7 +172,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Users.GetUsers(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).TenantId(tenantId).Execute()
+	resp, r, err := authressClient.Users.GetUsers(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).TenantId(tenantId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Users.GetUsers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

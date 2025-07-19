@@ -36,7 +36,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Invites.CreateInvite(context.Background()).Invite(invite).Execute()
+	resp, r, err := authressClient.Invites.CreateInvite(context.Background()).Invite(invite).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Invites.CreateInvite``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -100,7 +100,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	r, err := apiClient.Invites.DeleteInvite(context.Background(), inviteId).Execute()
+	r, err := authressClient.Invites.DeleteInvite(context.Background(), inviteId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Invites.DeleteInvite``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -166,7 +166,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Invites.GetInvite(context.Background(), inviteId).Execute()
+	resp, r, err := authressClient.Invites.GetInvite(context.Background(), inviteId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Invites.GetInvite``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -234,7 +234,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Invites.RespondToInvite(context.Background(), inviteId).Execute()
+	resp, r, err := authressClient.Invites.RespondToInvite(context.Background(), inviteId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Invites.RespondToInvite``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

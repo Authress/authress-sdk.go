@@ -36,7 +36,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	r, err := apiClient.Accounts.DelegateAuthentication(context.Background()).IdentityRequest(identityRequest).Execute()
+	r, err := authressClient.Accounts.DelegateAuthentication(context.Background()).IdentityRequest(identityRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.DelegateAuthentication``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -98,7 +98,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Accounts.GetAccount(context.Background(), accountId).Execute()
+	resp, r, err := authressClient.Accounts.GetAccount(context.Background(), accountId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.GetAccount``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -165,7 +165,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Accounts.GetAccountIdentities(context.Background()).Execute()
+	resp, r, err := authressClient.Accounts.GetAccountIdentities(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.GetAccountIdentities``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -226,7 +226,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Accounts.GetAccounts(context.Background()).EarliestCacheTime(earliestCacheTime).Execute()
+	resp, r, err := authressClient.Accounts.GetAccounts(context.Background()).EarliestCacheTime(earliestCacheTime).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Accounts.GetAccounts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

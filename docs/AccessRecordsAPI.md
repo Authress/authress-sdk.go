@@ -43,7 +43,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.AccessRecords.CreateClaim(context.Background()).ClaimRequest(claimRequest).Execute()
+	resp, r, err := authressClient.AccessRecords.CreateClaim(context.Background()).ClaimRequest(claimRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.CreateClaim``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -107,7 +107,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.AccessRecords.CreateRecord(context.Background()).AccessRecord(accessRecord).Execute()
+	resp, r, err := authressClient.AccessRecords.CreateRecord(context.Background()).AccessRecord(accessRecord).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.CreateRecord``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -171,7 +171,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.AccessRecords.CreateRequest(context.Background()).AccessRequest(accessRequest).Execute()
+	resp, r, err := authressClient.AccessRecords.CreateRequest(context.Background()).AccessRequest(accessRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.CreateRequest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -235,7 +235,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	r, err := apiClient.AccessRecords.DeleteRecord(context.Background(), recordId).Execute()
+	r, err := authressClient.AccessRecords.DeleteRecord(context.Background(), recordId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.DeleteRecord``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -301,7 +301,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	r, err := apiClient.AccessRecords.DeleteRequest(context.Background(), requestId).Execute()
+	r, err := authressClient.AccessRecords.DeleteRequest(context.Background(), requestId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.DeleteRequest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -367,7 +367,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.AccessRecords.GetRecord(context.Background(), recordId).Execute()
+	resp, r, err := authressClient.AccessRecords.GetRecord(context.Background(), recordId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRecord``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -438,7 +438,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.AccessRecords.GetRecords(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Status(status).Execute()
+	resp, r, err := authressClient.AccessRecords.GetRecords(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Status(status).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRecords``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -505,7 +505,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.AccessRecords.GetRequest(context.Background(), requestId).Execute()
+	resp, r, err := authressClient.AccessRecords.GetRequest(context.Background(), requestId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRequest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -575,7 +575,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.AccessRecords.GetRequests(context.Background()).Limit(limit).Cursor(cursor).Status(status).Execute()
+	resp, r, err := authressClient.AccessRecords.GetRequests(context.Background()).Limit(limit).Cursor(cursor).Status(status).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.GetRequests``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -642,7 +642,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.AccessRecords.RespondToAccessRequest(context.Background(), requestId).AccessRequestResponse(accessRequestResponse).Execute()
+	resp, r, err := authressClient.AccessRecords.RespondToAccessRequest(context.Background(), requestId).AccessRequestResponse(accessRequestResponse).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.RespondToAccessRequest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -714,7 +714,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	r, err := apiClient.AccessRecords.UpdateRecord(context.Background(), recordId).AccessRecord(accessRecord).IfUnmodifiedSince(ifUnmodifiedSince).Execute()
+	r, err := authressClient.AccessRecords.UpdateRecord(context.Background(), recordId).AccessRecord(accessRecord).IfUnmodifiedSince(ifUnmodifiedSince).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AccessRecords.UpdateRecord``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

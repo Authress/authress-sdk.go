@@ -36,7 +36,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.ResourcePermissions.GetPermissionedResource(context.Background(), resourceUri).Execute()
+	resp, r, err := authressClient.ResourcePermissions.GetPermissionedResource(context.Background(), resourceUri).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.GetPermissionedResource``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -103,7 +103,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.ResourcePermissions.GetPermissionedResources(context.Background()).Execute()
+	resp, r, err := authressClient.ResourcePermissions.GetPermissionedResources(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.GetPermissionedResources``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -165,7 +165,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.ResourcePermissions.GetResourceUsers(context.Background(), resourceUri).Limit(limit).Cursor(cursor).Execute()
+	resp, r, err := authressClient.ResourcePermissions.GetResourceUsers(context.Background(), resourceUri).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.GetResourceUsers``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -236,7 +236,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	r, err := apiClient.ResourcePermissions.UpdatePermissionedResource(context.Background(), resourceUri).PermissionedResource(permissionedResource).Execute()
+	r, err := authressClient.ResourcePermissions.UpdatePermissionedResource(context.Background(), resourceUri).PermissionedResource(permissionedResource).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ResourcePermissions.UpdatePermissionedResource``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

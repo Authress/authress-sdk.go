@@ -40,7 +40,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Extensions.CreateExtension(context.Background()).Extension(extension).Execute()
+	resp, r, err := authressClient.Extensions.CreateExtension(context.Background()).Extension(extension).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.CreateExtension``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -104,7 +104,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	r, err := apiClient.Extensions.DeleteExtension(context.Background(), extensionId).Execute()
+	r, err := authressClient.Extensions.DeleteExtension(context.Background(), extensionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.DeleteExtension``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -170,7 +170,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Extensions.GetExtension(context.Background(), extensionId).Execute()
+	resp, r, err := authressClient.Extensions.GetExtension(context.Background(), extensionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.GetExtension``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -239,7 +239,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Extensions.GetExtensions(context.Background()).Limit(limit).Cursor(cursor).Execute()
+	resp, r, err := authressClient.Extensions.GetExtensions(context.Background()).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.GetExtensions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -307,7 +307,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Extensions.Login(context.Background()).ClientId(clientId).CodeChallenge(codeChallenge).RedirectUri(redirectUri).CodeChallengeMethod(codeChallengeMethod).Execute()
+	resp, r, err := authressClient.Extensions.Login(context.Background()).ClientId(clientId).CodeChallenge(codeChallenge).RedirectUri(redirectUri).CodeChallengeMethod(codeChallengeMethod).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.Login``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -378,7 +378,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Extensions.RequestToken(context.Background()).OAuthTokenRequest(oAuthTokenRequest).Execute()
+	resp, r, err := authressClient.Extensions.RequestToken(context.Background()).OAuthTokenRequest(oAuthTokenRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.RequestToken``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -448,7 +448,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Extensions.UpdateExtension(context.Background(), extensionId).Extension(extension).Execute()
+	resp, r, err := authressClient.Extensions.UpdateExtension(context.Background(), extensionId).Extension(extension).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Extensions.UpdateExtension``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

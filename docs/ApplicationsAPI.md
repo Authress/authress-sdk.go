@@ -34,7 +34,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Applications.DelegateUserLogin(context.Background(), applicationId, userId).Execute()
+	resp, r, err := authressClient.Applications.DelegateUserLogin(context.Background(), applicationId, userId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Applications.DelegateUserLogin``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

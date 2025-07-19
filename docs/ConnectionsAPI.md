@@ -38,7 +38,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Connections.CreateConnection(context.Background()).Connection(connection).Execute()
+	resp, r, err := authressClient.Connections.CreateConnection(context.Background()).Connection(connection).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.CreateConnection``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -102,7 +102,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	r, err := apiClient.Connections.DeleteConnection(context.Background(), connectionId).Execute()
+	r, err := authressClient.Connections.DeleteConnection(context.Background(), connectionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.DeleteConnection``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -168,7 +168,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Connections.GetConnection(context.Background(), connectionId).Execute()
+	resp, r, err := authressClient.Connections.GetConnection(context.Background(), connectionId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.GetConnection``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -237,7 +237,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Connections.GetConnectionCredentials(context.Background(), connectionId, userId).Execute()
+	resp, r, err := authressClient.Connections.GetConnectionCredentials(context.Background(), connectionId, userId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.GetConnectionCredentials``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -306,7 +306,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Connections.GetConnections(context.Background()).Execute()
+	resp, r, err := authressClient.Connections.GetConnections(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.GetConnections``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -367,7 +367,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Connections.UpdateConnection(context.Background(), connectionId).Connection(connection).Execute()
+	resp, r, err := authressClient.Connections.UpdateConnection(context.Background(), connectionId).Connection(connection).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Connections.UpdateConnection``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

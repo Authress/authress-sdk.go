@@ -37,7 +37,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Groups.CreateGroup(context.Background()).Group(group).Execute()
+	resp, r, err := authressClient.Groups.CreateGroup(context.Background()).Group(group).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.CreateGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -101,7 +101,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	r, err := apiClient.Groups.DeleteGroup(context.Background(), groupId).Execute()
+	r, err := authressClient.Groups.DeleteGroup(context.Background(), groupId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.DeleteGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -167,7 +167,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Groups.GetGroup(context.Background(), groupId).Execute()
+	resp, r, err := authressClient.Groups.GetGroup(context.Background(), groupId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.GetGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -237,7 +237,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Groups.GetGroups(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Execute()
+	resp, r, err := authressClient.Groups.GetGroups(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.GetGroups``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -306,7 +306,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Groups.UpdateGroup(context.Background(), groupId).Group(group).IfUnmodifiedSince(ifUnmodifiedSince).Execute()
+	resp, r, err := authressClient.Groups.UpdateGroup(context.Background(), groupId).Group(group).IfUnmodifiedSince(ifUnmodifiedSince).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Groups.UpdateGroup``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

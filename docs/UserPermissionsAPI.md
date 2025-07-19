@@ -38,7 +38,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	r, err := apiClient.UserPermissions.AuthorizeUser(context.Background(), userId, resourceUri, permission).Execute()
+	r, err := authressClient.UserPermissions.AuthorizeUser(context.Background(), userId, resourceUri, permission).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.AuthorizeUser``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -109,7 +109,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.UserPermissions.GetUserPermissionsForResource(context.Background(), userId, resourceUri).Execute()
+	resp, r, err := authressClient.UserPermissions.GetUserPermissionsForResource(context.Background(), userId, resourceUri).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.GetUserPermissionsForResource``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -184,7 +184,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.UserPermissions.GetUserResources(context.Background(), userId).ResourceUri(resourceUri).CollectionConfiguration(collectionConfiguration).Permissions(permissions).Limit(limit).Cursor(cursor).Execute()
+	resp, r, err := authressClient.UserPermissions.GetUserResources(context.Background(), userId).ResourceUri(resourceUri).CollectionConfiguration(collectionConfiguration).Permissions(permissions).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.GetUserResources``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -258,7 +258,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.UserPermissions.GetUserRolesForResource(context.Background(), userId, resourceUri).Execute()
+	resp, r, err := authressClient.UserPermissions.GetUserRolesForResource(context.Background(), userId, resourceUri).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `UserPermissions.GetUserRolesForResource``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

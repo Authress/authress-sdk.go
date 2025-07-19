@@ -37,7 +37,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Tenants.CreateTenant(context.Background()).Tenant(tenant).Execute()
+	resp, r, err := authressClient.Tenants.CreateTenant(context.Background()).Tenant(tenant).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.CreateTenant``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -101,7 +101,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	r, err := apiClient.Tenants.DeleteTenant(context.Background(), tenantId).Execute()
+	r, err := authressClient.Tenants.DeleteTenant(context.Background(), tenantId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.DeleteTenant``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -167,7 +167,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Tenants.GetTenant(context.Background(), tenantId).Execute()
+	resp, r, err := authressClient.Tenants.GetTenant(context.Background(), tenantId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.GetTenant``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -234,7 +234,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Tenants.GetTenants(context.Background()).Execute()
+	resp, r, err := authressClient.Tenants.GetTenants(context.Background()).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.GetTenants``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -295,7 +295,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.Tenants.UpdateTenant(context.Background(), tenantId).Tenant(tenant).Execute()
+	resp, r, err := authressClient.Tenants.UpdateTenant(context.Background(), tenantId).Tenant(tenant).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `Tenants.UpdateTenant``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

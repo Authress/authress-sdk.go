@@ -40,7 +40,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.ServiceClients.CreateClient(context.Background()).Client(client).Execute()
+	resp, r, err := authressClient.ServiceClients.CreateClient(context.Background()).Client(client).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.CreateClient``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -105,7 +105,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	r, err := apiClient.ServiceClients.DeleteAccessKey(context.Background(), clientId, keyId).Execute()
+	r, err := authressClient.ServiceClients.DeleteAccessKey(context.Background(), clientId, keyId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.DeleteAccessKey``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -173,7 +173,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	r, err := apiClient.ServiceClients.DeleteClient(context.Background(), clientId).Execute()
+	r, err := authressClient.ServiceClients.DeleteClient(context.Background(), clientId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.DeleteClient``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -239,7 +239,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.ServiceClients.GetClient(context.Background(), clientId).Execute()
+	resp, r, err := authressClient.ServiceClients.GetClient(context.Background(), clientId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.GetClient``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -308,7 +308,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.ServiceClients.GetClients(context.Background()).Limit(limit).Cursor(cursor).Execute()
+	resp, r, err := authressClient.ServiceClients.GetClients(context.Background()).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.GetClients``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -373,7 +373,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.ServiceClients.RequestAccessKey(context.Background(), clientId).Execute()
+	resp, r, err := authressClient.ServiceClients.RequestAccessKey(context.Background(), clientId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.RequestAccessKey``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -443,7 +443,7 @@ func main() {
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
 		AuthressApiUrl: url,
 	})
-	resp, r, err := apiClient.ServiceClients.UpdateClient(context.Background(), clientId).Client(client).Execute()
+	resp, r, err := authressClient.ServiceClients.UpdateClient(context.Background(), clientId).Client(client).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ServiceClients.UpdateClient``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
