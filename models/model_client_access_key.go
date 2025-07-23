@@ -266,7 +266,6 @@ func (o *ClientAccessKey) UnmarshalJSON(data []byte) (err error) {
 	varClientAccessKey := _ClientAccessKey{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varClientAccessKey)
 
 	if err != nil {

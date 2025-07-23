@@ -164,7 +164,6 @@ func (o *ClientCollection) UnmarshalJSON(data []byte) (err error) {
 	varClientCollection := _ClientCollection{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varClientCollection)
 
 	if err != nil {

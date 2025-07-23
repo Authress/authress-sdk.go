@@ -233,7 +233,7 @@ import (
 
 func main() {
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to validate, must be URL encoded, uri segments are allowed.
-	permissionedResource := *authress.NewPermissionedResource([]authress.ResourcePermission{*authress.NewResourcePermission("Action_example", false)}) // PermissionedResource | The contents of the permission to set on the resource. Overwrites existing data.
+	permissionedResource := *models.NewPermissionedResource([]authress.ResourcePermission{*authress.NewResourcePermission("Action_example", false)}) // PermissionedResource | The contents of the permission to set on the resource. Overwrites existing data.
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{

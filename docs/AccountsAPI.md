@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	identityRequest := *authress.NewIdentityRequest() // IdentityRequest | 
+	identityRequest := *models.NewIdentityRequest() // IdentityRequest | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{

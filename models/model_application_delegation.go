@@ -100,7 +100,6 @@ func (o *ApplicationDelegation) UnmarshalJSON(data []byte) (err error) {
 	varApplicationDelegation := _ApplicationDelegation{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varApplicationDelegation)
 
 	if err != nil {

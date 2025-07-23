@@ -173,7 +173,6 @@ func (o *ExtensionApplication) UnmarshalJSON(data []byte) (err error) {
 	varExtensionApplication := _ExtensionApplication{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varExtensionApplication)
 
 	if err != nil {

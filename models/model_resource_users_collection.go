@@ -164,7 +164,6 @@ func (o *ResourceUsersCollection) UnmarshalJSON(data []byte) (err error) {
 	varResourceUsersCollection := _ResourceUsersCollection{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varResourceUsersCollection)
 
 	if err != nil {

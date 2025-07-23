@@ -11,3 +11,6 @@ test:
 
 integration:
 	ENV=test go test -count=1 -parallel=4 -timeout 10m -v ./...
+
+run-one-integration:
+	ENV=test go test -count=1 -parallel=4 -timeout 10m -run "Test_authress_UsersApi" -v ./...

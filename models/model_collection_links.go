@@ -148,7 +148,6 @@ func (o *CollectionLinks) UnmarshalJSON(data []byte) (err error) {
 	varCollectionLinks := _CollectionLinks{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varCollectionLinks)
 
 	if err != nil {

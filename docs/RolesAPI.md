@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-	role := *authress.NewRole("Name_example", []authress.PermissionObject{*authress.NewPermissionObject("documents:read", false, false, false)}) // Role | 
+	role := *models.NewRole("Name_example", []authress.PermissionObject{*authress.NewPermissionObject("documents:read", false, false, false)}) // Role | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
@@ -302,7 +302,7 @@ import (
 
 func main() {
 	roleId := "roleId_example" // string | The identifier of the role.
-	role := *authress.NewRole("Name_example", []authress.PermissionObject{*authress.NewPermissionObject("documents:read", false, false, false)}) // Role | 
+	role := *models.NewRole("Name_example", []authress.PermissionObject{*authress.NewPermissionObject("documents:read", false, false, false)}) // Role | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{

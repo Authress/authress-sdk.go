@@ -164,7 +164,6 @@ func (o *UserIdentityCollection) UnmarshalJSON(data []byte) (err error) {
 	varUserIdentityCollection := _UserIdentityCollection{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varUserIdentityCollection)
 
 	if err != nil {

@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	client := *authress.NewClient("ClientId_example", time.Now()) // Client | 
+	client := *models.NewClient("ClientId_example", time.Now()) // Client | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
@@ -443,7 +443,7 @@ import (
 
 func main() {
 	clientId := "clientId_example" // string | The unique identifier for the client.
-	client := *authress.NewClient("ClientId_example", time.Now()) // Client | 
+	client := *models.NewClient("ClientId_example", time.Now()) // Client | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{

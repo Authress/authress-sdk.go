@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-	tenant := *authress.NewTenant() // Tenant | 
+	tenant := *models.NewTenant() // Tenant | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
@@ -293,7 +293,7 @@ import (
 
 func main() {
 	tenantId := TODO // TenantId | The tenantId.
-	tenant := *authress.NewTenant() // Tenant | 
+	tenant := *models.NewTenant() // Tenant | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{

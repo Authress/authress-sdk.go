@@ -366,7 +366,6 @@ func (o *OAuthTokenRequest) UnmarshalJSON(data []byte) (err error) {
 	varOAuthTokenRequest := _OAuthTokenRequest{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varOAuthTokenRequest)
 
 	if err != nil {

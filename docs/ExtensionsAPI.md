@@ -34,7 +34,7 @@ import (
 )
 
 func main() {
-	extension := *authress.NewExtension("ExtensionId_example", time.Now(), *authress.NewExtensionClient("ClientId_example")) // Extension | 
+	extension := *models.NewExtension("ExtensionId_example", time.Now(), *authress.NewExtensionClient("ClientId_example")) // Extension | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
@@ -377,7 +377,7 @@ import (
 )
 
 func main() {
-	oAuthTokenRequest := *authress.NewOAuthTokenRequest("ClientId_example") // OAuthTokenRequest | The contents of an OAuth token request.
+	oAuthTokenRequest := *models.NewOAuthTokenRequest("ClientId_example") // OAuthTokenRequest | The contents of an OAuth token request.
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
@@ -448,7 +448,7 @@ import (
 
 func main() {
 	extensionId := "extensionId_example" // string | The extension identifier.
-	extension := *authress.NewExtension("ExtensionId_example", time.Now(), *authress.NewExtensionClient("ClientId_example")) // Extension | 
+	extension := *models.NewExtension("ExtensionId_example", time.Now(), *authress.NewExtensionClient("ClientId_example")) // Extension | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{

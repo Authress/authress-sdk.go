@@ -129,7 +129,6 @@ func (o *ClaimRequest) UnmarshalJSON(data []byte) (err error) {
 	varClaimRequest := _ClaimRequest{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varClaimRequest)
 
 	if err != nil {

@@ -135,7 +135,6 @@ func (o *TenantCollection) UnmarshalJSON(data []byte) (err error) {
 	varTenantCollection := _TenantCollection{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varTenantCollection)
 
 	if err != nil {

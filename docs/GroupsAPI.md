@@ -31,7 +31,7 @@ import (
 )
 
 func main() {
-	group := *authress.NewGroup("Name_example", []authress.User{*authress.NewUser("oauth|userId")}, []authress.User{*authress.NewUser("oauth|userId")}) // Group | 
+	group := *models.NewGroup("Name_example", []authress.User{*authress.NewUser("oauth|userId")}, []authress.User{*authress.NewUser("oauth|userId")}) // Group | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
@@ -303,7 +303,7 @@ import (
 
 func main() {
 	groupId := TODO // GroupId | The identifier of the group.
-	group := *authress.NewGroup("Name_example", []authress.User{*authress.NewUser("oauth|userId")}, []authress.User{*authress.NewUser("oauth|userId")}) // Group | 
+	group := *models.NewGroup("Name_example", []authress.User{*authress.NewUser("oauth|userId")}, []authress.User{*authress.NewUser("oauth|userId")}) // Group | 
 	ifUnmodifiedSince := time.Now() // time.Time | The expected last time the group was modified. (optional)
 
 	url, _ := url.Parse("https://auth.yourdomain.com")

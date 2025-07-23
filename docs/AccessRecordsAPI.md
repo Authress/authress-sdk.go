@@ -37,7 +37,7 @@ import (
 )
 
 func main() {
-	claimRequest := *authress.NewClaimRequest("CollectionResource_example", "ResourceId_example") // ClaimRequest | 
+	claimRequest := *models.NewClaimRequest("CollectionResource_example", "ResourceId_example") // ClaimRequest | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
@@ -102,7 +102,7 @@ import (
 )
 
 func main() {
-	accessRecord := *authress.NewAccessRecord("Name_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // AccessRecord | 
+	accessRecord := *models.NewAccessRecord("Name_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // AccessRecord | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
@@ -167,7 +167,7 @@ import (
 )
 
 func main() {
-	accessRequest := *authress.NewAccessRequest("RequestId_example", *authress.NewAccessTemplate([]authress.User{*authress.NewUser("oauth|userId")}, []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})})) // AccessRequest | 
+	accessRequest := *models.NewAccessRequest("RequestId_example", *authress.NewAccessTemplate([]authress.User{*authress.NewUser("oauth|userId")}, []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})})) // AccessRequest | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
@@ -645,7 +645,7 @@ import (
 
 func main() {
 	requestId := "requestId_example" // string | The identifier of the access request.
-	accessRequestResponse := *authress.NewAccessRequestResponse("Status_example") // AccessRequestResponse | 
+	accessRequestResponse := *models.NewAccessRequestResponse("Status_example") // AccessRequestResponse | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
@@ -717,7 +717,7 @@ import (
 
 func main() {
 	recordId := "recordId_example" // string | The identifier of the access record.
-	accessRecord := *authress.NewAccessRecord("Name_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // AccessRecord | 
+	accessRecord := *models.NewAccessRecord("Name_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // AccessRecord | 
 	ifUnmodifiedSince := time.Now() // time.Time | The expected last time the record was modified. (optional)
 
 	url, _ := url.Parse("https://auth.yourdomain.com")

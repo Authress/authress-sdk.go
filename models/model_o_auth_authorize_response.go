@@ -100,7 +100,6 @@ func (o *OAuthAuthorizeResponse) UnmarshalJSON(data []byte) (err error) {
 	varOAuthAuthorizeResponse := _OAuthAuthorizeResponse{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varOAuthAuthorizeResponse)
 
 	if err != nil {

@@ -32,7 +32,7 @@ import (
 )
 
 func main() {
-	connection := *authress.NewConnection() // Connection | 
+	connection := *models.NewConnection() // Connection | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
@@ -366,7 +366,7 @@ import (
 
 func main() {
 	connectionId := "connectionId_example" // string | The connection identifier.
-	connection := *authress.NewConnection() // Connection | 
+	connection := *models.NewConnection() // Connection | 
 
 	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{

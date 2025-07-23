@@ -14,13 +14,13 @@ var _ MappedNullable = &Invite{}
 // Invite The user invite used to invite users to your application or to Authress as an admin.
 type Invite struct {
 	// The unique identifier for the invite. Use this ID to accept the invite. This parameter is ignored during invite creation.
-	InviteId string    `json:"inviteId"`
+	InviteId             string `json:"inviteId"`
 	DefaultLoginTenantId string `json:"string,omitempty"`
 	// Specify a User ID that logging in user should receive when login completes. This ID is used to automatically assign a user ID to the user rather than a dynamically generated Authress User ID when using the Authress Login UI SDK. This parameter is ignored when accepting invites directly. Note: If the user logging in has already signed up, then this parameter is ignored.
 	LinkedUserId string `json:"string,omitempty"`
 	// A list of statements which match roles to resources. The invited user will all statements apply to them when the invite is accepted.
 	Statements []InviteStatement `json:"statements"`
-	Links *AccountLinks `json:"links,omitempty"`
+	Links      *AccountLinks     `json:"links,omitempty"`
 }
 
 type _Invite Invite
@@ -238,7 +238,6 @@ func (o *Invite) UnmarshalJSON(data []byte) (err error) {
 	varInvite := _Invite{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varInvite)
 
 	if err != nil {
