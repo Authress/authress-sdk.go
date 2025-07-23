@@ -32,9 +32,10 @@ import (
 func main() {
 	identityRequest := *authress.NewIdentityRequest() // IdentityRequest | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	r, err := authressClient.Accounts.DelegateAuthentication(context.Background()).IdentityRequest(identityRequest).Execute()
 	if err != nil {
@@ -94,9 +95,10 @@ import (
 func main() {
 	accountId := "accountId_example" // string | The unique identifier for the account
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Accounts.GetAccount(context.Background(), accountId).Execute()
 	if err != nil {
@@ -161,9 +163,10 @@ import (
 
 func main() {
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Accounts.GetAccountIdentities(context.Background()).Execute()
 	if err != nil {
@@ -222,9 +225,10 @@ import (
 func main() {
 	earliestCacheTime := time.Now() // time.Time | Ensure the accounts list is not cached before this time. (optional)
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Accounts.GetAccounts(context.Background()).EarliestCacheTime(earliestCacheTime).Execute()
 	if err != nil {

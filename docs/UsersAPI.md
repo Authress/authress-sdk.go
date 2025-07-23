@@ -31,9 +31,10 @@ import (
 func main() {
 	userId := TODO // UserId | The user identifier.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	r, err := authressClient.Users.DeleteUser(context.Background(), userId).Execute()
 	if err != nil {
@@ -49,7 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userId** | [**UserId**](.md) | The user identifier. | 
+**userId** | **string** | The user identifier. | 
 
 ### Other Parameters
 
@@ -97,9 +98,10 @@ import (
 func main() {
 	userId := TODO // UserId | The user identifier.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Users.GetUser(context.Background(), userId).Execute()
 	if err != nil {
@@ -117,7 +119,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userId** | [**UserId**](.md) | The user identifier. | 
+**userId** | **string** | The user identifier. | 
 
 ### Other Parameters
 
@@ -168,9 +170,10 @@ func main() {
 	filter := "filter_example" // string | Filter to search users by. This is a case insensitive search through every text field. (optional)
 	tenantId := TODO // TenantId | Return only users that are part of the specified tenant. Users can only be part of one tenant, using this parameter will limit returned users that have logged into this tenant. (optional)
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Users.GetUsers(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).TenantId(tenantId).Execute()
 	if err != nil {

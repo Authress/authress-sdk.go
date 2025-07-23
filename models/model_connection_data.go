@@ -11,7 +11,6 @@ var _ MappedNullable = &ConnectionData{}
 
 // ConnectionData struct for ConnectionData
 type ConnectionData struct {
-	TenantId *TenantId `json:"tenantId,omitempty"`
 	// The name of this connection when displayed in the Authress management portal
 	Name NullableString `json:"name,omitempty"`
 	// URL encode OAuth token parameters - Some authentication APIs don't support JSON, in these cases enable the url encoded form data parameters.
@@ -51,38 +50,6 @@ func NewConnectionDataWithDefaults() *ConnectionData {
 	var trustIdentityUserId bool = false
 	this.TrustIdentityUserId = *NewNullableBool(&trustIdentityUserId)
 	return &this
-}
-
-// GetTenantId returns the TenantId field value if set, zero value otherwise.
-func (o *ConnectionData) GetTenantId() TenantId {
-	if o == nil || IsNil(o.TenantId) {
-		var ret TenantId
-		return ret
-	}
-	return *o.TenantId
-}
-
-// GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ConnectionData) GetTenantIdOk() (*TenantId, bool) {
-	if o == nil || IsNil(o.TenantId) {
-		return nil, false
-	}
-	return o.TenantId, true
-}
-
-// HasTenantId returns a boolean if a field has been set.
-func (o *ConnectionData) HasTenantId() bool {
-	if o != nil && !IsNil(o.TenantId) {
-		return true
-	}
-
-	return false
-}
-
-// SetTenantId gets a reference to the given TenantId and assigns it to the TenantId field.
-func (o *ConnectionData) SetTenantId(v TenantId) {
-	o.TenantId = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -310,9 +277,6 @@ func (o ConnectionData) MarshalJSON() ([]byte, error) {
 
 func (o ConnectionData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
-	}
 	if o.Name.IsSet() {
 		toSerialize["name"] = o.Name.Get()
 	}

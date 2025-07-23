@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to **NullableString** | The name of the extension. This name is visible in the Authress management portal | [optional] 
 **CreatedTime** | **time.Time** |  | [readonly] 
 **Application** | Pointer to [**ExtensionApplication**](ExtensionApplication.md) |  | [optional] 
-**Client** | [**ExtensionClient**](ExtensionClient.md) |  | 
+**Client** | [**ExtensionClient**](ExtensionClient.md) |  | [optional]
 **Tags** | Pointer to **map[string]string** | The tags associated with this resource, this property is an map. { key1: value1, key2: value2 } | [optional] 
 
 ## Methods

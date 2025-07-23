@@ -33,9 +33,10 @@ import (
 func main() {
 	role := *authress.NewRole("Name_example", []authress.PermissionObject{*authress.NewPermissionObject("documents:read", false, false, false)}) // Role | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Roles.CreateRole(context.Background()).Role(role).Execute()
 	if err != nil {
@@ -97,9 +98,10 @@ import (
 func main() {
 	roleId := "roleId_example" // string | The identifier of the role.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	r, err := authressClient.Roles.DeleteRole(context.Background(), roleId).Execute()
 	if err != nil {
@@ -163,9 +165,10 @@ import (
 func main() {
 	roleId := "roleId_example" // string | The identifier of the role.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Roles.GetRole(context.Background(), roleId).Execute()
 	if err != nil {
@@ -233,9 +236,10 @@ func main() {
 	cursor := "cursor_example" // string | Continuation cursor for paging. (optional)
 	filter := "filter_example" // string | Filter to search roles by. This is a case insensitive search. (optional)
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Roles.GetRoles(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Execute()
 	if err != nil {
@@ -300,9 +304,10 @@ func main() {
 	roleId := "roleId_example" // string | The identifier of the role.
 	role := *authress.NewRole("Name_example", []authress.PermissionObject{*authress.NewPermissionObject("documents:read", false, false, false)}) // Role | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Roles.UpdateRole(context.Background(), roleId).Role(role).Execute()
 	if err != nil {

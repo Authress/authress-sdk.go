@@ -19,7 +19,7 @@ type Extension struct {
 	Name        NullableString        `json:"name,omitempty"`
 	CreatedTime time.Time             `json:"createdTime"`
 	Application *ExtensionApplication `json:"application,omitempty"`
-	Client      ExtensionClient       `json:"client"`
+	Client      ExtensionClient       `json:"client,omitempty"`
 	// The tags associated with this resource, this property is an map. { key1: value1, key2: value2 }
 	Tags map[string]string `json:"tags,omitempty"`
 }
@@ -30,11 +30,10 @@ type _Extension Extension
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExtension(extensionId string, createdTime time.Time, client ExtensionClient) *Extension {
+func NewExtension(extensionId string, createdTime time.Time) *Extension {
 	this := Extension{}
 	this.ExtensionId = extensionId
 	this.CreatedTime = createdTime
-	this.Client = client
 	return &this
 }
 
@@ -244,7 +243,9 @@ func (o Extension) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Application) {
 		toSerialize["application"] = o.Application
 	}
-	toSerialize["client"] = o.Client
+	if !IsNil(o.Client) {
+		toSerialize["client"] = o.Client
+	}
 	if o.Tags != nil {
 		toSerialize["tags"] = o.Tags
 	}
@@ -258,7 +259,6 @@ func (o *Extension) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"extensionId",
 		"createdTime",
-		"client",
 	}
 
 	allProperties := make(map[string]interface{})

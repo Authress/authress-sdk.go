@@ -22,9 +22,9 @@ import (
 
 func Test_authress_RolesApi(t *testing.T) {
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
 	})
 
 	t.Run("Test RolesApi CreateRole", func(t *testing.T) {

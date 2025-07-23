@@ -33,9 +33,10 @@ import (
 func main() {
 	tenant := *authress.NewTenant() // Tenant | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Tenants.CreateTenant(context.Background()).Tenant(tenant).Execute()
 	if err != nil {
@@ -97,9 +98,10 @@ import (
 func main() {
 	tenantId := TODO // TenantId | The tenantId.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	r, err := authressClient.Tenants.DeleteTenant(context.Background(), tenantId).Execute()
 	if err != nil {
@@ -115,7 +117,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenantId** | [**TenantId**](.md) | The tenantId. | 
+**tenantId** | **string** | The tenantId. | 
 
 ### Other Parameters
 
@@ -163,9 +165,10 @@ import (
 func main() {
 	tenantId := TODO // TenantId | The tenantId.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Tenants.GetTenant(context.Background(), tenantId).Execute()
 	if err != nil {
@@ -183,7 +186,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenantId** | [**TenantId**](.md) | The tenantId. | 
+**tenantId** | **string** | The tenantId. | 
 
 ### Other Parameters
 
@@ -230,9 +233,10 @@ import (
 
 func main() {
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Tenants.GetTenants(context.Background()).Execute()
 	if err != nil {
@@ -291,9 +295,10 @@ func main() {
 	tenantId := TODO // TenantId | The tenantId.
 	tenant := *authress.NewTenant() // Tenant | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Tenants.UpdateTenant(context.Background(), tenantId).Tenant(tenant).Execute()
 	if err != nil {
@@ -311,7 +316,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**tenantId** | [**TenantId**](.md) | The tenantId. | 
+**tenantId** | **string** | The tenantId. | 
 
 ### Other Parameters
 

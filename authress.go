@@ -9,7 +9,7 @@ import (
 // Authress manages communication with the Authress API vv1
 // In most cases there should be only one, shared, Authress.
 type AuthressClient struct {
-	authressSettings *AuthressSettings
+	authressSettings 	*AuthressSettings
 
 	// API Services
 	AccessRecords       *AccessRecordsApi
@@ -32,18 +32,18 @@ func NewAuthressClient(authressSettings AuthressSettings) *AuthressClient {
 	httpClient := HttpClient{
 		InternalClient: http.DefaultClient,
 		ClientConfiguration: &Configuration{
-			Version:   GetBuildInfo().Version,
-			UserAgent: authressSettings.UserAgent,
-			Scheme:    authressSettings.AuthressApiUrl.Scheme,
-			Host:      authressSettings.AuthressApiUrl.Host,
+			Version:   		GetBuildInfo().Version,
+			UserAgent: 		authressSettings.UserAgent,
+			Scheme:    		authressSettings.AuthressApiUrl.Scheme,
+			Host:      		authressSettings.AuthressApiUrl.Host,
+			DefaultHeader:	map[string]string{
+				"Authorization":  ("Bearer " + authressSettings.ServiceClientAccessKey),
+			},
 		},
 	}
 
 	authressClient := AuthressClient{
-		// API Services
-		AccessRecords: &AccessRecordsApi{
-			Client: &httpClient,
-		},
+		AccessRecords:		 &AccessRecordsApi{ Client: &httpClient},
 		Accounts:            &AccountsApi{Client: &httpClient},
 		Applications:        &ApplicationsApi{Client: &httpClient},
 		Connections:         &ConnectionsApi{Client: &httpClient},

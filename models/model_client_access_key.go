@@ -16,8 +16,6 @@ var _ MappedNullable = &ClientAccessKey{}
 type ClientAccessKey struct {
 	// The unique ID of the client.
 	KeyId *string `json:"keyId,omitempty"`
-	// The unique ID of the client.
-	ClientId string `json:"clientId"`
 	// Specify a public key on access key creation to bring your own private key. When left blank, Authress will automatically generate a private and public key pair and then return the private key as part of the request. This property holds the public key.
 	PublicKey      NullableString `json:"publicKey,omitempty"`
 	GenerationDate *time.Time     `json:"generationDate,omitempty"`
@@ -33,9 +31,8 @@ type _ClientAccessKey ClientAccessKey
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClientAccessKey(clientId string) *ClientAccessKey {
+func NewClientAccessKey() *ClientAccessKey {
 	this := ClientAccessKey{}
-	this.ClientId = clientId
 	return &this
 }
 
@@ -77,30 +74,6 @@ func (o *ClientAccessKey) HasKeyId() bool {
 // SetKeyId gets a reference to the given string and assigns it to the KeyId field.
 func (o *ClientAccessKey) SetKeyId(v string) {
 	o.KeyId = &v
-}
-
-// GetClientId returns the ClientId field value
-func (o *ClientAccessKey) GetClientId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ClientId
-}
-
-// GetClientIdOk returns a tuple with the ClientId field value
-// and a boolean to check if the value has been set.
-func (o *ClientAccessKey) GetClientIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ClientId, true
-}
-
-// SetClientId sets field value
-func (o *ClientAccessKey) SetClientId(v string) {
-	o.ClientId = v
 }
 
 // GetPublicKey returns the PublicKey field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -255,7 +228,6 @@ func (o ClientAccessKey) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.KeyId) {
 		toSerialize["keyId"] = o.KeyId
 	}
-	toSerialize["clientId"] = o.ClientId
 	if o.PublicKey.IsSet() {
 		toSerialize["publicKey"] = o.PublicKey.Get()
 	}
@@ -275,9 +247,7 @@ func (o *ClientAccessKey) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"clientId",
-	}
+	requiredProperties := []string{}
 
 	allProperties := make(map[string]interface{})
 

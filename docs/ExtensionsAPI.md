@@ -36,9 +36,10 @@ import (
 func main() {
 	extension := *authress.NewExtension("ExtensionId_example", time.Now(), *authress.NewExtensionClient("ClientId_example")) // Extension | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Extensions.CreateExtension(context.Background()).Extension(extension).Execute()
 	if err != nil {
@@ -100,9 +101,10 @@ import (
 func main() {
 	extensionId := "extensionId_example" // string | The extension identifier.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	r, err := authressClient.Extensions.DeleteExtension(context.Background(), extensionId).Execute()
 	if err != nil {
@@ -166,9 +168,10 @@ import (
 func main() {
 	extensionId := "extensionId_example" // string | The extension identifier.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Extensions.GetExtension(context.Background(), extensionId).Execute()
 	if err != nil {
@@ -235,9 +238,10 @@ func main() {
 	limit := int32(56) // int32 | Max number of results to return (optional) (default to 20)
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Extensions.GetExtensions(context.Background()).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
@@ -303,9 +307,10 @@ func main() {
 	redirectUri := "https://extension.application.com/login-redirect" // string | The location to redirect the user back to after login. This redirect_uri must be a URL that matches one of the preconfigured urls in the Authress Application.
 	codeChallengeMethod := "codeChallengeMethod_example" // string | The method used to generate the code_challenge from the code_verifier. `code_challenge_method(code_verifier) = code_challenge` (optional) (default to "S256")
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Extensions.Login(context.Background()).ClientId(clientId).CodeChallenge(codeChallenge).RedirectUri(redirectUri).CodeChallengeMethod(codeChallengeMethod).Execute()
 	if err != nil {
@@ -374,9 +379,10 @@ import (
 func main() {
 	oAuthTokenRequest := *authress.NewOAuthTokenRequest("ClientId_example") // OAuthTokenRequest | The contents of an OAuth token request.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Extensions.RequestToken(context.Background()).OAuthTokenRequest(oAuthTokenRequest).Execute()
 	if err != nil {
@@ -444,9 +450,10 @@ func main() {
 	extensionId := "extensionId_example" // string | The extension identifier.
 	extension := *authress.NewExtension("ExtensionId_example", time.Now(), *authress.NewExtensionClient("ClientId_example")) // Extension | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Extensions.UpdateExtension(context.Background(), extensionId).Extension(extension).Execute()
 	if err != nil {

@@ -32,9 +32,10 @@ import (
 func main() {
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to validate, must be URL encoded, uri segments are allowed.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.ResourcePermissions.GetPermissionedResource(context.Background(), resourceUri).Execute()
 	if err != nil {
@@ -99,9 +100,10 @@ import (
 
 func main() {
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.ResourcePermissions.GetPermissionedResources(context.Background()).Execute()
 	if err != nil {
@@ -161,9 +163,10 @@ func main() {
 	limit := int32(56) // int32 | Max number of results to return (optional) (default to 20)
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.ResourcePermissions.GetResourceUsers(context.Background(), resourceUri).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
@@ -232,9 +235,10 @@ func main() {
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to validate, must be URL encoded, uri segments are allowed.
 	permissionedResource := *authress.NewPermissionedResource([]authress.ResourcePermission{*authress.NewResourcePermission("Action_example", false)}) // PermissionedResource | The contents of the permission to set on the resource. Overwrites existing data.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	r, err := authressClient.ResourcePermissions.UpdatePermissionedResource(context.Background(), resourceUri).PermissionedResource(permissionedResource).Execute()
 	if err != nil {
