@@ -22,18 +22,18 @@ import (
 
 func Test_authress_UserPermissionsApi(t *testing.T) {
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
 	})
 
 	t.Run("Test UserPermissionsApi AuthorizeUser", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var userId UserId
+		var userId string
 		var resourceUri string
-		var permission Action
+		var permission string
 
 		httpRes, err := authressClient.UserPermissions.AuthorizeUser(context.Background(), userId, resourceUri, permission).Execute()
 
@@ -46,7 +46,7 @@ func Test_authress_UserPermissionsApi(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var userId UserId
+		var userId string
 		var resourceUri string
 
 		resp, httpRes, err := authressClient.UserPermissions.GetUserPermissionsForResource(context.Background(), userId, resourceUri).Execute()
@@ -61,7 +61,7 @@ func Test_authress_UserPermissionsApi(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var userId UserId
+		var userId string
 
 		resp, httpRes, err := authressClient.UserPermissions.GetUserResources(context.Background(), userId).Execute()
 
@@ -75,7 +75,7 @@ func Test_authress_UserPermissionsApi(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var userId UserId
+		var userId string
 		var resourceUri string
 
 		resp, httpRes, err := authressClient.UserPermissions.GetUserRolesForResource(context.Background(), userId, resourceUri).Execute()

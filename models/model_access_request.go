@@ -277,7 +277,6 @@ func (o *AccessRequest) UnmarshalJSON(data []byte) (err error) {
 	varAccessRequest := _AccessRequest{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varAccessRequest)
 
 	if err != nil {

@@ -100,7 +100,6 @@ func (o *UserConnectionCredentials) UnmarshalJSON(data []byte) (err error) {
 	varUserConnectionCredentials := _UserConnectionCredentials{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varUserConnectionCredentials)
 
 	if err != nil {

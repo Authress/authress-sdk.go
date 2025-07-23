@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **KeyId** | Pointer to **string** | The unique ID of the client. | [optional] [readonly] 
-**ClientId** | **string** | The unique ID of the client. | [readonly] 
 **PublicKey** | Pointer to **NullableString** | Specify a public key on access key creation to bring your own private key. When left blank, Authress will automatically generate a private and public key pair and then return the private key as part of the request. This property holds the public key. | [optional] 
 **GenerationDate** | Pointer to **time.Time** |  | [optional] [readonly] 
 **ClientSecret** | Pointer to **string** | The unencoded OAuth client secret used with the OAuth endpoints to request a JWT using the &#x60;client_credentials&#x60; grant type. Pass the clientId and the clientSecret to the documented /tokens endpoint. | [optional] [readonly] 
@@ -15,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewClientAccessKey
 
-`func NewClientAccessKey(clientId string, ) *ClientAccessKey`
+`func NewClientAccessKey() *ClientAccessKey`
 
 NewClientAccessKey instantiates a new ClientAccessKey object
 This constructor will assign default values to properties that have it defined,
@@ -54,26 +53,6 @@ SetKeyId sets KeyId field to given value.
 `func (o *ClientAccessKey) HasKeyId() bool`
 
 HasKeyId returns a boolean if a field has been set.
-
-### GetClientId
-
-`func (o *ClientAccessKey) GetClientId() string`
-
-GetClientId returns the ClientId field if non-nil, zero value otherwise.
-
-### GetClientIdOk
-
-`func (o *ClientAccessKey) GetClientIdOk() (*string, bool)`
-
-GetClientIdOk returns a tuple with the ClientId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetClientId
-
-`func (o *ClientAccessKey) SetClientId(v string)`
-
-SetClientId sets ClientId field to given value.
-
 
 ### GetPublicKey
 

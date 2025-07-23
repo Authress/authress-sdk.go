@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **InviteId** | **string** | The unique identifier for the invite. Use this ID to accept the invite. This parameter is ignored during invite creation. | [readonly] 
-**TenantId** | Pointer to [**TenantId**](TenantId.md) |  | [optional] 
+**DefaultLoginTenantId** | **string** |  | [optional] 
+**LinkedUserId** | **string** | Specify a User ID that logging in user should receive when login completes. This ID is used to automatically assign a user ID to the user rather than a dynamically generated Authress User ID when using the Authress Login UI SDK. This parameter is ignored when accepting invites directly. Note: If the user logging in has already signed up, then this parameter is ignored. | [optional] 
 **Statements** | [**[]Statement**](Statement.md) | A list of statements which match roles to resources. The invited user will all statements apply to them when the invite is accepted. | 
 **Links** | Pointer to [**AccountLinks**](AccountLinks.md) |  | [optional] 
 
@@ -48,30 +49,55 @@ and a boolean to check if the value has been set.
 SetInviteId sets InviteId field to given value.
 
 
-### GetTenantId
+### GetDefaultLoginTenantId
 
-`func (o *Invite) GetTenantId() TenantId`
+`func (o *Invite) GetDefaultLoginTenantId() string`
 
-GetTenantId returns the TenantId field if non-nil, zero value otherwise.
+GetDefaultLoginTenantId returns the DefaultLoginTenantId field if non-nil, zero value otherwise.
 
-### GetTenantIdOk
+### GetDefaultLoginTenantIdOk
 
-`func (o *Invite) GetTenantIdOk() (*TenantId, bool)`
+`func (o *Invite) GetDefaultLoginTenantIdOk() (*string, bool)`
 
-GetTenantIdOk returns a tuple with the TenantId field if it's non-nil, zero value otherwise
+GetDefaultLoginTenantIdOk returns a tuple with the DefaultLoginTenantId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTenantId
+### SetDefaultLoginTenantId
 
-`func (o *Invite) SetTenantId(v TenantId)`
+`func (o *Invite) SetDefaultLoginTenantId(v string)`
 
-SetTenantId sets TenantId field to given value.
+SetDefaultLoginTenantId sets DefaultLoginTenantId field to given value.
 
-### HasTenantId
+### HasDefaultLoginTenantId
 
-`func (o *Invite) HasTenantId() bool`
+`func (o *Invite) HasDefaultLoginTenantId() bool`
 
-HasTenantId returns a boolean if a field has been set.
+HasDefaultLoginTenantId returns a boolean if a field has been set.
+
+### GetLinkedUserId
+
+`func (o *Invite) GetLinkedUserId() string`
+
+GetLinkedUserId returns the LinkedUserId field if non-nil, zero value otherwise.
+
+### GetLinkedUserIdOk
+
+`func (o *Invite) GetLinkedUserIdOk() (*string, bool)`
+
+GetLinkedUserIdOk returns a tuple with the LinkedUserId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLinkedUserId
+
+`func (o *Invite) SetLinkedUserId(v string)`
+
+SetLinkedUserId sets LinkedUserId field to given value.
+
+### HasLinkedUserId
+
+`func (o *Invite) HasLinkedUserId() bool`
+
+HasLinkedUserId returns a boolean if a field has been set.
 
 ### GetStatements
 

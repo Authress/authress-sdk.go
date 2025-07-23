@@ -129,7 +129,6 @@ func (o *AccessTemplate) UnmarshalJSON(data []byte) (err error) {
 	varAccessTemplate := _AccessTemplate{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varAccessTemplate)
 
 	if err != nil {

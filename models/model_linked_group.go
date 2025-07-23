@@ -99,7 +99,6 @@ func (o *LinkedGroup) UnmarshalJSON(data []byte) (err error) {
 	varLinkedGroup := _LinkedGroup{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varLinkedGroup)
 
 	if err != nil {

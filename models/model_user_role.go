@@ -99,7 +99,6 @@ func (o *UserRole) UnmarshalJSON(data []byte) (err error) {
 	varUserRole := _UserRole{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varUserRole)
 
 	if err != nil {

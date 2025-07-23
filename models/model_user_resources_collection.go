@@ -236,7 +236,6 @@ func (o *UserResourcesCollection) UnmarshalJSON(data []byte) (err error) {
 	varUserResourcesCollection := _UserResourcesCollection{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varUserResourcesCollection)
 
 	if err != nil {

@@ -1,3 +1,9 @@
+## Start Development
+
+* Install GO
+* `go install github.com/go-delve/delve/cmd/dlv@latest`
+* run commands from makefile
+  * make integration
 
 ## Using the OpenAPI Generator to generate new models
 

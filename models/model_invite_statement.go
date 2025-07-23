@@ -127,7 +127,6 @@ func (o *InviteStatement) UnmarshalJSON(data []byte) (err error) {
 	varInviteStatement := _InviteStatement{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varInviteStatement)
 
 	if err != nil {

@@ -164,7 +164,6 @@ func (o *AccessRecordCollection) UnmarshalJSON(data []byte) (err error) {
 	varAccessRecordCollection := _AccessRecordCollection{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varAccessRecordCollection)
 
 	if err != nil {

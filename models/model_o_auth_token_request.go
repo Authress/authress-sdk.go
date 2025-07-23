@@ -26,7 +26,7 @@ type OAuthTokenRequest struct {
 	// When using the user password grant_type, specify the user's password.
 	Password NullableString `json:"password,omitempty"`
 	// Enables additional configuration of the grant_type. In the case of user password grant_type, set this to **signup**, to enable the creation of users. Set this to **update**, force update the password associated with the user.
-	Type NullableString `json:"type,omitempty"`
+	LoginType NullableString `json:"loginType,omitempty"`
 }
 
 type _OAuthTokenRequest OAuthTokenRequest
@@ -266,47 +266,47 @@ func (o *OAuthTokenRequest) UnsetPassword() {
 	o.Password.Unset()
 }
 
-// GetType returns the Type field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OAuthTokenRequest) GetType() string {
-	if o == nil || IsNil(o.Type.Get()) {
+// GetLoginType returns the LoginType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OAuthTokenRequest) GetLoginType() string {
+	if o == nil || IsNil(o.LoginType.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Type.Get()
+	return *o.LoginType.Get()
 }
 
-// GetTypeOk returns a tuple with the Type field value if set, nil otherwise
+// GetLoginTypeOk returns a tuple with the LoginType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OAuthTokenRequest) GetTypeOk() (*string, bool) {
+func (o *OAuthTokenRequest) GetLoginTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Type.Get(), o.Type.IsSet()
+	return o.LoginType.Get(), o.LoginType.IsSet()
 }
 
-// HasType returns a boolean if a field has been set.
-func (o *OAuthTokenRequest) HasType() bool {
-	if o != nil && o.Type.IsSet() {
+// HasLoginType returns a boolean if a field has been set.
+func (o *OAuthTokenRequest) HasLoginType() bool {
+	if o != nil && o.LoginType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetType gets a reference to the given NullableString and assigns it to the Type field.
-func (o *OAuthTokenRequest) SetType(v string) {
-	o.Type.Set(&v)
+// SetLoginType gets a reference to the given NullableString and assigns it to the LoginType field.
+func (o *OAuthTokenRequest) SetLoginType(v string) {
+	o.LoginType.Set(&v)
 }
 
-// SetTypeNil sets the value for Type to be an explicit nil
-func (o *OAuthTokenRequest) SetTypeNil() {
-	o.Type.Set(nil)
+// SetLoginTypeNil sets the value for LoginType to be an explicit nil
+func (o *OAuthTokenRequest) SetLoginTypeNil() {
+	o.LoginType.Set(nil)
 }
 
-// UnsetType ensures that no value is present for Type, not even an explicit nil
-func (o *OAuthTokenRequest) UnsetType() {
-	o.Type.Unset()
+// UnsetLoginType ensures that no value is present for LoginType, not even an explicit nil
+func (o *OAuthTokenRequest) UnsetLoginType() {
+	o.LoginType.Unset()
 }
 
 func (o OAuthTokenRequest) MarshalJSON() ([]byte, error) {
@@ -335,8 +335,8 @@ func (o OAuthTokenRequest) ToMap() (map[string]interface{}, error) {
 	if o.Password.IsSet() {
 		toSerialize["password"] = o.Password.Get()
 	}
-	if o.Type.IsSet() {
-		toSerialize["type"] = o.Type.Get()
+	if o.LoginType.IsSet() {
+		toSerialize["loginType"] = o.LoginType.Get()
 	}
 	return toSerialize, nil
 }
@@ -366,7 +366,6 @@ func (o *OAuthTokenRequest) UnmarshalJSON(data []byte) (err error) {
 	varOAuthTokenRequest := _OAuthTokenRequest{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varOAuthTokenRequest)
 
 	if err != nil {

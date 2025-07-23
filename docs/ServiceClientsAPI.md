@@ -34,11 +34,12 @@ import (
 )
 
 func main() {
-	client := *authress.NewClient("ClientId_example", time.Now()) // Client | 
+	client := *models.NewClient("ClientId_example", time.Now()) // Client | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.ServiceClients.CreateClient(context.Background()).Client(client).Execute()
 	if err != nil {
@@ -101,9 +102,10 @@ func main() {
 	clientId := "clientId_example" // string | The unique identifier of the client.
 	keyId := "keyId_example" // string | The ID of the access key to remove from the client.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	r, err := authressClient.ServiceClients.DeleteAccessKey(context.Background(), clientId, keyId).Execute()
 	if err != nil {
@@ -169,9 +171,10 @@ import (
 func main() {
 	clientId := "clientId_example" // string | The unique identifier for the client.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	r, err := authressClient.ServiceClients.DeleteClient(context.Background(), clientId).Execute()
 	if err != nil {
@@ -235,9 +238,10 @@ import (
 func main() {
 	clientId := "clientId_example" // string | The unique identifier for the client.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.ServiceClients.GetClient(context.Background(), clientId).Execute()
 	if err != nil {
@@ -304,9 +308,10 @@ func main() {
 	limit := int32(56) // int32 | Max number of results to return (optional) (default to 20)
 	cursor := "cursor_example" // string | Continuation cursor for paging. (optional)
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.ServiceClients.GetClients(context.Background()).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
@@ -369,9 +374,10 @@ import (
 func main() {
 	clientId := "clientId_example" // string | The unique identifier of the client.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.ServiceClients.RequestAccessKey(context.Background(), clientId).Execute()
 	if err != nil {
@@ -437,11 +443,12 @@ import (
 
 func main() {
 	clientId := "clientId_example" // string | The unique identifier for the client.
-	client := *authress.NewClient("ClientId_example", time.Now()) // Client | 
+	client := *models.NewClient("ClientId_example", time.Now()) // Client | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.ServiceClients.UpdateClient(context.Background(), clientId).Client(client).Execute()
 	if err != nil {

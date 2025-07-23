@@ -34,9 +34,10 @@ func main() {
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to validate, must be URL encoded, uri segments are allowed, the resource must be a full path.
 	permission := TODO // Action | Permission to check, '*' and scoped permissions can also be checked here.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	r, err := authressClient.UserPermissions.AuthorizeUser(context.Background(), userId, resourceUri, permission).Execute()
 	if err != nil {
@@ -52,9 +53,9 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userId** | [**UserId**](.md) | The user identifier to check and verify the permissions of. | 
+**userId** | **string** | The user identifier to check and verify the permissions of. | 
 **resourceUri** | **string** | The uri path of a resource to validate, must be URL encoded, uri segments are allowed, the resource must be a full path. | 
-**permission** | [**Action**](.md) | Permission to check, &#39;*&#39; and scoped permissions can also be checked here. | 
+**permission** | **string** | Permission to check, &#39;*&#39; and scoped permissions can also be checked here. | 
 
 ### Other Parameters
 
@@ -105,9 +106,10 @@ func main() {
 	userId := TODO // UserId | The user identifier for the user to check permissions.
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to validate, must be URL encoded, uri segments are allowed.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.UserPermissions.GetUserPermissionsForResource(context.Background(), userId, resourceUri).Execute()
 	if err != nil {
@@ -125,7 +127,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userId** | [**UserId**](.md) | The user identifier for the user to check permissions. | 
+**userId** | **string** | The user identifier for the user to check permissions. | 
 **resourceUri** | **string** | The uri path of a resource to validate, must be URL encoded, uri segments are allowed. | 
 
 ### Other Parameters
@@ -180,9 +182,10 @@ func main() {
 	limit := int32(56) // int32 | Max number of results to return (optional) (default to 20)
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.UserPermissions.GetUserResources(context.Background(), userId).ResourceUri(resourceUri).CollectionConfiguration(collectionConfiguration).Permissions(permissions).Limit(limit).Cursor(cursor).Execute()
 	if err != nil {
@@ -200,7 +203,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userId** | [**UserId**](.md) | The user identifier for which to list all accessible resources. | 
+**userId** | **string** | The user identifier for which to list all accessible resources. | 
 
 ### Other Parameters
 
@@ -254,9 +257,10 @@ func main() {
 	userId := TODO // UserId | The user to get roles for.
 	resourceUri := "/organizations/org_a/documents/doc_1" // string | The uri path of a resource to get roles for, must be URL encoded. Checks for explicit resource roles, roles attached to parent resources are not returned.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.UserPermissions.GetUserRolesForResource(context.Background(), userId, resourceUri).Execute()
 	if err != nil {
@@ -274,7 +278,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**userId** | [**UserId**](.md) | The user to get roles for. | 
+**userId** | **string** | The user to get roles for. | 
 **resourceUri** | **string** | The uri path of a resource to get roles for, must be URL encoded. Checks for explicit resource roles, roles attached to parent resources are not returned. | 
 
 ### Other Parameters

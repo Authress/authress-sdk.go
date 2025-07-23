@@ -22,16 +22,16 @@ import (
 
 func Test_authress_UsersApi(t *testing.T) {
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
 	})
 
 	t.Run("Test UsersApi DeleteUser", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var userId UserId
+		var userId string
 
 		httpRes, err := authressClient.Users.DeleteUser(context.Background(), userId).Execute()
 
@@ -44,7 +44,7 @@ func Test_authress_UsersApi(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var userId UserId
+		var userId string
 
 		resp, httpRes, err := authressClient.Users.GetUser(context.Background(), userId).Execute()
 

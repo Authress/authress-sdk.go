@@ -99,7 +99,6 @@ func (o *IdentityCollection) UnmarshalJSON(data []byte) (err error) {
 	varIdentityCollection := _IdentityCollection{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varIdentityCollection)
 
 	if err != nil {

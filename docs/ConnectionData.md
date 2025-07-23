@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TenantId** | Pointer to [**TenantId**](TenantId.md) |  | [optional] 
+**TenantId** | **string** |  | [optional] 
 **Name** | Pointer to **NullableString** | The name of this connection when displayed in the Authress management portal | [optional] 
 **SupportedContentType** | Pointer to **NullableString** | URL encode OAuth token parameters - Some authentication APIs don&#39;t support JSON, in these cases enable the url encoded form data parameters. | [optional] [default to "application/json"]
 **OidcUserEndpointUrl** | Pointer to **NullableString** | By default, the **sub** claim of the JWT is used to identify the user from this provider. However, not all providers are OpenID compliant. Here you can provide an optional user data endpoint to fetch additional user profile information and an expression to identify a new user ID from available properties. | [optional] 

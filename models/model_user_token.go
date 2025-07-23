@@ -229,7 +229,6 @@ func (o *UserToken) UnmarshalJSON(data []byte) (err error) {
 	varUserToken := _UserToken{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varUserToken)
 
 	if err != nil {

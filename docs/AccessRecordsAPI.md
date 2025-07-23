@@ -37,11 +37,12 @@ import (
 )
 
 func main() {
-	claimRequest := *authress.NewClaimRequest("CollectionResource_example", "ResourceId_example") // ClaimRequest | 
+	claimRequest := *models.NewClaimRequest("CollectionResource_example", "ResourceId_example") // ClaimRequest | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.AccessRecords.CreateClaim(context.Background()).ClaimRequest(claimRequest).Execute()
 	if err != nil {
@@ -101,11 +102,12 @@ import (
 )
 
 func main() {
-	accessRecord := *authress.NewAccessRecord("Name_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // AccessRecord | 
+	accessRecord := *models.NewAccessRecord("Name_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // AccessRecord | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.AccessRecords.CreateRecord(context.Background()).AccessRecord(accessRecord).Execute()
 	if err != nil {
@@ -165,11 +167,12 @@ import (
 )
 
 func main() {
-	accessRequest := *authress.NewAccessRequest("RequestId_example", *authress.NewAccessTemplate([]authress.User{*authress.NewUser("oauth|userId")}, []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})})) // AccessRequest | 
+	accessRequest := *models.NewAccessRequest("RequestId_example", *authress.NewAccessTemplate([]authress.User{*authress.NewUser("oauth|userId")}, []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})})) // AccessRequest | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.AccessRecords.CreateRequest(context.Background()).AccessRequest(accessRequest).Execute()
 	if err != nil {
@@ -231,9 +234,10 @@ import (
 func main() {
 	recordId := "recordId_example" // string | The identifier of the access record.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	r, err := authressClient.AccessRecords.DeleteRecord(context.Background(), recordId).Execute()
 	if err != nil {
@@ -297,9 +301,10 @@ import (
 func main() {
 	requestId := "requestId_example" // string | The identifier of the access request.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	r, err := authressClient.AccessRecords.DeleteRequest(context.Background(), requestId).Execute()
 	if err != nil {
@@ -363,9 +368,10 @@ import (
 func main() {
 	recordId := "recordId_example" // string | The identifier of the access record.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.AccessRecords.GetRecord(context.Background(), recordId).Execute()
 	if err != nil {
@@ -434,9 +440,10 @@ func main() {
 	filter := "filter_example" // string | Filter to search records by. This is a case insensitive search through every text field. (optional)
 	status := "status_example" // string | Filter records by their current status. (optional)
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.AccessRecords.GetRecords(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Status(status).Execute()
 	if err != nil {
@@ -501,9 +508,10 @@ import (
 func main() {
 	requestId := "requestId_example" // string | The identifier of the access request.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.AccessRecords.GetRequest(context.Background(), requestId).Execute()
 	if err != nil {
@@ -571,9 +579,10 @@ func main() {
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 	status := "status_example" // string | Filter requests by their current status. (optional)
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.AccessRecords.GetRequests(context.Background()).Limit(limit).Cursor(cursor).Status(status).Execute()
 	if err != nil {
@@ -636,11 +645,12 @@ import (
 
 func main() {
 	requestId := "requestId_example" // string | The identifier of the access request.
-	accessRequestResponse := *authress.NewAccessRequestResponse("Status_example") // AccessRequestResponse | 
+	accessRequestResponse := *models.NewAccessRequestResponse("Status_example") // AccessRequestResponse | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.AccessRecords.RespondToAccessRequest(context.Background(), requestId).AccessRequestResponse(accessRequestResponse).Execute()
 	if err != nil {
@@ -707,12 +717,13 @@ import (
 
 func main() {
 	recordId := "recordId_example" // string | The identifier of the access record.
-	accessRecord := *authress.NewAccessRecord("Name_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // AccessRecord | 
+	accessRecord := *models.NewAccessRecord("Name_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // AccessRecord | 
 	ifUnmodifiedSince := time.Now() // time.Time | The expected last time the record was modified. (optional)
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	r, err := authressClient.AccessRecords.UpdateRecord(context.Background(), recordId).AccessRecord(accessRecord).IfUnmodifiedSince(ifUnmodifiedSince).Execute()
 	if err != nil {

@@ -30,9 +30,10 @@ func main() {
 	applicationId := "applicationId_example" // string | The application to have the user log into.
 	userId := TODO // UserId | The user.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Applications.DelegateUserLogin(context.Background(), applicationId, userId).Execute()
 	if err != nil {
@@ -51,7 +52,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **applicationId** | **string** | The application to have the user log into. | 
-**userId** | [**UserId**](.md) | The user. | 
+**userId** | **string** | The user. | 
 
 ### Other Parameters
 

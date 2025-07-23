@@ -14,11 +14,13 @@ var _ MappedNullable = &Invite{}
 // Invite The user invite used to invite users to your application or to Authress as an admin.
 type Invite struct {
 	// The unique identifier for the invite. Use this ID to accept the invite. This parameter is ignored during invite creation.
-	InviteId string    `json:"inviteId"`
-	TenantId *TenantId `json:"tenantId,omitempty"`
+	InviteId             string `json:"inviteId"`
+	DefaultLoginTenantId string `json:"string,omitempty"`
+	// Specify a User ID that logging in user should receive when login completes. This ID is used to automatically assign a user ID to the user rather than a dynamically generated Authress User ID when using the Authress Login UI SDK. This parameter is ignored when accepting invites directly. Note: If the user logging in has already signed up, then this parameter is ignored.
+	LinkedUserId string `json:"string,omitempty"`
 	// A list of statements which match roles to resources. The invited user will all statements apply to them when the invite is accepted.
 	Statements []InviteStatement `json:"statements"`
-	Links *AccountLinks `json:"links,omitempty"`
+	Links      *AccountLinks     `json:"links,omitempty"`
 }
 
 type _Invite Invite
@@ -66,36 +68,68 @@ func (o *Invite) SetInviteId(v string) {
 	o.InviteId = v
 }
 
-// GetTenantId returns the TenantId field value if set, zero value otherwise.
-func (o *Invite) GetTenantId() TenantId {
-	if o == nil || IsNil(o.TenantId) {
-		var ret TenantId
+// GetDefaultLoginTenantId returns the DefaultLoginTenantId field value if set, zero value otherwise.
+func (o *Invite) GetDefaultLoginTenantId() string {
+	if o == nil || IsNil(o.DefaultLoginTenantId) {
+		var ret string
 		return ret
 	}
-	return *o.TenantId
+	return o.DefaultLoginTenantId
 }
 
-// GetTenantIdOk returns a tuple with the TenantId field value if set, nil otherwise
+// GetDefaultLoginTenantIdOk returns a tuple with the DefaultLoginTenantId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Invite) GetTenantIdOk() (*TenantId, bool) {
-	if o == nil || IsNil(o.TenantId) {
+func (o *Invite) GetDefaultLoginTenantIdOk() (*string, bool) {
+	if o == nil || IsNil(o.DefaultLoginTenantId) {
 		return nil, false
 	}
-	return o.TenantId, true
+	return &o.DefaultLoginTenantId, true
 }
 
-// HasTenantId returns a boolean if a field has been set.
-func (o *Invite) HasTenantId() bool {
-	if o != nil && !IsNil(o.TenantId) {
+// HasDefaultLoginTenantId returns a boolean if a field has been set.
+func (o *Invite) HasDefaultLoginTenantId() bool {
+	if o != nil && !IsNil(o.DefaultLoginTenantId) {
 		return true
 	}
 
 	return false
 }
 
-// SetTenantId gets a reference to the given TenantId and assigns it to the TenantId field.
-func (o *Invite) SetTenantId(v TenantId) {
-	o.TenantId = &v
+// SetDefaultLoginTenantId gets a reference to the given DefaultLoginTenantId and assigns it to the DefaultLoginTenantId field.
+func (o *Invite) SetDefaultLoginTenantId(v string) {
+	o.DefaultLoginTenantId = v
+}
+
+// GetLinkedUserId returns the LinkedUserId field value if set, zero value otherwise.
+func (o *Invite) GetLinkedUserId() string {
+	if o == nil || IsNil(o.LinkedUserId) {
+		var ret string
+		return ret
+	}
+	return o.LinkedUserId
+}
+
+// GetLinkedUserIdOk returns a tuple with the LinkedUserId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Invite) GetLinkedUserIdOk() (*string, bool) {
+	if o == nil || IsNil(o.LinkedUserId) {
+		return nil, false
+	}
+	return &o.LinkedUserId, true
+}
+
+// HasLinkedUserId returns a boolean if a field has been set.
+func (o *Invite) HasLinkedUserId() bool {
+	if o != nil && !IsNil(o.LinkedUserId) {
+		return true
+	}
+
+	return false
+}
+
+// SetLinkedUserId gets a reference to the given LinkedUserId and assigns it to the LinkedUserId field.
+func (o *Invite) SetLinkedUserId(v string) {
+	o.LinkedUserId = v
 }
 
 // GetStatements returns the Statements field value
@@ -165,8 +199,11 @@ func (o Invite) MarshalJSON() ([]byte, error) {
 func (o Invite) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["inviteId"] = o.InviteId
-	if !IsNil(o.TenantId) {
-		toSerialize["tenantId"] = o.TenantId
+	if !IsNil(o.DefaultLoginTenantId) {
+		toSerialize["defaultLoginTenantId"] = o.DefaultLoginTenantId
+	}
+	if !IsNil(o.LinkedUserId) {
+		toSerialize["linkedUserId"] = o.LinkedUserId
 	}
 	toSerialize["statements"] = o.Statements
 	if !IsNil(o.Links) {
@@ -201,7 +238,6 @@ func (o *Invite) UnmarshalJSON(data []byte) (err error) {
 	varInvite := _Invite{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varInvite)
 
 	if err != nil {

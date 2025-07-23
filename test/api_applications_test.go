@@ -22,9 +22,9 @@ import (
 
 func Test_authress_ApplicationsApi(t *testing.T) {
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
 	})
 
 	t.Run("Test ApplicationsApi DelegateUserLogin", func(t *testing.T) {
@@ -32,7 +32,7 @@ func Test_authress_ApplicationsApi(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var applicationId string
-		var userId UserId
+		var userId string
 
 		resp, httpRes, err := authressClient.Applications.DelegateUserLogin(context.Background(), applicationId, userId).Execute()
 

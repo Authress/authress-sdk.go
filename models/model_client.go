@@ -288,7 +288,6 @@ func (o *Client) UnmarshalJSON(data []byte) (err error) {
 	varClient := _Client{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varClient)
 
 	if err != nil {

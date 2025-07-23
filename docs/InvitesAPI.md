@@ -30,11 +30,12 @@ import (
 )
 
 func main() {
-	invite := *authress.NewInvite("InviteId_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // Invite | 
+	invite := *models.NewInvite("InviteId_example", []authress.Statement{*authress.NewStatement([]string{"Roles_example"}, []authress.Resource{*authress.NewResource("/organizations/org_a/documents/doc_1")})}) // Invite | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Invites.CreateInvite(context.Background()).Invite(invite).Execute()
 	if err != nil {
@@ -96,9 +97,10 @@ import (
 func main() {
 	inviteId := "inviteId_example" // string | The identifier of the invite.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	r, err := authressClient.Invites.DeleteInvite(context.Background(), inviteId).Execute()
 	if err != nil {
@@ -162,9 +164,10 @@ import (
 func main() {
 	inviteId := "inviteId_example" // string | The identifier of the invite.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Invites.GetInvite(context.Background(), inviteId).Execute()
 	if err != nil {
@@ -230,9 +233,10 @@ import (
 func main() {
 	inviteId := "inviteId_example" // string | The identifier of the invite.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Invites.RespondToInvite(context.Background(), inviteId).Execute()
 	if err != nil {

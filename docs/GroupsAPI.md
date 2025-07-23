@@ -31,11 +31,12 @@ import (
 )
 
 func main() {
-	group := *authress.NewGroup("Name_example", []authress.User{*authress.NewUser("oauth|userId")}, []authress.User{*authress.NewUser("oauth|userId")}) // Group | 
+	group := *models.NewGroup("Name_example", []authress.User{*authress.NewUser("oauth|userId")}, []authress.User{*authress.NewUser("oauth|userId")}) // Group | 
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Groups.CreateGroup(context.Background()).Group(group).Execute()
 	if err != nil {
@@ -97,9 +98,10 @@ import (
 func main() {
 	groupId := TODO // GroupId | The identifier of the group.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	r, err := authressClient.Groups.DeleteGroup(context.Background(), groupId).Execute()
 	if err != nil {
@@ -115,7 +117,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | [**GroupId**](.md) | The identifier of the group. | 
+**groupId** | **string** | The identifier of the group. | 
 
 ### Other Parameters
 
@@ -163,9 +165,10 @@ import (
 func main() {
 	groupId := TODO // GroupId | The identifier of the group.
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Groups.GetGroup(context.Background(), groupId).Execute()
 	if err != nil {
@@ -183,7 +186,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | [**GroupId**](.md) | The identifier of the group. | 
+**groupId** | **string** | The identifier of the group. | 
 
 ### Other Parameters
 
@@ -233,9 +236,10 @@ func main() {
 	cursor := "cursor_example" // string | Continuation cursor for paging (optional)
 	filter := "filter_example" // string | Filter to search groups by. This is a case insensitive search through every text field. (optional)
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Groups.GetGroups(context.Background()).Limit(limit).Cursor(cursor).Filter(filter).Execute()
 	if err != nil {
@@ -299,12 +303,13 @@ import (
 
 func main() {
 	groupId := TODO // GroupId | The identifier of the group.
-	group := *authress.NewGroup("Name_example", []authress.User{*authress.NewUser("oauth|userId")}, []authress.User{*authress.NewUser("oauth|userId")}) // Group | 
+	group := *models.NewGroup("Name_example", []authress.User{*authress.NewUser("oauth|userId")}, []authress.User{*authress.NewUser("oauth|userId")}) // Group | 
 	ifUnmodifiedSince := time.Now() // time.Time | The expected last time the group was modified. (optional)
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
+		ServiceClientAccessKey: serviceClientAccessKey,
 	})
 	resp, r, err := authressClient.Groups.UpdateGroup(context.Background(), groupId).Group(group).IfUnmodifiedSince(ifUnmodifiedSince).Execute()
 	if err != nil {
@@ -322,7 +327,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**groupId** | [**GroupId**](.md) | The identifier of the group. | 
+**groupId** | **string** | The identifier of the group. | 
 
 ### Other Parameters
 

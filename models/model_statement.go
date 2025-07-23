@@ -201,7 +201,6 @@ func (o *Statement) UnmarshalJSON(data []byte) (err error) {
 	varStatement := _Statement{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
 	err = decoder.Decode(&varStatement)
 
 	if err != nil {

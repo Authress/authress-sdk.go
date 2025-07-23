@@ -22,9 +22,9 @@ import (
 
 func Test_authress_InvitesApi(t *testing.T) {
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
 	})
 
 	t.Run("Test InvitesApi CreateInvite", func(t *testing.T) {
@@ -72,10 +72,10 @@ func Test_authress_InvitesApi(t *testing.T) {
 
 		var inviteId string
 
-		resp, httpRes, err := authressClient.Invites.RespondToInvite(context.Background(), inviteId).Execute()
+		httpRes, err := authressClient.Invites.RespondToInvite(context.Background(), inviteId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
+		// require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

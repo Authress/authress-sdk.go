@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **GrantType** | Pointer to **string** | A suggestion to the token generation which type of credentials are being provided. | [optional] 
 **Username** | Pointer to **NullableString** | When using the user password grant_type, specify the username. Authress recommends this should always be an email address. | [optional] 
 **Password** | Pointer to **NullableString** | When using the user password grant_type, specify the user&#39;s password. | [optional] 
-**Type** | Pointer to **NullableString** | Enables additional configuration of the grant_type. In the case of user password grant_type, set this to **signup**, to enable the creation of users. Set this to **update**, force update the password associated with the user. | [optional] 
+**loginType** | Pointer to **NullableString** | Enables additional configuration of the grant_type. In the case of user password grant_type, set this to **signup**, to enable the creation of users. Set this to **update**, force update the password associated with the user. | [optional] 
 
 ## Methods
 

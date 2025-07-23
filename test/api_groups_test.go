@@ -22,9 +22,9 @@ import (
 
 func Test_authress_GroupsApi(t *testing.T) {
 
-	url, _ := url.Parse("https://authress.company.com")
+	url, _ := url.Parse("https://auth.yourdomain.com")
 	authressClient := authress.NewAuthressClient(authress.AuthressSettings{
-		AuthressApiUrl: url,
+		AuthressApiUrl: url, 
 	})
 
 	t.Run("Test GroupsApi CreateGroup", func(t *testing.T) {
@@ -43,7 +43,7 @@ func Test_authress_GroupsApi(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var groupId GroupId
+		var groupId string
 
 		httpRes, err := authressClient.Groups.DeleteGroup(context.Background(), groupId).Execute()
 
@@ -56,7 +56,7 @@ func Test_authress_GroupsApi(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var groupId GroupId
+		var groupId string
 
 		resp, httpRes, err := authressClient.Groups.GetGroup(context.Background(), groupId).Execute()
 
@@ -82,7 +82,7 @@ func Test_authress_GroupsApi(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var groupId GroupId
+		var groupId string
 
 		resp, httpRes, err := authressClient.Groups.UpdateGroup(context.Background(), groupId).Execute()
 
