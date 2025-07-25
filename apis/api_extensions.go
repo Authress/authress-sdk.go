@@ -339,12 +339,12 @@ func (a *ExtensionsApi) GetExtensionExecute(r ApiGetExtensionRequest) (*Extensio
 type ApiGetExtensionsRequest struct {
 	ctx            context.Context
 	ThisApiHandler *ExtensionsApi
-	limit          *int32
+	limit          *uint8
 	cursor         *string
 }
 
 // Max number of results to return
-func (r ApiGetExtensionsRequest) Limit(limit int32) ApiGetExtensionsRequest {
+func (r ApiGetExtensionsRequest) Limit(limit uint8) ApiGetExtensionsRequest {
 	r.limit = &limit
 	return r
 }
@@ -399,7 +399,7 @@ func (a *ExtensionsApi) GetExtensionsExecute(r ApiGetExtensionsRequest) (*Extens
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue uint8 = 20
 		r.limit = &defaultValue
 	}
 	if r.cursor != nil {

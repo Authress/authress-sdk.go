@@ -660,14 +660,14 @@ func (a *AccessRecordsApi) GetRecordExecute(r ApiGetRecordRequest) (*AccessRecor
 type ApiGetRecordsRequest struct {
 	ctx            context.Context
 	ThisApiHandler *AccessRecordsApi
-	limit          *int32
+	limit          *uint8
 	cursor         *string
 	filter         *string
 	status         *string
 }
 
 // Max number of results to return
-func (r ApiGetRecordsRequest) Limit(limit int32) ApiGetRecordsRequest {
+func (r ApiGetRecordsRequest) Limit(limit uint8) ApiGetRecordsRequest {
 	r.limit = &limit
 	return r
 }
@@ -734,7 +734,7 @@ func (a *AccessRecordsApi) GetRecordsExecute(r ApiGetRecordsRequest) (*AccessRec
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue uint8 = 20
 		r.limit = &defaultValue
 	}
 	if r.cursor != nil {
@@ -913,13 +913,13 @@ func (a *AccessRecordsApi) GetRequestExecute(r ApiGetRequestRequest) (*AccessReq
 type ApiGetRequestsRequest struct {
 	ctx            context.Context
 	ThisApiHandler *AccessRecordsApi
-	limit          *int32
+	limit          *uint8
 	cursor         *string
 	status         *string
 }
 
 // Max number of results to return
-func (r ApiGetRequestsRequest) Limit(limit int32) ApiGetRequestsRequest {
+func (r ApiGetRequestsRequest) Limit(limit uint8) ApiGetRequestsRequest {
 	r.limit = &limit
 	return r
 }
@@ -980,7 +980,7 @@ func (a *AccessRecordsApi) GetRequestsExecute(r ApiGetRequestsRequest) (*AccessR
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue uint8 = 20
 		r.limit = &defaultValue
 	}
 	if r.cursor != nil {
@@ -1165,11 +1165,11 @@ func (a *AccessRecordsApi) RespondToAccessRequestExecute(r ApiRespondToAccessReq
 }
 
 type ApiUpdateRecordRequest struct {
-	ctx               context.Context
-	ThisApiHandler    *AccessRecordsApi
-	recordId          string
-	accessRecord      *AccessRecord
-	ifUnmodifiedSince *time.Time
+	ctx                      context.Context
+	ThisApiHandler           *AccessRecordsApi
+	recordId                 string
+	accessRecord             *AccessRecord
+	expectedLastModifiedTime *time.Time
 }
 
 func (r ApiUpdateRecordRequest) AccessRecord(accessRecord AccessRecord) ApiUpdateRecordRequest {
@@ -1178,8 +1178,8 @@ func (r ApiUpdateRecordRequest) AccessRecord(accessRecord AccessRecord) ApiUpdat
 }
 
 // The expected last time the record was modified.
-func (r ApiUpdateRecordRequest) IfUnmodifiedSince(ifUnmodifiedSince time.Time) ApiUpdateRecordRequest {
-	r.ifUnmodifiedSince = &ifUnmodifiedSince
+func (r ApiUpdateRecordRequest) ExpectedLastModifiedTime(expectedLastModifiedTime time.Time) ApiUpdateRecordRequest {
+	r.expectedLastModifiedTime = &expectedLastModifiedTime
 	return r
 }
 
@@ -1250,8 +1250,8 @@ func (a *AccessRecordsApi) UpdateRecordExecute(r ApiUpdateRecordRequest) (*http.
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.ifUnmodifiedSince != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "If-Unmodified-Since", r.ifUnmodifiedSince, "")
+	if r.expectedLastModifiedTime != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "If-Unmodified-Since", r.expectedLastModifiedTime, "")
 	}
 	// body params
 	localVarPostBody = r.accessRecord

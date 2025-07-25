@@ -1,8 +1,14 @@
 {
     "cSpell.words": [
         "chrono",
+        "Fprintf",
+        "openapitools",
         "permissioned",
         "reqwest",
+        "stretchr",
+        "strlen",
+        "struct",
+        "unmarshalling",
         "urlencode"
     ]
 }

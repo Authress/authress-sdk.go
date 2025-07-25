@@ -447,12 +447,12 @@ func (a *ServiceClientsApi) GetClientExecute(r ApiGetClientRequest) (*Client, *h
 type ApiGetClientsRequest struct {
 	ctx            context.Context
 	ThisApiHandler *ServiceClientsApi
-	limit          *int32
+	limit          *uint8
 	cursor         *string
 }
 
 // Max number of results to return
-func (r ApiGetClientsRequest) Limit(limit int32) ApiGetClientsRequest {
+func (r ApiGetClientsRequest) Limit(limit uint8) ApiGetClientsRequest {
 	r.limit = &limit
 	return r
 }
@@ -507,7 +507,7 @@ func (a *ServiceClientsApi) GetClientsExecute(r ApiGetClientsRequest) (*ClientCo
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue uint8 = 20
 		r.limit = &defaultValue
 	}
 	if r.cursor != nil {

@@ -15,9 +15,9 @@ var _ MappedNullable = &Invite{}
 type Invite struct {
 	// The unique identifier for the invite. Use this ID to accept the invite. This parameter is ignored during invite creation.
 	InviteId             string `json:"inviteId"`
-	DefaultLoginTenantId string `json:"string,omitempty"`
+	DefaultLoginTenantId string `json:"defaultLoginTenantId,omitempty"`
 	// Specify a User ID that logging in user should receive when login completes. This ID is used to automatically assign a user ID to the user rather than a dynamically generated Authress User ID when using the Authress Login UI SDK. This parameter is ignored when accepting invites directly. Note: If the user logging in has already signed up, then this parameter is ignored.
-	LinkedUserId string `json:"string,omitempty"`
+	LinkedUserId string `json:"linkedUserId,omitempty"`
 	// A list of statements which match roles to resources. The invited user will all statements apply to them when the invite is accepted.
 	Statements []InviteStatement `json:"statements"`
 	Links      *AccountLinks     `json:"links,omitempty"`

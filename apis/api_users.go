@@ -216,14 +216,14 @@ func (a *UsersApi) GetUserExecute(r ApiGetUserRequest) (*UserIdentity, *http.Res
 type ApiGetUsersRequest struct {
 	ctx            context.Context
 	ThisApiHandler *UsersApi
-	limit          *int32
+	limit          *uint8
 	cursor         *string
 	filter         *string
 	tenantId       *TenantId
 }
 
 // Max number of results to return
-func (r ApiGetUsersRequest) Limit(limit int32) ApiGetUsersRequest {
+func (r ApiGetUsersRequest) Limit(limit uint8) ApiGetUsersRequest {
 	r.limit = &limit
 	return r
 }
@@ -290,7 +290,7 @@ func (a *UsersApi) GetUsersExecute(r ApiGetUsersRequest) (*UserIdentityCollectio
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue uint8 = 100
 		r.limit = &defaultValue
 	}
 	if r.cursor != nil {

@@ -339,13 +339,13 @@ func (a *RolesApi) GetRoleExecute(r ApiGetRoleRequest) (*Role, *http.Response, e
 type ApiGetRolesRequest struct {
 	ctx            context.Context
 	ThisApiHandler *RolesApi
-	limit          *int32
+	limit          *uint8
 	cursor         *string
 	filter         *string
 }
 
 // Max number of results to return.
-func (r ApiGetRolesRequest) Limit(limit int32) ApiGetRolesRequest {
+func (r ApiGetRolesRequest) Limit(limit uint8) ApiGetRolesRequest {
 	r.limit = &limit
 	return r
 }
@@ -406,7 +406,7 @@ func (a *RolesApi) GetRolesExecute(r ApiGetRolesRequest) (*RoleCollection, *http
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
-		var defaultValue int32 = 100
+		var defaultValue uint8 = 100
 		r.limit = &defaultValue
 	}
 	if r.cursor != nil {

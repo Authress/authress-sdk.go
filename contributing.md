@@ -38,33 +38,32 @@ podman stop $CID && podman rm $CID
 
 ### Common review items
 * [x] Inputs to Constructor are (string: authress_api_url, string: service_client_access_key)
-* [ ] (Go: Only) Move out ctx for every method to have a dedicated `WithContext(ctx)` continuation, and default to `Context.Background()`.
 * [ ] authress_api_url should sanitize https:// prefix and remove trailing `/`s
-* [ ] Add authentication to the configuration class.
+* [x] Add authentication to the configuration class.
 * [x] Change configuration class name to be `AuthressSettings`
   * Specify all the inputs to be consistent across languages
-* [ ] constructors for classes should only have relevant input properties, for instances `links` are not required.
-* [ ] Update documentation
+* [x] constructors for classes should only have relevant input properties, for instances `links` are not required.
+* [x] Update documentation
   * Make sure markdown is valid
   * Remove unnecessary links
   * Add first class examples to readme.md + api documentation
-  * Find failed UserId, RoleId, TenantId, GroupId, Action properties and convert them to strings
-* [ ] Remove any unnecessary validations from object and parameter injection, often there are some even when properties are allowed to be null
+  * create alias types for UserId, RoleId, TenantId, GroupId, Action properties (OR convert every instance of the type assumption to be as string)
+* [x] Remove any unnecessary validations from object and parameter injection, often there are some even when properties are allowed to be null
 * [ ] The service client code to generate a JWT from private key needs to be added
 * [ ] Add UnauthorizedError type to the authorizeUser function
-* [ ] GET query parameters should be an object
-* [ ] Top level tags from the API should accessible from the base class: `authressClient.accessRecords.getRecords(...)`
+* [x] GET query parameters should be an object
+* [x] Top level tags from the API should accessible from the base class: `authressClient.accessRecords.getRecords(...)`
 * [ ] Automatic Retry
   * [ ] Automatic fallback to cache
 * [ ] `OptimisticPerformanceHandler` - Automatic fallback to cache on timeout reached
 * [ ] In memory caching for authorization checks - memoize
-* [ ] Unsigned int for all limits
+* [x] Unsigned int for all limits
 * [ ] readonly properties are never specified as required for request bodies
-* [ ] Update Documentation for the API
+* [x] Update Documentation for the API
 * [ ] Validate all enums are enums and can be null when they should be.
-* [ ] Remove LocalHost from the docs
-* [ ] Tests
-* [ ] If-unmodified-since should called `expectedLastModifiedTime`, accept string or dateTime and convert this to an ISO String
+* [x] Remove LocalHost from the docs
+* [x] Tests
+* [x] If-unmodified-since should called `expectedLastModifiedTime`, accept string or dateTime and convert this to an ISO String
 * [ ] Update OAuth2 openapi authentication references in the documentation
 * [x] Find all incorrect references to version 99.99.99
 * [x] Inject in the User-Agent 

@@ -244,7 +244,7 @@ type ApiGetUserResourcesRequest struct {
 	resourceUri             *string
 	collectionConfiguration *string
 	permissions             *Action
-	limit                   *int32
+	limit                   *uint8
 	cursor                  *string
 }
 
@@ -267,7 +267,7 @@ func (r ApiGetUserResourcesRequest) Permissions(permissions Action) ApiGetUserRe
 }
 
 // Max number of results to return
-func (r ApiGetUserResourcesRequest) Limit(limit int32) ApiGetUserResourcesRequest {
+func (r ApiGetUserResourcesRequest) Limit(limit uint8) ApiGetUserResourcesRequest {
 	r.limit = &limit
 	return r
 }
@@ -337,7 +337,7 @@ func (a *UserPermissionsApi) GetUserResourcesExecute(r ApiGetUserResourcesReques
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue uint8 = 20
 		r.limit = &defaultValue
 	}
 	if r.cursor != nil {

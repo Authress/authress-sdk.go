@@ -231,12 +231,12 @@ type ApiGetResourceUsersRequest struct {
 	ctx            context.Context
 	ThisApiHandler *ResourcePermissionsApi
 	resourceUri    string
-	limit          *int32
+	limit          *uint8
 	cursor         *string
 }
 
 // Max number of results to return
-func (r ApiGetResourceUsersRequest) Limit(limit int32) ApiGetResourceUsersRequest {
+func (r ApiGetResourceUsersRequest) Limit(limit uint8) ApiGetResourceUsersRequest {
 	r.limit = &limit
 	return r
 }
@@ -300,7 +300,7 @@ func (a *ResourcePermissionsApi) GetResourceUsersExecute(r ApiGetResourceUsersRe
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue uint8 = 20
 		r.limit = &defaultValue
 	}
 	if r.cursor != nil {

@@ -328,13 +328,13 @@ func (a *GroupsApi) GetGroupExecute(r ApiGetGroupRequest) (*Group, *http.Respons
 type ApiGetGroupsRequest struct {
 	ctx            context.Context
 	ThisApiHandler *GroupsApi
-	limit          *int32
+	limit          *uint8
 	cursor         *string
 	filter         *string
 }
 
 // Max number of results to return
-func (r ApiGetGroupsRequest) Limit(limit int32) ApiGetGroupsRequest {
+func (r ApiGetGroupsRequest) Limit(limit uint8) ApiGetGroupsRequest {
 	r.limit = &limit
 	return r
 }
@@ -395,7 +395,7 @@ func (a *GroupsApi) GetGroupsExecute(r ApiGetGroupsRequest) (*GroupCollection, *
 	if r.limit != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "limit", r.limit, "")
 	} else {
-		var defaultValue int32 = 20
+		var defaultValue uint8 = 20
 		r.limit = &defaultValue
 	}
 	if r.cursor != nil {
@@ -459,11 +459,11 @@ func (a *GroupsApi) GetGroupsExecute(r ApiGetGroupsRequest) (*GroupCollection, *
 }
 
 type ApiUpdateGroupRequest struct {
-	ctx               context.Context
-	ThisApiHandler    *GroupsApi
-	groupId           GroupId
-	group             *Group
-	ifUnmodifiedSince *time.Time
+	ctx                      context.Context
+	ThisApiHandler           *GroupsApi
+	groupId                  GroupId
+	group                    *Group
+	expectedLastModifiedTime *time.Time
 }
 
 func (r ApiUpdateGroupRequest) Group(group Group) ApiUpdateGroupRequest {
@@ -472,8 +472,8 @@ func (r ApiUpdateGroupRequest) Group(group Group) ApiUpdateGroupRequest {
 }
 
 // The expected last time the group was modified.
-func (r ApiUpdateGroupRequest) IfUnmodifiedSince(ifUnmodifiedSince time.Time) ApiUpdateGroupRequest {
-	r.ifUnmodifiedSince = &ifUnmodifiedSince
+func (r ApiUpdateGroupRequest) ExpectedLastModifiedTime(expectedLastModifiedTime time.Time) ApiUpdateGroupRequest {
+	r.expectedLastModifiedTime = &expectedLastModifiedTime
 	return r
 }
 
@@ -541,8 +541,8 @@ func (a *GroupsApi) UpdateGroupExecute(r ApiUpdateGroupRequest) (*Group, *http.R
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	if r.ifUnmodifiedSince != nil {
-		parameterAddToHeaderOrQuery(localVarHeaderParams, "If-Unmodified-Since", r.ifUnmodifiedSince, "")
+	if r.expectedLastModifiedTime != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "If-Unmodified-Since", r.expectedLastModifiedTime, "")
 	}
 	// body params
 	localVarPostBody = r.group
